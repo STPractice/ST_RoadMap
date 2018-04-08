@@ -11,3 +11,17 @@ C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\App_Dat
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.dll
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.dll.config
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.xml
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215.mdf
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215_log.ldf
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Extensibility.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Extensibility.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.dll.config
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.xml
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.csprojResolveAssemblyReference.cache
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.csproj.CoreCompileInputs.cache
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.csproj.CopyComplete
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.pdb

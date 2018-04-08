@@ -79,9 +79,32 @@
     <Compile Include="CheckpointsSkill.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data_Access\Interfaces\IEntity.cs" />
+    <Compile Include="Data_Access\Interfaces\IRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetRoleRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserClaimRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserLoginRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ICheckpointsSkillRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorRMCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\INotificationRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IPositionRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRegistrationKeyRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRoadMapRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillLevelRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillMatrixRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISpecializationRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IUserCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRMCheckpointRepository.cs" />
     <Compile Include="Employee.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity.cs" />
     <Compile Include="Mentor.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
@@ -184,6 +207,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data_Access\Implementation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
