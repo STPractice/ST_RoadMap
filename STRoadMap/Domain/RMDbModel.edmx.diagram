@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7f684fa9fb2d49f0be905d09014ccf50" Name="Diagram1">
+        <EntityTypeShape EntityType="RMDbModel.AspNetRole" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.AspNetUserClaim" Width="1.5" PointX="1.5" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.AspNetUser" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.CheckpointsSkill" Width="1.5" PointX="12" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Employee" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Mentor" Width="1.5" PointX="5.25" PointY="16.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.MentorCheckpointComment" Width="1.5" PointX="12" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.MentorRMComment" Width="1.5" PointX="9.75" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Notification" Width="1.5" PointX="5.25" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Position" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.RegistrationKey" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.RMCheckpoint" Width="1.5" PointX="9.75" PointY="15.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.RoadMap" Width="1.5" PointX="7.5" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Skill" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.SkillLevel" Width="1.5" PointX="9.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.SkillMatrix" Width="1.5" PointX="7.5" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.Specialozation" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RMDbModel.UserCheckpointComment" Width="1.5" PointX="12" PointY="12.625" IsExpanded="true" />
+        <AssociationConnector Association="RMDbModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Employee__UserId__5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Mentor__UserId__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Notificat__UserI__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Checkpoin__RMChe__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Checkpoin__Skill__6FE99F9F" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__RoadMap__Empolye__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__SkillMatr__Empol__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__UserCheck__Empol__76969D2E" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__MentorChe__Mento__693CA210" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__MentorRMC__Mento__72C60C4A" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__MentorChe__RMChe__68487DD7" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__MentorRMC__RoadM__73BA3083" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__Position__Specia__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__RMCheckpo__RoadM__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__UserCheck__RMChe__778AC167" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__SkillLeve__Skill__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.FK__SkillMatr__Speci__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.AspNetUserRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.EmployeesSkillLevels" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.RequiredSkillLevel" ManuallyRouted="false" />
+        <AssociationConnector Association="RMDbModel.RequiredSkills" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

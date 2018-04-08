@@ -1,0 +1,10 @@
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215.mdf
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215_log.ldf
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\ClassLibrary1.dll
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\ClassLibrary1.pdb
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.dll
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.pdb
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.csproj.CoreCompileInputs.cache
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\obj\Debug\ClassLibrary1.dll
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Service\obj\Debug\ClassLibrary1.pdb
