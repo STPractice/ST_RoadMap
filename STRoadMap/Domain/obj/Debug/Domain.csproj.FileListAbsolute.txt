@@ -15,3 +15,13 @@ D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.csprojResolveAssemblyR
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215.mdf
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215_log.ldf
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll.config
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.xml
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.csproj.CopyComplete
