@@ -24,6 +24,6 @@ namespace Domain
         ISpecializationRepository Specializations { get; }
         IUserCheckpointCommentRepository UserCheckpointComments { get; }
 
-        void Commit();
+        bool Commit();
     }    
 }
