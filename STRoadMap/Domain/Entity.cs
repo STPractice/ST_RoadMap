@@ -42,7 +42,7 @@ namespace Domain
 
     public partial class SkillMatrix : IEntity { }
 
-    public partial class Specialozation : IEntity { }
+    public partial class Specialization : IEntity { }
 
     public partial class UserCheckpointComment : IEntity { }
 }

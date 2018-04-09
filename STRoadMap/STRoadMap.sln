@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRoadMap", "STRoadMap\STRoadMap.csproj", "{90FC0F44-F3CB-4EAD-9C9A-AB7CEC91F212}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRoadMap.Web", "STRoadMap\STRoadMap.Web.csproj", "{90FC0F44-F3CB-4EAD-9C9A-AB7CEC91F212}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extensibility", "Extensibility\Extensibility.csproj", "{55AB7EED-D31B-4264-B768-51889C3CD6F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRoadMap.Extensibility", "Extensibility\STRoadMap.Extensibility.csproj", "{55AB7EED-D31B-4264-B768-51889C3CD6F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{96AB20CD-95D4-4BCD-9676-A47C9D73A418}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRoadMap.Domain", "Domain\STRoadMap.Domain.csproj", "{96AB20CD-95D4-4BCD-9676-A47C9D73A418}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{0505AE67-7AD5-4118-9CB7-FBACB1D7AA3E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "STRoadMap.Service", "Service\STRoadMap.Service.csproj", "{0505AE67-7AD5-4118-9CB7-FBACB1D7AA3E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
