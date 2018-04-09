@@ -154,7 +154,7 @@
     <Compile Include="SkillMatrix.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Specialozation.cs">
+    <Compile Include="Specialization.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
     <Compile Include="UserCheckpointComment.cs">
@@ -183,8 +183,8 @@
     </Content>
     <Content Include="RMDbModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>RMDbModel.Context.cs</LastGenOutput>
       <DependentUpon>RMDbModel.edmx</DependentUpon>
+      <LastGenOutput>RMDbModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="RMDbModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -193,14 +193,12 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
     <EntityDeploy Include="RMDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>RMDbModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
     <None Include="RMDbModel.edmx.diagram">
       <DependentUpon>RMDbModel.edmx</DependentUpon>
     </None>

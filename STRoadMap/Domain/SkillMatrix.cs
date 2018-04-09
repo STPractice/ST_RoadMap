@@ -25,7 +25,7 @@ namespace Domain
         public int EmpolyeeId { get; set; }
     
         public virtual Employee Employee { get; set; }
-        public virtual Specialozation Specialozation { get; set; }
+        public virtual Specialization Specialization { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkillLevel> SkillLevels { get; set; }
     }

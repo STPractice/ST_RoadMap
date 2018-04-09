@@ -12,10 +12,10 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Specialozation
+    public partial class Specialization
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Specialozation()
+        public Specialization()
         {
             this.Positions = new HashSet<Position>();
             this.SkillMatrices = new HashSet<SkillMatrix>();

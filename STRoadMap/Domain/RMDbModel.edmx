@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RMDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="Id" />
@@ -56,7 +56,7 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="CheckpointsSkills">
+        <EntityType Name="CheckpointsSkill">
           <Key>
             <PropertyRef Name="RMCheckpointId" />
             <PropertyRef Name="SkillLevelId" />
@@ -72,7 +72,7 @@
           <Property Name="EmpolyeeId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
-        <EntityType Name="EmployeesSkillLevels">
+        <EntityType Name="EmployeesSkillLevel">
           <Key>
             <PropertyRef Name="SkillMatrixId" />
             <PropertyRef Name="SkillLevelId" />
@@ -129,6 +129,14 @@
           <Property Name="RegistrKey" Type="varchar" MaxLength="8" Nullable="false" />
           <Property Name="DateOfIssue" Type="date" Nullable="false" />
         </EntityType>
+        <EntityType Name="RequiredSkill">
+          <Key>
+            <PropertyRef Name="SpecializationId" />
+            <PropertyRef Name="SkillId" />
+          </Key>
+          <Property Name="SpecializationId" Type="int" Nullable="false" />
+          <Property Name="SkillId" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="RequiredSkillLevel">
           <Key>
             <PropertyRef Name="PositionId" />
@@ -136,14 +144,6 @@
           </Key>
           <Property Name="PositionId" Type="int" Nullable="false" />
           <Property Name="SkillLevelId" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RequiredSkills">
-          <Key>
-            <PropertyRef Name="SpecializationId" />
-            <PropertyRef Name="SkillId" />
-          </Key>
-          <Property Name="SpecializationId" Type="int" Nullable="false" />
-          <Property Name="SkillId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="RMCheckpoint">
           <Key>
@@ -188,7 +188,7 @@
           <Property Name="SpecializationId" Type="int" Nullable="false" />
           <Property Name="EmpolyeeId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Specialozation">
+        <EntityType Name="Specialization">
           <Key>
             <PropertyRef Name="SpecializationId" />
           </Key>
@@ -206,24 +206,24 @@
         </EntityType>
         <Association Name="FK__Checkpoin__RMChe__6EF57B66">
           <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1" />
-          <End Role="CheckpointsSkills" Type="Self.CheckpointsSkills" Multiplicity="*" />
+          <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RMCheckpoint">
               <PropertyRef Name="RMCheckpointId" />
             </Principal>
-            <Dependent Role="CheckpointsSkills">
+            <Dependent Role="CheckpointsSkill">
               <PropertyRef Name="RMCheckpointId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Checkpoin__Skill__6FE99F9F">
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
-          <End Role="CheckpointsSkills" Type="Self.CheckpointsSkills" Multiplicity="*" />
+          <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkillLevel">
               <PropertyRef Name="SkillLevelId" />
             </Principal>
-            <Dependent Role="CheckpointsSkills">
+            <Dependent Role="CheckpointsSkill">
               <PropertyRef Name="SkillLevelId" />
             </Dependent>
           </ReferentialConstraint>
@@ -242,24 +242,24 @@
         </Association>
         <Association Name="FK__Employees__Skill__60A75C0F">
           <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="1" />
-          <End Role="EmployeesSkillLevels" Type="Self.EmployeesSkillLevels" Multiplicity="*" />
+          <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkillMatrix">
               <PropertyRef Name="SkillMatrixId" />
             </Principal>
-            <Dependent Role="EmployeesSkillLevels">
+            <Dependent Role="EmployeesSkillLevel">
               <PropertyRef Name="SkillMatrixId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Employees__Skill__619B8048">
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
-          <End Role="EmployeesSkillLevels" Type="Self.EmployeesSkillLevels" Multiplicity="*" />
+          <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkillLevel">
               <PropertyRef Name="SkillLevelId" />
             </Principal>
-            <Dependent Role="EmployeesSkillLevels">
+            <Dependent Role="EmployeesSkillLevel">
               <PropertyRef Name="SkillLevelId" />
             </Dependent>
           </ReferentialConstraint>
@@ -337,10 +337,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Position__Specia__3D5E1FD2">
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="1" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
           <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Specialozation">
+            <Principal Role="Specialization">
               <PropertyRef Name="SpecializationId" />
             </Principal>
             <Dependent Role="Position">
@@ -362,12 +362,12 @@
         </Association>
         <Association Name="FK__RequiredS__Skill__4AB81AF0">
           <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
-          <End Role="RequiredSkills" Type="Self.RequiredSkills" Multiplicity="*" />
+          <End Role="RequiredSkill" Type="Self.RequiredSkill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Skill">
               <PropertyRef Name="SkillId" />
             </Principal>
-            <Dependent Role="RequiredSkills">
+            <Dependent Role="RequiredSkill">
               <PropertyRef Name="SkillId" />
             </Dependent>
           </ReferentialConstraint>
@@ -385,13 +385,13 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__RequiredS__Speci__49C3F6B7">
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="1" />
-          <End Role="RequiredSkills" Type="Self.RequiredSkills" Multiplicity="*" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+          <End Role="RequiredSkill" Type="Self.RequiredSkill" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Specialozation">
+            <Principal Role="Specialization">
               <PropertyRef Name="SpecializationId" />
             </Principal>
-            <Dependent Role="RequiredSkills">
+            <Dependent Role="RequiredSkill">
               <PropertyRef Name="SpecializationId" />
             </Dependent>
           </ReferentialConstraint>
@@ -445,10 +445,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SkillMatr__Speci__571DF1D5">
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="1" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
           <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Specialozation">
+            <Principal Role="Specialization">
               <PropertyRef Name="SpecializationId" />
             </Principal>
             <Dependent Role="SkillMatrix">
@@ -536,37 +536,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="RMDbModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CheckpointsSkills" EntityType="Self.CheckpointsSkills" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CheckpointsSkill" EntityType="Self.CheckpointsSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="EmployeesSkillLevels" EntityType="Self.EmployeesSkillLevels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeesSkillLevel" EntityType="Self.EmployeesSkillLevel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Mentor" EntityType="Self.Mentor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MentorCheckpointComment" EntityType="Self.MentorCheckpointComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MentorRMComment" EntityType="Self.MentorRMComment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Position" EntityType="Self.Position" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistrationKey" EntityType="Self.RegistrationKey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequiredSkill" EntityType="Self.RequiredSkill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RequiredSkillLevel" EntityType="Self.RequiredSkillLevel" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="RequiredSkills" EntityType="Self.RequiredSkills" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RMCheckpoint" EntityType="Self.RMCheckpoint" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RoadMap" EntityType="Self.RoadMap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Skill" EntityType="Self.Skill" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkillLevel" EntityType="Self.SkillLevel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SkillMatrix" EntityType="Self.SkillMatrix" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Specialozation" EntityType="Self.Specialozation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserCheckpointComment" EntityType="Self.UserCheckpointComment" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Checkpoin__RMChe__6EF57B66" Association="Self.FK__Checkpoin__RMChe__6EF57B66">
             <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
-            <End Role="CheckpointsSkills" EntitySet="CheckpointsSkills" />
+            <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
           </AssociationSet>
           <AssociationSet Name="FK__Checkpoin__Skill__6FE99F9F" Association="Self.FK__Checkpoin__Skill__6FE99F9F">
             <End Role="SkillLevel" EntitySet="SkillLevel" />
-            <End Role="CheckpointsSkills" EntitySet="CheckpointsSkills" />
+            <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
           </AssociationSet>
           <AssociationSet Name="FK__Employee__UserId__5165187F" Association="Self.FK__Employee__UserId__5165187F">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -574,11 +574,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__Employees__Skill__60A75C0F" Association="Self.FK__Employees__Skill__60A75C0F">
             <End Role="SkillMatrix" EntitySet="SkillMatrix" />
-            <End Role="EmployeesSkillLevels" EntitySet="EmployeesSkillLevels" />
+            <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
           </AssociationSet>
           <AssociationSet Name="FK__Employees__Skill__619B8048" Association="Self.FK__Employees__Skill__619B8048">
             <End Role="SkillLevel" EntitySet="SkillLevel" />
-            <End Role="EmployeesSkillLevels" EntitySet="EmployeesSkillLevels" />
+            <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
           </AssociationSet>
           <AssociationSet Name="FK__Mentor__UserId__5441852A" Association="Self.FK__Mentor__UserId__5441852A">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -605,7 +605,7 @@
             <End Role="Notification" EntitySet="Notification" />
           </AssociationSet>
           <AssociationSet Name="FK__Position__Specia__3D5E1FD2" Association="Self.FK__Position__Specia__3D5E1FD2">
-            <End Role="Specialozation" EntitySet="Specialozation" />
+            <End Role="Specialization" EntitySet="Specialization" />
             <End Role="Position" EntitySet="Position" />
           </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Posit__4D94879B" Association="Self.FK__RequiredS__Posit__4D94879B">
@@ -614,15 +614,15 @@
           </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Skill__4AB81AF0" Association="Self.FK__RequiredS__Skill__4AB81AF0">
             <End Role="Skill" EntitySet="Skill" />
-            <End Role="RequiredSkills" EntitySet="RequiredSkills" />
+            <End Role="RequiredSkill" EntitySet="RequiredSkill" />
           </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Skill__4E88ABD4" Association="Self.FK__RequiredS__Skill__4E88ABD4">
             <End Role="SkillLevel" EntitySet="SkillLevel" />
             <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
           </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Speci__49C3F6B7" Association="Self.FK__RequiredS__Speci__49C3F6B7">
-            <End Role="Specialozation" EntitySet="Specialozation" />
-            <End Role="RequiredSkills" EntitySet="RequiredSkills" />
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="RequiredSkill" EntitySet="RequiredSkill" />
           </AssociationSet>
           <AssociationSet Name="FK__RMCheckpo__RoadM__5DCAEF64" Association="Self.FK__RMCheckpo__RoadM__5DCAEF64">
             <End Role="RoadMap" EntitySet="RoadMap" />
@@ -641,7 +641,7 @@
             <End Role="SkillMatrix" EntitySet="SkillMatrix" />
           </AssociationSet>
           <AssociationSet Name="FK__SkillMatr__Speci__571DF1D5" Association="Self.FK__SkillMatr__Speci__571DF1D5">
-            <End Role="Specialozation" EntitySet="Specialozation" />
+            <End Role="Specialization" EntitySet="Specialization" />
             <End Role="SkillMatrix" EntitySet="SkillMatrix" />
           </AssociationSet>
           <AssociationSet Name="FK__UserCheck__Empol__76969D2E" Association="Self.FK__UserCheck__Empol__76969D2E">
@@ -673,7 +673,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="RMDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -734,8 +734,8 @@
           <Property Name="Achieved" Type="Int32" Nullable="false" />
           <Property Name="RMCheckpointId" Type="Int32" Nullable="false" />
           <Property Name="SkillLevelId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="RMCheckpoint" Relationship="Self.FK__Checkpoin__RMChe__6EF57B66" FromRole="CheckpointsSkills" ToRole="RMCheckpoint" />
-          <NavigationProperty Name="SkillLevel" Relationship="Self.FK__Checkpoin__Skill__6FE99F9F" FromRole="CheckpointsSkills" ToRole="SkillLevel" />
+          <NavigationProperty Name="RMCheckpoint" Relationship="Self.FK__Checkpoin__RMChe__6EF57B66" FromRole="CheckpointsSkill" ToRole="RMCheckpoint" />
+          <NavigationProperty Name="SkillLevel" Relationship="Self.FK__Checkpoin__Skill__6FE99F9F" FromRole="CheckpointsSkill" ToRole="SkillLevel" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -797,7 +797,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PositionId" Type="Int32" Nullable="false" />
           <Property Name="SpecializationId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Specialozation" Relationship="Self.FK__Position__Specia__3D5E1FD2" FromRole="Position" ToRole="Specialozation" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK__Position__Specia__3D5E1FD2" FromRole="Position" ToRole="Specialization" />
           <NavigationProperty Name="SkillLevels" Relationship="Self.RequiredSkillLevel" FromRole="Position" ToRole="SkillLevel" />
         </EntityType>
         <EntityType Name="RegistrationKey">
@@ -815,7 +815,7 @@
           <Property Name="RMCheckpointId" Type="Int32" Nullable="false" />
           <Property Name="Deadline" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="RoadMapId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CheckpointsSkills" Relationship="Self.FK__Checkpoin__RMChe__6EF57B66" FromRole="RMCheckpoint" ToRole="CheckpointsSkills" />
+          <NavigationProperty Name="CheckpointsSkills" Relationship="Self.FK__Checkpoin__RMChe__6EF57B66" FromRole="RMCheckpoint" ToRole="CheckpointsSkill" />
           <NavigationProperty Name="MentorCheckpointComments" Relationship="Self.FK__MentorChe__RMChe__68487DD7" FromRole="RMCheckpoint" ToRole="MentorCheckpointComment" />
           <NavigationProperty Name="RoadMap" Relationship="Self.FK__RMCheckpo__RoadM__5DCAEF64" FromRole="RMCheckpoint" ToRole="RoadMap" />
           <NavigationProperty Name="UserCheckpointComments" Relationship="Self.FK__UserCheck__RMChe__778AC167" FromRole="RMCheckpoint" ToRole="UserCheckpointComment" />
@@ -839,7 +839,7 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SkillId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SkillLevels" Relationship="Self.FK__SkillLeve__Skill__38996AB5" FromRole="Skill" ToRole="SkillLevel" />
-          <NavigationProperty Name="Specialozations" Relationship="Self.RequiredSkills" FromRole="Skill" ToRole="Specialozation" />
+          <NavigationProperty Name="Specializations" Relationship="Self.RequiredSkill" FromRole="Skill" ToRole="Specialization" />
         </EntityType>
         <EntityType Name="SkillLevel">
           <Key>
@@ -850,9 +850,9 @@
           <Property Name="SkillLevelId" Type="Int32" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="SkillId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="CheckpointsSkills" Relationship="Self.FK__Checkpoin__Skill__6FE99F9F" FromRole="SkillLevel" ToRole="CheckpointsSkills" />
+          <NavigationProperty Name="CheckpointsSkills" Relationship="Self.FK__Checkpoin__Skill__6FE99F9F" FromRole="SkillLevel" ToRole="CheckpointsSkill" />
           <NavigationProperty Name="Skill" Relationship="Self.FK__SkillLeve__Skill__38996AB5" FromRole="SkillLevel" ToRole="Skill" />
-          <NavigationProperty Name="SkillMatrices" Relationship="Self.EmployeesSkillLevels" FromRole="SkillLevel" ToRole="SkillMatrix" />
+          <NavigationProperty Name="SkillMatrices" Relationship="Self.EmployeesSkillLevel" FromRole="SkillLevel" ToRole="SkillMatrix" />
           <NavigationProperty Name="Positions" Relationship="Self.RequiredSkillLevel" FromRole="SkillLevel" ToRole="Position" />
         </EntityType>
         <EntityType Name="SkillMatrix">
@@ -863,18 +863,18 @@
           <Property Name="SpecializationId" Type="Int32" Nullable="false" />
           <Property Name="EmpolyeeId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Employee" Relationship="Self.FK__SkillMatr__Empol__5812160E" FromRole="SkillMatrix" ToRole="Employee" />
-          <NavigationProperty Name="Specialozation" Relationship="Self.FK__SkillMatr__Speci__571DF1D5" FromRole="SkillMatrix" ToRole="Specialozation" />
-          <NavigationProperty Name="SkillLevels" Relationship="Self.EmployeesSkillLevels" FromRole="SkillMatrix" ToRole="SkillLevel" />
+          <NavigationProperty Name="Specialization" Relationship="Self.FK__SkillMatr__Speci__571DF1D5" FromRole="SkillMatrix" ToRole="Specialization" />
+          <NavigationProperty Name="SkillLevels" Relationship="Self.EmployeesSkillLevel" FromRole="SkillMatrix" ToRole="SkillLevel" />
         </EntityType>
-        <EntityType Name="Specialozation">
+        <EntityType Name="Specialization">
           <Key>
             <PropertyRef Name="SpecializationId" />
           </Key>
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="SpecializationId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Positions" Relationship="Self.FK__Position__Specia__3D5E1FD2" FromRole="Specialozation" ToRole="Position" />
-          <NavigationProperty Name="SkillMatrices" Relationship="Self.FK__SkillMatr__Speci__571DF1D5" FromRole="Specialozation" ToRole="SkillMatrix" />
-          <NavigationProperty Name="Skills" Relationship="Self.RequiredSkills" FromRole="Specialozation" ToRole="Skill" />
+          <NavigationProperty Name="Positions" Relationship="Self.FK__Position__Specia__3D5E1FD2" FromRole="Specialization" ToRole="Position" />
+          <NavigationProperty Name="SkillMatrices" Relationship="Self.FK__SkillMatr__Speci__571DF1D5" FromRole="Specialization" ToRole="SkillMatrix" />
+          <NavigationProperty Name="Skills" Relationship="Self.RequiredSkill" FromRole="Specialization" ToRole="Skill" />
         </EntityType>
         <EntityType Name="UserCheckpointComment">
           <Key>
@@ -953,24 +953,24 @@
         </Association>
         <Association Name="FK__Checkpoin__RMChe__6EF57B66">
           <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1" />
-          <End Role="CheckpointsSkills" Type="Self.CheckpointsSkill" Multiplicity="*" />
+          <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="RMCheckpoint">
               <PropertyRef Name="RMCheckpointId" />
             </Principal>
-            <Dependent Role="CheckpointsSkills">
+            <Dependent Role="CheckpointsSkill">
               <PropertyRef Name="RMCheckpointId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Checkpoin__Skill__6FE99F9F">
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
-          <End Role="CheckpointsSkills" Type="Self.CheckpointsSkill" Multiplicity="*" />
+          <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SkillLevel">
               <PropertyRef Name="SkillLevelId" />
             </Principal>
-            <Dependent Role="CheckpointsSkills">
+            <Dependent Role="CheckpointsSkill">
               <PropertyRef Name="SkillLevelId" />
             </Dependent>
           </ReferentialConstraint>
@@ -1060,10 +1060,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__Position__Specia__3D5E1FD2">
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="1" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
           <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Specialozation">
+            <Principal Role="Specialization">
               <PropertyRef Name="SpecializationId" />
             </Principal>
             <Dependent Role="Position">
@@ -1108,10 +1108,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK__SkillMatr__Speci__571DF1D5">
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="1" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
           <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Specialozation">
+            <Principal Role="Specialization">
               <PropertyRef Name="SpecializationId" />
             </Principal>
             <Dependent Role="SkillMatrix">
@@ -1123,19 +1123,19 @@
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="*" />
           <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="*" />
         </Association>
-        <Association Name="EmployeesSkillLevels">
+        <Association Name="EmployeesSkillLevel">
           <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="*" />
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="*" />
+        </Association>
+        <Association Name="RequiredSkill">
+          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="*" />
         </Association>
         <Association Name="RequiredSkillLevel">
           <End Role="Position" Type="Self.Position" Multiplicity="*" />
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="*" />
         </Association>
-        <Association Name="RequiredSkills">
-          <End Role="Skill" Type="Self.Skill" Multiplicity="*" />
-          <End Role="Specialozation" Type="Self.Specialozation" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
@@ -1153,7 +1153,7 @@
           <EntitySet Name="Skills" EntityType="Self.Skill" />
           <EntitySet Name="SkillLevels" EntityType="Self.SkillLevel" />
           <EntitySet Name="SkillMatrices" EntityType="Self.SkillMatrix" />
-          <EntitySet Name="Specialozations" EntityType="Self.Specialozation" />
+          <EntitySet Name="Specializations" EntityType="Self.Specialization" />
           <EntitySet Name="UserCheckpointComments" EntityType="Self.UserCheckpointComment" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
@@ -1177,11 +1177,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__Checkpoin__RMChe__6EF57B66" Association="Self.FK__Checkpoin__RMChe__6EF57B66">
             <End Role="RMCheckpoint" EntitySet="RMCheckpoints" />
-            <End Role="CheckpointsSkills" EntitySet="CheckpointsSkills" />
+            <End Role="CheckpointsSkill" EntitySet="CheckpointsSkills" />
           </AssociationSet>
           <AssociationSet Name="FK__Checkpoin__Skill__6FE99F9F" Association="Self.FK__Checkpoin__Skill__6FE99F9F">
             <End Role="SkillLevel" EntitySet="SkillLevels" />
-            <End Role="CheckpointsSkills" EntitySet="CheckpointsSkills" />
+            <End Role="CheckpointsSkill" EntitySet="CheckpointsSkills" />
           </AssociationSet>
           <AssociationSet Name="FK__RoadMap__Empolye__5AEE82B9" Association="Self.FK__RoadMap__Empolye__5AEE82B9">
             <End Role="Employee" EntitySet="Employees" />
@@ -1212,7 +1212,7 @@
             <End Role="MentorRMComment" EntitySet="MentorRMComments" />
           </AssociationSet>
           <AssociationSet Name="FK__Position__Specia__3D5E1FD2" Association="Self.FK__Position__Specia__3D5E1FD2">
-            <End Role="Specialozation" EntitySet="Specialozations" />
+            <End Role="Specialization" EntitySet="Specializations" />
             <End Role="Position" EntitySet="Positions" />
           </AssociationSet>
           <AssociationSet Name="FK__RMCheckpo__RoadM__5DCAEF64" Association="Self.FK__RMCheckpo__RoadM__5DCAEF64">
@@ -1228,24 +1228,24 @@
             <End Role="SkillLevel" EntitySet="SkillLevels" />
           </AssociationSet>
           <AssociationSet Name="FK__SkillMatr__Speci__571DF1D5" Association="Self.FK__SkillMatr__Speci__571DF1D5">
-            <End Role="Specialozation" EntitySet="Specialozations" />
+            <End Role="Specialization" EntitySet="Specializations" />
             <End Role="SkillMatrix" EntitySet="SkillMatrices" />
           </AssociationSet>
           <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
-          <AssociationSet Name="EmployeesSkillLevels" Association="Self.EmployeesSkillLevels">
+          <AssociationSet Name="EmployeesSkillLevel" Association="Self.EmployeesSkillLevel">
             <End Role="SkillMatrix" EntitySet="SkillMatrices" />
             <End Role="SkillLevel" EntitySet="SkillLevels" />
+          </AssociationSet>
+          <AssociationSet Name="RequiredSkill" Association="Self.RequiredSkill">
+            <End Role="Skill" EntitySet="Skills" />
+            <End Role="Specialization" EntitySet="Specializations" />
           </AssociationSet>
           <AssociationSet Name="RequiredSkillLevel" Association="Self.RequiredSkillLevel">
             <End Role="Position" EntitySet="Positions" />
             <End Role="SkillLevel" EntitySet="SkillLevels" />
-          </AssociationSet>
-          <AssociationSet Name="RequiredSkills" Association="Self.RequiredSkills">
-            <End Role="Skill" EntitySet="Skills" />
-            <End Role="Specialozation" EntitySet="Specialozations" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1253,9 +1253,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="RMDbModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="RMDbModel.AspNetRole">
+            <EntityTypeMapping TypeName="Model.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1263,7 +1263,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="RMDbModel.AspNetUserClaim">
+            <EntityTypeMapping TypeName="Model.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1273,7 +1273,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="RMDbModel.AspNetUserLogin">
+            <EntityTypeMapping TypeName="Model.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -1282,7 +1282,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="RMDbModel.AspNetUser">
+            <EntityTypeMapping TypeName="Model.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1300,8 +1300,8 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CheckpointsSkills">
-            <EntityTypeMapping TypeName="RMDbModel.CheckpointsSkill">
-              <MappingFragment StoreEntitySet="CheckpointsSkills">
+            <EntityTypeMapping TypeName="Model.CheckpointsSkill">
+              <MappingFragment StoreEntitySet="CheckpointsSkill">
                 <ScalarProperty Name="Achieved" ColumnName="Achieved" />
                 <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
                 <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
@@ -1309,7 +1309,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="RMDbModel.Employee">
+            <EntityTypeMapping TypeName="Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="EmpolyeeId" ColumnName="EmpolyeeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1317,7 +1317,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Mentors">
-            <EntityTypeMapping TypeName="RMDbModel.Mentor">
+            <EntityTypeMapping TypeName="Model.Mentor">
               <MappingFragment StoreEntitySet="Mentor">
                 <ScalarProperty Name="MentorId" ColumnName="MentorId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1325,7 +1325,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MentorCheckpointComments">
-            <EntityTypeMapping TypeName="RMDbModel.MentorCheckpointComment">
+            <EntityTypeMapping TypeName="Model.MentorCheckpointComment">
               <MappingFragment StoreEntitySet="MentorCheckpointComment">
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
@@ -1334,7 +1334,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MentorRMComments">
-            <EntityTypeMapping TypeName="RMDbModel.MentorRMComment">
+            <EntityTypeMapping TypeName="Model.MentorRMComment">
               <MappingFragment StoreEntitySet="MentorRMComment">
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="MentorId" ColumnName="MentorId" />
@@ -1343,7 +1343,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Notifications">
-            <EntityTypeMapping TypeName="RMDbModel.Notification">
+            <EntityTypeMapping TypeName="Model.Notification">
               <MappingFragment StoreEntitySet="Notification">
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="url" ColumnName="url" />
@@ -1353,7 +1353,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Positions">
-            <EntityTypeMapping TypeName="RMDbModel.Position">
+            <EntityTypeMapping TypeName="Model.Position">
               <MappingFragment StoreEntitySet="Position">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PositionId" ColumnName="PositionId" />
@@ -1362,7 +1362,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RegistrationKeys">
-            <EntityTypeMapping TypeName="RMDbModel.RegistrationKey">
+            <EntityTypeMapping TypeName="Model.RegistrationKey">
               <MappingFragment StoreEntitySet="RegistrationKey">
                 <ScalarProperty Name="RegistrKey" ColumnName="RegistrKey" />
                 <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
@@ -1370,7 +1370,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RMCheckpoints">
-            <EntityTypeMapping TypeName="RMDbModel.RMCheckpoint">
+            <EntityTypeMapping TypeName="Model.RMCheckpoint">
               <MappingFragment StoreEntitySet="RMCheckpoint">
                 <ScalarProperty Name="Achieved" ColumnName="Achieved" />
                 <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
@@ -1380,7 +1380,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RoadMaps">
-            <EntityTypeMapping TypeName="RMDbModel.RoadMap">
+            <EntityTypeMapping TypeName="Model.RoadMap">
               <MappingFragment StoreEntitySet="RoadMap">
                 <ScalarProperty Name="Deadline" ColumnName="Deadline" />
                 <ScalarProperty Name="RoadMapId" ColumnName="RoadMapId" />
@@ -1390,7 +1390,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Skills">
-            <EntityTypeMapping TypeName="RMDbModel.Skill">
+            <EntityTypeMapping TypeName="Model.Skill">
               <MappingFragment StoreEntitySet="Skill">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SkillId" ColumnName="SkillId" />
@@ -1398,7 +1398,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SkillLevels">
-            <EntityTypeMapping TypeName="RMDbModel.SkillLevel">
+            <EntityTypeMapping TypeName="Model.SkillLevel">
               <MappingFragment StoreEntitySet="SkillLevel">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
@@ -1409,7 +1409,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SkillMatrices">
-            <EntityTypeMapping TypeName="RMDbModel.SkillMatrix">
+            <EntityTypeMapping TypeName="Model.SkillMatrix">
               <MappingFragment StoreEntitySet="SkillMatrix">
                 <ScalarProperty Name="SkillMatrixId" ColumnName="SkillMatrixId" />
                 <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
@@ -1417,16 +1417,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Specialozations">
-            <EntityTypeMapping TypeName="RMDbModel.Specialozation">
-              <MappingFragment StoreEntitySet="Specialozation">
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="Model.Specialization">
+              <MappingFragment StoreEntitySet="Specialization">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserCheckpointComments">
-            <EntityTypeMapping TypeName="RMDbModel.UserCheckpointComment">
+            <EntityTypeMapping TypeName="Model.UserCheckpointComment">
               <MappingFragment StoreEntitySet="UserCheckpointComment">
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="EmpolyeeId" ColumnName="EmpolyeeId" />
@@ -1434,7 +1434,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="AspNetUserRoles" TypeName="RMDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
             <EndProperty Name="AspNetRoles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
@@ -1442,7 +1442,7 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="EmployeesSkillLevels" TypeName="RMDbModel.EmployeesSkillLevels" StoreEntitySet="EmployeesSkillLevels">
+          <AssociationSetMapping Name="EmployeesSkillLevel" TypeName="Model.EmployeesSkillLevel" StoreEntitySet="EmployeesSkillLevel">
             <EndProperty Name="SkillMatrix">
               <ScalarProperty Name="SkillMatrixId" ColumnName="SkillMatrixId" />
             </EndProperty>
@@ -1450,20 +1450,20 @@
               <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="RequiredSkillLevel" TypeName="RMDbModel.RequiredSkillLevel" StoreEntitySet="RequiredSkillLevel">
+          <AssociationSetMapping Name="RequiredSkill" TypeName="Model.RequiredSkill" StoreEntitySet="RequiredSkill">
+            <EndProperty Name="Skill">
+              <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+            </EndProperty>
+            <EndProperty Name="Specialization">
+              <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RequiredSkillLevel" TypeName="Model.RequiredSkillLevel" StoreEntitySet="RequiredSkillLevel">
             <EndProperty Name="Position">
               <ScalarProperty Name="PositionId" ColumnName="PositionId" />
             </EndProperty>
             <EndProperty Name="SkillLevel">
               <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="RequiredSkills" TypeName="RMDbModel.RequiredSkills" StoreEntitySet="RequiredSkills">
-            <EndProperty Name="Skill">
-              <ScalarProperty Name="SkillId" ColumnName="SkillId" />
-            </EndProperty>
-            <EndProperty Name="Specialozation">
-              <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

@@ -18,7 +18,7 @@ namespace Domain
         public Skill()
         {
             this.SkillLevels = new HashSet<SkillLevel>();
-            this.Specialozations = new HashSet<Specialozation>();
+            this.Specializations = new HashSet<Specialization>();
         }
     
         public string Name { get; set; }
@@ -27,6 +27,6 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SkillLevel> SkillLevels { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Specialozation> Specialozations { get; set; }
+        public virtual ICollection<Specialization> Specializations { get; set; }
     }
 }

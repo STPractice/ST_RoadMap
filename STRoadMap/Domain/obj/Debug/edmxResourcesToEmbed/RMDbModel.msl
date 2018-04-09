@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="RMDbModelStoreContainer" CdmEntityContainer="Entities">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities1">
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="RMDbModel.AspNetRole">
+      <EntityTypeMapping TypeName="Model.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -10,7 +10,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="RMDbModel.AspNetUserClaim">
+      <EntityTypeMapping TypeName="Model.AspNetUserClaim">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -20,7 +20,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="RMDbModel.AspNetUserLogin">
+      <EntityTypeMapping TypeName="Model.AspNetUserLogin">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
           <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -29,7 +29,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="RMDbModel.AspNetUser">
+      <EntityTypeMapping TypeName="Model.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Email" ColumnName="Email" />
@@ -47,8 +47,8 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="CheckpointsSkills">
-      <EntityTypeMapping TypeName="RMDbModel.CheckpointsSkill">
-        <MappingFragment StoreEntitySet="CheckpointsSkills">
+      <EntityTypeMapping TypeName="Model.CheckpointsSkill">
+        <MappingFragment StoreEntitySet="CheckpointsSkill">
           <ScalarProperty Name="Achieved" ColumnName="Achieved" />
           <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
           <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
@@ -56,7 +56,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="RMDbModel.Employee">
+      <EntityTypeMapping TypeName="Model.Employee">
         <MappingFragment StoreEntitySet="Employee">
           <ScalarProperty Name="EmpolyeeId" ColumnName="EmpolyeeId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -64,7 +64,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Mentors">
-      <EntityTypeMapping TypeName="RMDbModel.Mentor">
+      <EntityTypeMapping TypeName="Model.Mentor">
         <MappingFragment StoreEntitySet="Mentor">
           <ScalarProperty Name="MentorId" ColumnName="MentorId" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -72,7 +72,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MentorCheckpointComments">
-      <EntityTypeMapping TypeName="RMDbModel.MentorCheckpointComment">
+      <EntityTypeMapping TypeName="Model.MentorCheckpointComment">
         <MappingFragment StoreEntitySet="MentorCheckpointComment">
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
@@ -81,7 +81,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="MentorRMComments">
-      <EntityTypeMapping TypeName="RMDbModel.MentorRMComment">
+      <EntityTypeMapping TypeName="Model.MentorRMComment">
         <MappingFragment StoreEntitySet="MentorRMComment">
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="MentorId" ColumnName="MentorId" />
@@ -90,7 +90,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Notifications">
-      <EntityTypeMapping TypeName="RMDbModel.Notification">
+      <EntityTypeMapping TypeName="Model.Notification">
         <MappingFragment StoreEntitySet="Notification">
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="url" ColumnName="url" />
@@ -100,7 +100,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Positions">
-      <EntityTypeMapping TypeName="RMDbModel.Position">
+      <EntityTypeMapping TypeName="Model.Position">
         <MappingFragment StoreEntitySet="Position">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PositionId" ColumnName="PositionId" />
@@ -109,7 +109,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RegistrationKeys">
-      <EntityTypeMapping TypeName="RMDbModel.RegistrationKey">
+      <EntityTypeMapping TypeName="Model.RegistrationKey">
         <MappingFragment StoreEntitySet="RegistrationKey">
           <ScalarProperty Name="RegistrKey" ColumnName="RegistrKey" />
           <ScalarProperty Name="DateOfIssue" ColumnName="DateOfIssue" />
@@ -117,7 +117,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RMCheckpoints">
-      <EntityTypeMapping TypeName="RMDbModel.RMCheckpoint">
+      <EntityTypeMapping TypeName="Model.RMCheckpoint">
         <MappingFragment StoreEntitySet="RMCheckpoint">
           <ScalarProperty Name="Achieved" ColumnName="Achieved" />
           <ScalarProperty Name="RMCheckpointId" ColumnName="RMCheckpointId" />
@@ -127,7 +127,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="RoadMaps">
-      <EntityTypeMapping TypeName="RMDbModel.RoadMap">
+      <EntityTypeMapping TypeName="Model.RoadMap">
         <MappingFragment StoreEntitySet="RoadMap">
           <ScalarProperty Name="Deadline" ColumnName="Deadline" />
           <ScalarProperty Name="RoadMapId" ColumnName="RoadMapId" />
@@ -137,7 +137,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Skills">
-      <EntityTypeMapping TypeName="RMDbModel.Skill">
+      <EntityTypeMapping TypeName="Model.Skill">
         <MappingFragment StoreEntitySet="Skill">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SkillId" ColumnName="SkillId" />
@@ -145,7 +145,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SkillLevels">
-      <EntityTypeMapping TypeName="RMDbModel.SkillLevel">
+      <EntityTypeMapping TypeName="Model.SkillLevel">
         <MappingFragment StoreEntitySet="SkillLevel">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Level" ColumnName="Level" />
@@ -156,7 +156,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="SkillMatrices">
-      <EntityTypeMapping TypeName="RMDbModel.SkillMatrix">
+      <EntityTypeMapping TypeName="Model.SkillMatrix">
         <MappingFragment StoreEntitySet="SkillMatrix">
           <ScalarProperty Name="SkillMatrixId" ColumnName="SkillMatrixId" />
           <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
@@ -164,16 +164,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Specialozations">
-      <EntityTypeMapping TypeName="RMDbModel.Specialozation">
-        <MappingFragment StoreEntitySet="Specialozation">
+    <EntitySetMapping Name="Specializations">
+      <EntityTypeMapping TypeName="Model.Specialization">
+        <MappingFragment StoreEntitySet="Specialization">
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="UserCheckpointComments">
-      <EntityTypeMapping TypeName="RMDbModel.UserCheckpointComment">
+      <EntityTypeMapping TypeName="Model.UserCheckpointComment">
         <MappingFragment StoreEntitySet="UserCheckpointComment">
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="EmpolyeeId" ColumnName="EmpolyeeId" />
@@ -181,7 +181,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="AspNetUserRoles" TypeName="RMDbModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+    <AssociationSetMapping Name="AspNetUserRoles" TypeName="Model.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
       <EndProperty Name="AspNetRoles">
         <ScalarProperty Name="Id" ColumnName="RoleId" />
       </EndProperty>
@@ -189,7 +189,7 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="EmployeesSkillLevels" TypeName="RMDbModel.EmployeesSkillLevels" StoreEntitySet="EmployeesSkillLevels">
+    <AssociationSetMapping Name="EmployeesSkillLevel" TypeName="Model.EmployeesSkillLevel" StoreEntitySet="EmployeesSkillLevel">
       <EndProperty Name="SkillMatrix">
         <ScalarProperty Name="SkillMatrixId" ColumnName="SkillMatrixId" />
       </EndProperty>
@@ -197,20 +197,20 @@
         <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RequiredSkillLevel" TypeName="RMDbModel.RequiredSkillLevel" StoreEntitySet="RequiredSkillLevel">
+    <AssociationSetMapping Name="RequiredSkill" TypeName="Model.RequiredSkill" StoreEntitySet="RequiredSkill">
+      <EndProperty Name="Skill">
+        <ScalarProperty Name="SkillId" ColumnName="SkillId" />
+      </EndProperty>
+      <EndProperty Name="Specialization">
+        <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RequiredSkillLevel" TypeName="Model.RequiredSkillLevel" StoreEntitySet="RequiredSkillLevel">
       <EndProperty Name="Position">
         <ScalarProperty Name="PositionId" ColumnName="PositionId" />
       </EndProperty>
       <EndProperty Name="SkillLevel">
         <ScalarProperty Name="SkillLevelId" ColumnName="SkillLevelId" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RequiredSkills" TypeName="RMDbModel.RequiredSkills" StoreEntitySet="RequiredSkills">
-      <EndProperty Name="Skill">
-        <ScalarProperty Name="SkillId" ColumnName="SkillId" />
-      </EndProperty>
-      <EndProperty Name="Specialozation">
-        <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

@@ -25,3 +25,15 @@ D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.dll
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.xml
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.xml
 D:\GitKraken\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.csproj.CopyComplete
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215.mdf
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\App_Data\aspnet-STRoadMap-20180405094215_log.ldf
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll.config
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
