@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IAspNetRoleRepository:IRepository<IEntity>
+    public interface IAspNetRoleRepository:IRepository<AspNetRole>
     {
     }
 }

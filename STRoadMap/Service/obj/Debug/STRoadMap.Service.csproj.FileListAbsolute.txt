@@ -1,0 +1,13 @@
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csproj.CoreCompileInputs.cache
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Service.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Service.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\EntityFramework.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.dll.config
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\EntityFramework.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csprojResolveAssemblyReference.cache
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.pdb

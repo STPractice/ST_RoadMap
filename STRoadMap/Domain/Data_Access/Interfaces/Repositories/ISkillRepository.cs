@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface ISkillRepository : IRepository<IEntity>
+    public interface ISkillRepository : IRepository<Skill>
     {
     }
 }

@@ -79,6 +79,7 @@
     <Compile Include="CheckpointsSkill.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data_Access\Implementation\EntitySkillRepository.cs" />
     <Compile Include="Data_Access\Interfaces\IEntity.cs" />
     <Compile Include="Data_Access\Interfaces\IRepository.cs" />
     <Compile Include="Data_Access\Interfaces\IUnitOfWork.cs" />
@@ -174,11 +175,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\aspnet-STRoadMap-20180405094215.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="App_Data\aspnet-STRoadMap-20180405094215.mdf" />
     <Content Include="App_Data\aspnet-STRoadMap-20180405094215_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>aspnet-STRoadMap-20180405094215.mdf</DependentUpon>
     </Content>
     <Content Include="RMDbModel.Context.tt">
@@ -193,7 +191,9 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <EntityDeploy Include="RMDbModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -206,8 +206,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data_Access\Implementation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

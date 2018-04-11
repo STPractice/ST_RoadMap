@@ -1,0 +1,11 @@
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csproj.CoreCompileInputs.cache
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll.config
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csprojResolveAssemblyReference.cache

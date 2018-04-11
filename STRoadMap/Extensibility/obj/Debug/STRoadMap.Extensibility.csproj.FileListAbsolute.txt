@@ -1,0 +1,11 @@
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Domain.dll.config
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\EntityFramework.xml
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\STRoadMap.Extensibility.csproj.CoreCompileInputs.cache
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\Extensibility.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Extensibility.dll
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\bin\Debug\Extensibility.pdb
+C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Extensibility\obj\Debug\STRoadMap.Extensibility.csprojResolveAssemblyReference.cache

@@ -9,10 +9,12 @@ namespace Domain
 
         int Create(T entity);
 
-        T GetById(Guid id);
+        IEnumerable<T> Get(Func<T,bool> predicate);
+
+        T Find(params object[] keyValues);
 
 		int Update(T entity);
 
-		void Delete(Guid id);
+		void Delete(T entity);
 	}
 }
