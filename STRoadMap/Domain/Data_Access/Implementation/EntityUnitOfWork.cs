@@ -12,7 +12,7 @@ namespace Domain
 
         public EntityUnitOfWork()
         {
-            Skills = new EntitySkillRepository(this);
+
         }
 
         public IAspNetRoleRepository AspNetRoles => throw new NotImplementedException();
@@ -47,7 +47,14 @@ namespace Domain
 
         public ISkillMatrixRepository SkillMatrices => throw new NotImplementedException();
 
-        public ISkillRepository Skills { get; }
+        ISkillRepository skills = null;
+        public ISkillRepository Skills { get
+            {
+                if (skills == null)
+                    skills = new EntitySkillRepository(context);
+                return skills;
+            }
+        }
 
         public ISpecializationRepository Specializations => throw new NotImplementedException();
 
@@ -59,7 +66,7 @@ namespace Domain
             {
                 return context.SaveChanges()>=0;
             }
-            catch
+            catch(Exception ex)
             {
                 return false;
             }
