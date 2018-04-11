@@ -79,6 +79,8 @@
     <Compile Include="CheckpointsSkill.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data_Access\Implementation\EntitySkillRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityUnitOfWork.cs" />
     <Compile Include="Data_Access\Interfaces\IEntity.cs" />
     <Compile Include="Data_Access\Interfaces\IRepository.cs" />
     <Compile Include="Data_Access\Interfaces\IUnitOfWork.cs" />
@@ -205,8 +207,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Data_Access\Implementation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
