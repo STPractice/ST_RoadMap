@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Service
 {
-    class EmployeeLogic:IEmployeesLogic
+    public class EmployeeLogic:IEmployeesLogic
     {
     }
 }

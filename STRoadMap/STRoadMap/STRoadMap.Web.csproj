@@ -308,6 +308,10 @@
       <Project>{55ab7eed-d31b-4264-b768-51889c3cd6f9}</Project>
       <Name>STRoadMap.Extensibility</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Service\STRoadMap.Service.csproj">
+      <Project>{d1d7b487-5156-4726-9c2f-f944cf1790af}</Project>
+      <Name>STRoadMap.Service</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
