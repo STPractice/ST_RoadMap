@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Extensibility
 {
-    public interface IEmployeesLogic
+    public interface IEmployeeLogic
     {
     }
 }

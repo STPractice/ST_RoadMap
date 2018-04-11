@@ -251,3 +251,5 @@ D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\bin\Microsoft.AI.ServerTelemetryChan
 D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\bin\Microsoft.AI.WindowsServer.xml
 D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\bin\Microsoft.AI.Web.xml
 D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\obj\Debug\STRoadMap.Web.csproj.CopyComplete
+D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\bin\Service.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\STRoadMap\bin\Service.pdb

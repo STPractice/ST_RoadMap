@@ -27,7 +27,7 @@ namespace STRoadMap
         private static void ContainerInitializer(UnityContainer freshContainer)
         {
             freshContainer.RegisterType<STRoadMap.ITest, STRoadMap.Test>();
-            freshContainer.RegisterType<Extensibility.IEmployeesLogic, Service.EmployeeLogic>();
+            freshContainer.RegisterType<Extensibility.IEmployeeLogic, Service.EmployeeLogic>();
             freshContainer.RegisterType<Extensibility.IMentorLogic, Service.MentorLogic>();
             freshContainer.RegisterType<Extensibility.IHRLogic, Service.HRLogic>();
         }

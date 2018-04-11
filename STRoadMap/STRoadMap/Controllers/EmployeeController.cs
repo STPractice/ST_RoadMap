@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Extensibility;
 
 namespace STRoadMap.Controllers
 {
     public class EmployeeController : Controller
     {
-        // GET: Employee
-        public ActionResult Index()
+        private readonly IEmployeeLogic EmployeeLogic;
+
+        public EmployeeController(IEmployeeLogic EmployeeLogic)
         {
-            return View();
+            this.EmployeeLogic = EmployeeLogic;
+        }
+        // GET: Employee
+        public string Index()
+        {
+            return "It works)";
         }
     }
 }

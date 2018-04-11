@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Extensibility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace STRoadMap.Controllers
 {
     public class HRController : Controller
     {
-        // GET: HR
-        public ActionResult Index()
+        private readonly IHRLogic HRLogic;
+
+        public HRController(IHRLogic HRLogic)
         {
-            return View();
+            this.HRLogic = HRLogic;
+        }
+        // GET: HR
+        public string Index()
+        {
+            return "It works)";
         }
     }
 }
