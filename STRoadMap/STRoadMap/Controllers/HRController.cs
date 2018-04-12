@@ -17,9 +17,37 @@ namespace STRoadMap.Controllers
             this.HRLogic = HRLogic;
         }
         // GET: HR
-        public string Index()
+        public ActionResult Index()
         {
-            return "It works!)";
+            
+            return CreateSkill(new Skill() { Name = "testInController", SkillId = 8 });
+        }
+
+        [HttpGet]
+        public ActionResult CreateSkill()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateSkill(Skill skill)
+        {
+            if (skill == null)
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.CreateSkill(skill))
+                {
+                    return RedirectToAction("SkillList", "HR");
+                }
+                else
+                {
+                    Response.StatusCode = 404;
+                    return HttpNotFound();
+                }
+            }
         }
         
         [HttpGet]

@@ -55,5 +55,18 @@ namespace Service
                 return false;
             }
         }
+
+        public bool CreateSkill(Skill skill)
+        {
+            try
+            {
+                UoW.Skills.Create(skill);                
+                return UoW.Commit();                
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }
