@@ -43,7 +43,14 @@ namespace Domain
 
         public IRoadMapRepository RoadMaps => throw new NotImplementedException();
 
-        public ISkillLevelRepository SkillLevels { get; }
+        ISkillLevelRepository skillLevels = null;
+        public ISkillLevelRepository SkillLevels { get
+            {
+                if (skillLevels == null)
+                    ;
+                return skillLevels;
+            }
+        }
 
         public ISkillMatrixRepository SkillMatrices => throw new NotImplementedException();
 
