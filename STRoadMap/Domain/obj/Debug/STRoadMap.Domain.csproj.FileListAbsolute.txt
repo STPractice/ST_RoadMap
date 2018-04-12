@@ -31,4 +31,19 @@ C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramewor
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csproj.CoreCompileInputs.cache
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
+<<<<<<< dev
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csprojResolveAssemblyReference.cache
+=======
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll.config
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.dll
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\Domain.pdb
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.dll
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.dll
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.xml
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramework.SqlServer.xml
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csprojResolveAssemblyReference.cache
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csproj.CoreCompileInputs.cache
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csproj.CopyComplete
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
+D:\KrakenRepo\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
+>>>>>>> HRLogic implemented

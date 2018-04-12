@@ -21,5 +21,12 @@ namespace STRoadMap.Controllers
         {
             return "It works!)";
         }
+        
+        [HttpGet]
+        public ActionResult SkillList()
+        {
+            
+        }
+        
     }
 }

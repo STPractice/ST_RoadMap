@@ -1,6 +1,7 @@
 ﻿using Extensibility;
-using System;
+
 using System.Collections.Generic;
+using Domain;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,33 @@ using Domain;
 
 namespace Service
 {
-    public class HRLogic:IHRLogic
+    public class HRLogic : IHRLogic
     {
-        private readonly IUnitOfWork UoW;
+        private readonly IUnitOfWork unitOfWork;
 
-        public HRLogic(IUnitOfWork uoW)
+        HRLogic(IUnitOfWork newUnitOfWork)
         {
-            UoW = uoW;
+            unitOfWork = newUnitOfWork;
+        }
+
+        public IEnumerable<Skill> GetListOfSkills()
+        {
+            return unitOfWork.Skills.GetAll();
+
+        }
+
+        public bool? DeleteSkill(int? skillId)
+        {
+            unitOfWork.Skills.Delete(unitOfWork.Skills.Find(skillId));
+            var isOk = unitOfWork.Commit();
+            if (isOk)
+            {
+                return true;
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
