@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Service
 {
-    class HRLogic:IHRLogic
+    public class HRLogic:IHRLogic
     {
     }
 }

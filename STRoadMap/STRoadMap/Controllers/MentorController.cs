@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Extensibility;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +9,16 @@ namespace STRoadMap.Controllers
 {
     public class MentorController : Controller
     {
-        // GET: Mentor
-        public ActionResult Index()
+        private readonly IMentorLogic MentorLogic;
+
+        public MentorController(IMentorLogic MentorLogic)
         {
-            return View();
+            this.MentorLogic = MentorLogic;
+        }
+        // GET: Mentor
+        public string Index()
+        {
+            return "It works)";
         }
     }
 }

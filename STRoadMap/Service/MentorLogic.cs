@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Service
 {
-    class MentorLogic:IMentorLogic
+    public class MentorLogic:IMentorLogic
     {
     }
 }

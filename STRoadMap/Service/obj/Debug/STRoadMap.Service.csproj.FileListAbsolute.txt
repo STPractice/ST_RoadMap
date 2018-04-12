@@ -11,3 +11,17 @@ C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\bin\Debug\EntityF
 C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csprojResolveAssemblyReference.cache
 C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.dll
 C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Service.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Service.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\EntityFramework.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Domain.dll.config
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\Extensibility.pdb
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\bin\Debug\EntityFramework.xml
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csprojResolveAssemblyReference.cache
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csproj.CoreCompileInputs.cache
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\obj\Debug\STRoadMap.Service.csproj.CopyComplete
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.dll
+D:\GitKraken\ST_RoadMap\STRoadMap\Service\obj\Debug\Service.pdb
