@@ -25,8 +25,30 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult SkillList()
         {
-            
+            IEnumerable<Skill> skillList = HRLogic.GetListOfSkills();
+            return View(skillList);
         }
-        
+
+        [HttpPost]
+        public ActionResult SkillList(int? id)
+        {
+
+            if(id==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if(HRLogic.DeleteSkill(id)==true)
+                {
+                    return RedirectToAction("SkillList");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
     }
 }
