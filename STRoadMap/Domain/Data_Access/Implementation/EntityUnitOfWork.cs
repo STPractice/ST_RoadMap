@@ -23,7 +23,16 @@ namespace Domain
 
         public IAspNetUserRepository AspNetUsers => throw new NotImplementedException();
 
-        public ICheckpointSkillRepository CheckpointSkills => throw new NotImplementedException();
+        ICheckpointsSkillRepository checkpointsSkills = null;
+        public ICheckpointsSkillRepository CheckpointsSkills
+        {
+            get
+            {
+                if (checkpointsSkills == null)
+                    checkpointsSkills = new EntityCheckpointsSkillRepository(context);
+                return checkpointsSkills;
+            }
+        }
 
         IEmployeeRepository employees = null;
         public IEmployeeRepository Employees
