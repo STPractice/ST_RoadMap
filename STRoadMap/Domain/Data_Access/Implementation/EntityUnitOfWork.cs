@@ -25,7 +25,16 @@ namespace Domain
 
         public ICheckpointSkillRepository CheckpointSkills => throw new NotImplementedException();
 
-        public IEmployeeRepository Employees => throw new NotImplementedException();
+        IEmployeeRepository employees = null;
+        public IEmployeeRepository Employees
+        {
+            get
+            {
+                if (employees == null)
+                    employees = new EntityEmployeeRepository(context);
+                return employees;
+            }
+        }
 
         public IMentorCheckpointCommentRepository MentorCheckpointComments => throw new NotImplementedException();
 
