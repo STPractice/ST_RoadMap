@@ -67,7 +67,16 @@ namespace Domain
             }
         }
 
-        public ISpecializationRepository Specializations => throw new NotImplementedException();
+        ISpecializationRepository specializations = null;
+        public ISpecializationRepository Specializations
+        {
+            get
+            {
+                if (specializations == null)
+                    specializations = new EntitySpecializationRepository(context);
+                return specializations;
+            }
+        }
 
         public IUserCheckpointCommentRepository UserCheckpointComments => throw new NotImplementedException();
 
