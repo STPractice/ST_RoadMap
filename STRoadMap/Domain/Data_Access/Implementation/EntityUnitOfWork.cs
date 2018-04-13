@@ -26,7 +26,16 @@ namespace Domain
             }
         }
 
-        public IAspNetUserClaimRepository AspNetUserClaims => throw new NotImplementedException();
+        IAspNetUserClaimRepository aspNetUserClaims = null;
+        public IAspNetUserClaimRepository AspNetUserClaims
+        {
+            get
+            {
+                if (aspNetUserClaims == null)
+                    aspNetUserClaims = new EntityAspNetUserClaimRepository(context);
+                return aspNetUserClaims;
+            }
+        }
 
         public IAspNetUserLoginRepository AspNetUserLogins => throw new NotImplementedException();
 
