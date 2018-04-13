@@ -56,7 +56,16 @@ namespace Domain
             }
         }
 
-        public IMentorRepository Mentors => throw new NotImplementedException();
+        IMentorRepository mentors = null;
+        public IMentorRepository Mentors
+        {
+            get
+            {
+                if (mentors == null)
+                    mentors = new EntityMentorRepository(context);
+                return mentors;
+            }
+        }
 
         public IMentorRMCommentRepository MentorRMComments => throw new NotImplementedException();
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IMentorRepository : IRepository<IEntity>
+    public interface IMentorRepository : IRepository<Mentor>
     {
     }
 }
