@@ -31,3 +31,4 @@ C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\bin\Debug\EntityFramewor
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csproj.CoreCompileInputs.cache
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.dll
 C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\Domain.pdb
+C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\obj\Debug\STRoadMap.Domain.csprojResolveAssemblyReference.cache
