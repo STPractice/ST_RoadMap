@@ -78,7 +78,16 @@ namespace Domain
             }
         }
 
-        public INotificationRepository Notifications => throw new NotImplementedException();
+        INotificationRepository notifications = null;
+        public INotificationRepository Notifications
+        {
+            get
+            {
+                if (notifications == null)
+                    notifications = new EntityNotificationRepository(context);
+                return notifications;
+            }
+        }
 
         IPositionRepository positions = null;
         public IPositionRepository Positions

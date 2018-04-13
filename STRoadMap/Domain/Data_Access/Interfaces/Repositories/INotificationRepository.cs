@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface INotificationRepository : IRepository<IEntity>
+    public interface INotificationRepository : IRepository<Notification>
     {
     }
 }
