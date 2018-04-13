@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IPositionRepository : IRepository<IEntity>
+    public interface IPositionRepository : IRepository<Position>
     {
     }
 }

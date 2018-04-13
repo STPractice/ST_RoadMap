@@ -35,7 +35,16 @@ namespace Domain
 
         public INotificationRepository Notifications => throw new NotImplementedException();
 
-        public IPositionRepository Positions => throw new NotImplementedException();
+        IPositionRepository positions = null;
+        public IPositionRepository Positions
+        {
+            get
+            {
+                if (positions == null)
+                    positions = new EntityPositionRepository(context);
+                return positions;
+            }
+        }
 
         public IRegistrationKeyRepository RegistrationKeys => throw new NotImplementedException();
 
