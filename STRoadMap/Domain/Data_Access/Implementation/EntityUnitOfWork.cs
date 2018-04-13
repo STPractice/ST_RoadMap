@@ -45,7 +45,16 @@ namespace Domain
             }
         }
 
-        public IMentorCheckpointCommentRepository MentorCheckpointComments => throw new NotImplementedException();
+        IMentorCheckpointCommentRepository mentorCheckpointComments = null;
+        public IMentorCheckpointCommentRepository MentorCheckpointComments
+        {
+            get
+            {
+                if (mentorCheckpointComments == null)
+                    mentorCheckpointComments = new EntityMentorCheckpointCommentRepository(context);
+                return mentorCheckpointComments;
+            }
+        }
 
         public IMentorRepository Mentors => throw new NotImplementedException();
 
