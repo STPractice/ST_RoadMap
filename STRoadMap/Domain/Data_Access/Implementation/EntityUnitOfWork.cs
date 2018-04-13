@@ -44,10 +44,12 @@ namespace Domain
         public IRoadMapRepository RoadMaps => throw new NotImplementedException();
 
         ISkillLevelRepository skillLevels = null;
-        public ISkillLevelRepository SkillLevels { get
+        public ISkillLevelRepository SkillLevels
+        {
+            get
             {
                 if (skillLevels == null)
-                    ;
+                    skillLevels = new EntitySkillLevelRepository(context);
                 return skillLevels;
             }
         }
@@ -55,7 +57,9 @@ namespace Domain
         public ISkillMatrixRepository SkillMatrices => throw new NotImplementedException();
 
         ISkillRepository skills = null;
-        public ISkillRepository Skills { get
+        public ISkillRepository Skills
+        {
+            get
             {
                 if (skills == null)
                     skills = new EntitySkillRepository(context);
@@ -71,9 +75,9 @@ namespace Domain
         {
             try
             {
-                return context.SaveChanges()>=0;
+                return context.SaveChanges() >= 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
