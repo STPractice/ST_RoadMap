@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IUserCheckpointCommentRepository : IRepository<IEntity>
+    public interface IUserCheckpointCommentRepository : IRepository<UserCheckpointComment>
     {
     }
 }

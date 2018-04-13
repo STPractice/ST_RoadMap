@@ -177,7 +177,16 @@ namespace Domain
             }
         }
 
-        public IUserCheckpointCommentRepository UserCheckpointComments => throw new NotImplementedException();
+        IUserCheckpointCommentRepository userCheckpointComments = null;
+        public IUserCheckpointCommentRepository UserCheckpointComments
+        {
+            get
+            {
+                if (userCheckpointComments == null)
+                    userCheckpointComments = new EntityUserCheckpointCommentRepository(context);
+                return userCheckpointComments;
+            }
+        }
 
         public bool Commit()
         {
