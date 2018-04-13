@@ -59,7 +59,16 @@ namespace Domain
 
         public IRMCheckpointRepository RMCheckpoints => throw new NotImplementedException();
 
-        public IRoadMapRepository RoadMaps => throw new NotImplementedException();
+        IRoadMapRepository roadMaps = null;
+        public IRoadMapRepository RoadMaps
+        {
+            get
+            {
+                if (roadMaps == null)
+                    roadMaps = new EntityRoadMapRepository(context);
+                return roadMaps;
+            }
+        }
 
         ISkillLevelRepository skillLevels = null;
         public ISkillLevelRepository SkillLevels
