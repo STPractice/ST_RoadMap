@@ -15,7 +15,16 @@ namespace Domain
 
         }
 
-        public IAspNetRoleRepository AspNetRoles => throw new NotImplementedException();
+        IAspNetRoleRepository aspNetRoles = null;
+        public IAspNetRoleRepository AspNetRoles
+        {
+            get
+            {
+                if (aspNetRoles == null)
+                    aspNetRoles = new EntityAspNetRoleRepository(context);
+                return aspNetRoles;
+            }
+        }
 
         public IAspNetUserClaimRepository AspNetUserClaims => throw new NotImplementedException();
 
