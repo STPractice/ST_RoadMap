@@ -21,5 +21,39 @@ namespace STRoadMap.Controllers
         {
             return "It works!)";
         }
+
+        [HttpGet]
+        public ActionResult SpecializationList()
+        {
+            IEnumerable<Specialization> spec= HRLogic.GetSpecializationList();
+            if(spec== null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(spec);
+            }
+        }
+
+        [HttpPost]
+        public ActionResult SpecializationList(int? id)
+        {            
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.DeleteSpecialization(int.Parse(id.ToString())))
+                {
+                    return RedirectToAction("SpecializationList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }
