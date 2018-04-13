@@ -72,7 +72,16 @@ namespace Domain
             }
         }
 
-        public ISkillMatrixRepository SkillMatrices => throw new NotImplementedException();
+        ISkillMatrixRepository skillMatrices = null;
+        public ISkillMatrixRepository SkillMatrices
+        {
+            get
+            {
+                if (skillMatrices == null)
+                    skillMatrices = new EntitySkillMatrixRepository(context);
+                return skillMatrices;
+            }
+        }
 
         ISkillRepository skills = null;
         public ISkillRepository Skills
