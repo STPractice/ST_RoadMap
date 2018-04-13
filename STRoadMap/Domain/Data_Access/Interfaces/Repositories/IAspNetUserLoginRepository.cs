@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IAspNetUserLoginRepository : IRepository<IEntity>
+    public interface IAspNetUserLoginRepository : IRepository<AspNetUserLogin>
     {
     }
 }

@@ -15,13 +15,49 @@ namespace Domain
 
         }
 
-        public IAspNetRoleRepository AspNetRoles => throw new NotImplementedException();
+        IAspNetRoleRepository aspNetRoles = null;
+        public IAspNetRoleRepository AspNetRoles
+        {
+            get
+            {
+                if (aspNetRoles == null)
+                    aspNetRoles = new EntityAspNetRoleRepository(context);
+                return aspNetRoles;
+            }
+        }
 
-        public IAspNetUserClaimRepository AspNetUserClaims => throw new NotImplementedException();
+        IAspNetUserClaimRepository aspNetUserClaims = null;
+        public IAspNetUserClaimRepository AspNetUserClaims
+        {
+            get
+            {
+                if (aspNetUserClaims == null)
+                    aspNetUserClaims = new EntityAspNetUserClaimRepository(context);
+                return aspNetUserClaims;
+            }
+        }
 
-        public IAspNetUserLoginRepository AspNetUserLogins => throw new NotImplementedException();
+        IAspNetUserLoginRepository aspNetUserLogins = null;
+        public IAspNetUserLoginRepository AspNetUserLogins
+        {
+            get
+            {
+                if (aspNetUserLogins == null)
+                    aspNetUserLogins = new EntityAspNetUserLoginRepository(context);
+                return aspNetUserLogins;
+            }
+        }
 
-        public IAspNetUserRepository AspNetUsers => throw new NotImplementedException();
+        IAspNetUserRepository aspNetUsers = null;
+        public IAspNetUserRepository AspNetUsers
+        {
+            get
+            {
+                if (aspNetUsers == null)
+                    aspNetUsers = new EntityAspNetUserRepository(context);
+                return aspNetUsers;
+            }
+        }
 
         ICheckpointsSkillRepository checkpointsSkills = null;
         public ICheckpointsSkillRepository CheckpointsSkills
@@ -100,9 +136,27 @@ namespace Domain
             }
         }
 
-        public IRegistrationKeyRepository RegistrationKeys => throw new NotImplementedException();
+        IRegistrationKeyRepository registrationKeys = null;
+        public IRegistrationKeyRepository RegistrationKeys
+        {
+            get
+            {
+                if (registrationKeys == null)
+                    registrationKeys = new EntityRegistrationKeyRepository(context);
+                return registrationKeys;
+            }
+        }
 
-        public IRMCheckpointRepository RMCheckpoints => throw new NotImplementedException();
+        IRMCheckpointRepository rMCheckpoints = null;
+        public IRMCheckpointRepository RMCheckpoints
+        {
+            get
+            {
+                if (rMCheckpoints == null)
+                    rMCheckpoints = new EntityRMCheckpointRepository(context);
+                return rMCheckpoints;
+            }
+        }
 
         IRoadMapRepository roadMaps = null;
         public IRoadMapRepository RoadMaps
@@ -159,7 +213,16 @@ namespace Domain
             }
         }
 
-        public IUserCheckpointCommentRepository UserCheckpointComments => throw new NotImplementedException();
+        IUserCheckpointCommentRepository userCheckpointComments = null;
+        public IUserCheckpointCommentRepository UserCheckpointComments
+        {
+            get
+            {
+                if (userCheckpointComments == null)
+                    userCheckpointComments = new EntityUserCheckpointCommentRepository(context);
+                return userCheckpointComments;
+            }
+        }
 
         public bool Commit()
         {

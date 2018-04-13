@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IRMCheckpointRepository : IRepository<IEntity>
+    public interface IRMCheckpointRepository : IRepository<RMCheckpoint>
     {
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IRegistrationKeyRepository : IRepository<IEntity>
+    public interface IRegistrationKeyRepository : IRepository<RegistrationKey>
     {
     }
 }

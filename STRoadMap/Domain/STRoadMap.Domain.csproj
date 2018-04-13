@@ -79,6 +79,10 @@
     <Compile Include="CheckpointsSkill.cs">
       <DependentUpon>RMDbModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Data_Access\Implementation\EntityAspNetRoleRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserClaimRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserLoginRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityCheckpointsSkillRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityEmployeeRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityMentorCheckpointCommentRepository.cs" />
@@ -86,12 +90,15 @@
     <Compile Include="Data_Access\Implementation\EntityMentorRMCommentRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityNotificationRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityPositionRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityRegistrationKeyRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityRMCheckpointRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityRoadMapRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntitySkillLevelRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntitySkillMatrixRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntitySkillRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntitySpecializationRepository.cs" />
     <Compile Include="Data_Access\Implementation\EntityUnitOfWork.cs" />
+    <Compile Include="Data_Access\Implementation\EntityUserCheckpointCommentRepository.cs" />
     <Compile Include="Data_Access\Interfaces\IEntity.cs" />
     <Compile Include="Data_Access\Interfaces\IRepository.cs" />
     <Compile Include="Data_Access\Interfaces\IUnitOfWork.cs" />
