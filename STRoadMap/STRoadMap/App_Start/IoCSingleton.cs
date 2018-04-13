@@ -30,6 +30,7 @@ namespace STRoadMap
             freshContainer.RegisterType<Extensibility.IEmployeeLogic, Service.EmployeeLogic>();
             freshContainer.RegisterType<Extensibility.IMentorLogic, Service.MentorLogic>();
             freshContainer.RegisterType<Extensibility.IHRLogic, Service.HRLogic>();
+            freshContainer.RegisterType<Domain.IUnitOfWork, Domain.EntityUnitOfWork>();
         }
     }
 }
