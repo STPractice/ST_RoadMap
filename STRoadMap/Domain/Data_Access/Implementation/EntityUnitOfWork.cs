@@ -100,7 +100,16 @@ namespace Domain
             }
         }
 
-        public IRegistrationKeyRepository RegistrationKeys => throw new NotImplementedException();
+        IRegistrationKeyRepository registrationKeys = null;
+        public IRegistrationKeyRepository RegistrationKeys
+        {
+            get
+            {
+                if (registrationKeys == null)
+                    registrationKeys = new EntityRegistrationKeyRepository(context);
+                return registrationKeys;
+            }
+        }
 
         public IRMCheckpointRepository RMCheckpoints => throw new NotImplementedException();
 
