@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Data_Access.Implementation
+namespace Domain
 {
-    class EntitySkillLevelRepository:ISkillLevelRepository
+    public class EntitySkillLevelRepository:ISkillLevelRepository
     {
         private readonly Entities1 context;
 
@@ -43,7 +43,7 @@ namespace Domain.Data_Access.Implementation
         public int Update(SkillLevel entity)
         {
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            return entity.SkillId;
+            return entity.SkillLevelId;
         }
     }
 }

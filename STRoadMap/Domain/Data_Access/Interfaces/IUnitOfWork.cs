@@ -8,7 +8,7 @@ namespace Domain
         IAspNetUserClaimRepository AspNetUserClaims { get; }
         IAspNetUserLoginRepository AspNetUserLogins { get; }
         IAspNetUserRepository AspNetUsers { get; }
-        ICheckpointSkillRepository CheckpointSkills { get; }
+        ICheckpointsSkillRepository CheckpointsSkills { get; }
         IEmployeeRepository Employees { get; }
         IMentorCheckpointCommentRepository MentorCheckpointComments { get; }
         IMentorRepository Mentors { get; }

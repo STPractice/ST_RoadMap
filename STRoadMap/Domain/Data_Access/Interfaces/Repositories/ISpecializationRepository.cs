@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface ISpecializationRepository : IRepository<IEntity>
+    public interface ISpecializationRepository : IRepository<Specialization>
     {
     }
 }

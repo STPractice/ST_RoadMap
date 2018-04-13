@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IRoadMapRepository : IRepository<IEntity>
+    public interface IRoadMapRepository : IRepository<RoadMap>
     {
     }
 }

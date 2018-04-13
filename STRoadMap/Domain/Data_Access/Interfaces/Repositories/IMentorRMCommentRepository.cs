@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface IMentorRMCommentRepository : IRepository<IEntity>
+    public interface IMentorRMCommentRepository : IRepository<MentorRMComment>
     {
     }
 }

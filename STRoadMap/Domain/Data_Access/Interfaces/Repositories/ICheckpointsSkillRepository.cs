@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-    public interface ICheckpointSkillRepository : IRepository<IEntity>
+    public interface ICheckpointsSkillRepository : IRepository<CheckpointsSkill>
     {
     }
 }

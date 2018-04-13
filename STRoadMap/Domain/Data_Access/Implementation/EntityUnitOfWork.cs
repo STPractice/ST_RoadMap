@@ -23,39 +23,124 @@ namespace Domain
 
         public IAspNetUserRepository AspNetUsers => throw new NotImplementedException();
 
-        public ICheckpointSkillRepository CheckpointSkills => throw new NotImplementedException();
+        ICheckpointsSkillRepository checkpointsSkills = null;
+        public ICheckpointsSkillRepository CheckpointsSkills
+        {
+            get
+            {
+                if (checkpointsSkills == null)
+                    checkpointsSkills = new EntityCheckpointsSkillRepository(context);
+                return checkpointsSkills;
+            }
+        }
 
-        public IEmployeeRepository Employees => throw new NotImplementedException();
+        IEmployeeRepository employees = null;
+        public IEmployeeRepository Employees
+        {
+            get
+            {
+                if (employees == null)
+                    employees = new EntityEmployeeRepository(context);
+                return employees;
+            }
+        }
 
-        public IMentorCheckpointCommentRepository MentorCheckpointComments => throw new NotImplementedException();
+        IMentorCheckpointCommentRepository mentorCheckpointComments = null;
+        public IMentorCheckpointCommentRepository MentorCheckpointComments
+        {
+            get
+            {
+                if (mentorCheckpointComments == null)
+                    mentorCheckpointComments = new EntityMentorCheckpointCommentRepository(context);
+                return mentorCheckpointComments;
+            }
+        }
 
-        public IMentorRepository Mentors => throw new NotImplementedException();
+        IMentorRepository mentors = null;
+        public IMentorRepository Mentors
+        {
+            get
+            {
+                if (mentors == null)
+                    mentors = new EntityMentorRepository(context);
+                return mentors;
+            }
+        }
 
-        public IMentorRMCommentRepository MentorRMComments => throw new NotImplementedException();
+        IMentorRMCommentRepository mentorRMComments = null;
+        public IMentorRMCommentRepository MentorRMComments
+        {
+            get
+            {
+                if (mentorRMComments == null)
+                    mentorRMComments = new EntityMentorRMCommentRepository(context);
+                return mentorRMComments;
+            }
+        }
 
-        public INotificationRepository Notifications => throw new NotImplementedException();
+        INotificationRepository notifications = null;
+        public INotificationRepository Notifications
+        {
+            get
+            {
+                if (notifications == null)
+                    notifications = new EntityNotificationRepository(context);
+                return notifications;
+            }
+        }
 
-        public IPositionRepository Positions => throw new NotImplementedException();
+        IPositionRepository positions = null;
+        public IPositionRepository Positions
+        {
+            get
+            {
+                if (positions == null)
+                    positions = new EntityPositionRepository(context);
+                return positions;
+            }
+        }
 
         public IRegistrationKeyRepository RegistrationKeys => throw new NotImplementedException();
 
         public IRMCheckpointRepository RMCheckpoints => throw new NotImplementedException();
 
-        public IRoadMapRepository RoadMaps => throw new NotImplementedException();
+        IRoadMapRepository roadMaps = null;
+        public IRoadMapRepository RoadMaps
+        {
+            get
+            {
+                if (roadMaps == null)
+                    roadMaps = new EntityRoadMapRepository(context);
+                return roadMaps;
+            }
+        }
 
         ISkillLevelRepository skillLevels = null;
-        public ISkillLevelRepository SkillLevels { get
+        public ISkillLevelRepository SkillLevels
+        {
+            get
             {
                 if (skillLevels == null)
-                    ;
+                    skillLevels = new EntitySkillLevelRepository(context);
                 return skillLevels;
             }
         }
 
-        public ISkillMatrixRepository SkillMatrices => throw new NotImplementedException();
+        ISkillMatrixRepository skillMatrices = null;
+        public ISkillMatrixRepository SkillMatrices
+        {
+            get
+            {
+                if (skillMatrices == null)
+                    skillMatrices = new EntitySkillMatrixRepository(context);
+                return skillMatrices;
+            }
+        }
 
         ISkillRepository skills = null;
-        public ISkillRepository Skills { get
+        public ISkillRepository Skills
+        {
+            get
             {
                 if (skills == null)
                     skills = new EntitySkillRepository(context);
@@ -63,7 +148,16 @@ namespace Domain
             }
         }
 
-        public ISpecializationRepository Specializations => throw new NotImplementedException();
+        ISpecializationRepository specializations = null;
+        public ISpecializationRepository Specializations
+        {
+            get
+            {
+                if (specializations == null)
+                    specializations = new EntitySpecializationRepository(context);
+                return specializations;
+            }
+        }
 
         public IUserCheckpointCommentRepository UserCheckpointComments => throw new NotImplementedException();
 
@@ -71,9 +165,9 @@ namespace Domain
         {
             try
             {
-                return context.SaveChanges()>=0;
+                return context.SaveChanges() >= 0;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return false;
             }
