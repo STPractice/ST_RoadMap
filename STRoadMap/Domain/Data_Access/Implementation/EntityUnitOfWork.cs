@@ -37,7 +37,16 @@ namespace Domain
             }
         }
 
-        public IAspNetUserLoginRepository AspNetUserLogins => throw new NotImplementedException();
+        IAspNetUserLoginRepository aspNetUserLogins = null;
+        public IAspNetUserLoginRepository AspNetUserLogins
+        {
+            get
+            {
+                if (aspNetUserLogins == null)
+                    aspNetUserLogins = new EntityAspNetUserLoginRepository(context);
+                return aspNetUserLogins;
+            }
+        }
 
         public IAspNetUserRepository AspNetUsers => throw new NotImplementedException();
 
