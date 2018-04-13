@@ -48,7 +48,16 @@ namespace Domain
             }
         }
 
-        public IAspNetUserRepository AspNetUsers => throw new NotImplementedException();
+        IAspNetUserRepository aspNetUsers = null;
+        public IAspNetUserRepository AspNetUsers
+        {
+            get
+            {
+                if (aspNetUsers == null)
+                    aspNetUsers = new EntityAspNetUserRepository(context);
+                return aspNetUsers;
+            }
+        }
 
         ICheckpointsSkillRepository checkpointsSkills = null;
         public ICheckpointsSkillRepository CheckpointsSkills
