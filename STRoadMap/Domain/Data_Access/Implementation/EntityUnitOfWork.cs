@@ -111,7 +111,16 @@ namespace Domain
             }
         }
 
-        public IRMCheckpointRepository RMCheckpoints => throw new NotImplementedException();
+        IRMCheckpointRepository rMCheckpoints = null;
+        public IRMCheckpointRepository RMCheckpoints
+        {
+            get
+            {
+                if (rMCheckpoints == null)
+                    rMCheckpoints = new EntityRMCheckpointRepository(context);
+                return rMCheckpoints;
+            }
+        }
 
         IRoadMapRepository roadMaps = null;
         public IRoadMapRepository RoadMaps
