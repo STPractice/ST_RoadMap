@@ -13,7 +13,7 @@ namespace Service
     {
         IUnitOfWork UoW;
 
-        HRLogic(IUnitOfWork newUnitOfWork)
+        public HRLogic(IUnitOfWork uoW)
         {
             this.UoW = uoW;
         }
@@ -36,23 +36,23 @@ namespace Service
             }
         }
 
-        public IEnumerable<Skill> GetListOfSkills()
+        public IEnumerable<Skill> GetSkillList()
         {
-            return unitOfWork.Skills.GetAll();
+            return UoW.Skills.GetAll();
 
         }
 
-        public bool? DeleteSkill(int? skillId)
+        public bool DeleteSkill(int SkillId)
         {
-            unitOfWork.Skills.Delete(unitOfWork.Skills.Find(skillId));
-            var isOk = unitOfWork.Commit();
+            UoW.Skills.Delete(UoW.Skills.Find(SkillId));
+            var isOk = UoW.Commit();
             if (isOk)
             {
                 return true;
             }
             else
             {
-                return null;
+                return false;
             }
         }
     }
