@@ -23,6 +23,7 @@ namespace Extensibility
         bool EditSkill(Skill skill);
 
         bool DeleteSkill(int id);
+        Specialization GetSpecialization(int id);
 
         IEnumerable<Position> GetPositionList(int SpecializationId);
 
