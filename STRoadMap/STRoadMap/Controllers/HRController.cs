@@ -113,6 +113,47 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
+        public ActionResult Specialization(int? specializationId)
+        {
+            if (specializationId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var specialization = HRLogic.GetSpecialization((int)specializationId);
+                if (specialization != null)
+                {
+                    return View(specialization);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult Specialization(Specialization specialization)
+        {
+            if (specialization != null)
+            {
+                if (HRLogic.DeleteSpecialization(specialization.SpecializationId))
+                {
+                    return RedirectToAction("SpecializationList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpGet]
         public ActionResult Skill(int? skillId)
         {
 

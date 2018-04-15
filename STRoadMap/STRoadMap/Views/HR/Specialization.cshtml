@@ -1,0 +1,19 @@
+﻿@model Domain.Specialization
+
+@{
+    Layout = null;
+}
+
+<h3>@Model.Name</h3>
+@foreach (var item in Model.Skills)
+{
+    <h2>@item.Name</h2>
+}
+@Html.ActionLink("Edit Specialization", "EditSpecialization",routeValues: new {
+    SpecializationId= @Model.SpecializationId ,      
+})}
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="SkillId" value="@Model.SpecializationId">
+    <input type="submit" value="Delete">
+}
