@@ -11,11 +11,29 @@ namespace Service
 {
     public class HRLogic : IHRLogic
     {
-        private readonly IUnitOfWork unitOfWork;
+        IUnitOfWork UoW;
 
         HRLogic(IUnitOfWork newUnitOfWork)
         {
-            unitOfWork = newUnitOfWork;
+            this.UoW = uoW;
+        }
+
+        public IEnumerable<Specialization> GetSpecializationList()
+        {            
+            return UoW.Specializations.GetAll();            
+        }
+
+        public bool DeleteSpecialization (int id)
+        {
+            if (UoW.Specializations.Find(id) != null)
+            {
+                UoW.Specializations.Delete(UoW.Specializations.Find(id));
+                return UoW.Commit();
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public IEnumerable<Skill> GetListOfSkills()

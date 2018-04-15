@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Domain.Specialization>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SpecializationList</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New Specialization", "CreateSpecialization")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <div class="row" style="margin-left:10px">
+                        @Html.ActionLink("Edit", "EditSpecialization", new { id = item.SpecializationId }, new { type = "submit", @class ="btn" }) 
+                        <form method="post">
+                            <input type="hidden" name="id" value="@item.SpecializationId">
+                            <input type="submit" class="btn" value="Delete"> 
+                        </form>
+                    </div>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>
