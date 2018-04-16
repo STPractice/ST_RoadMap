@@ -21,13 +21,13 @@ $(document).ready(function() {
                 <div class="delete" id="delete${i}">X</div>
                     <div class="skillName">
                         <p>Name</p>
-                        <input type="text" name="name" id="name" required>
+                        <input type="text" name="SkillLevels[${i}].Name" id="name" required>
                     </div>
                     <div class="description-block">
                         <p>Description</p>
-                        <textarea name="Description" id="description" cols="30" rows="10" class="description" required></textarea>
+                        <textarea name="SkillLevels[${i}].Description" id="description" cols="30" rows="10" class="description" required></textarea>
                     </div>
-					<input type="hidden" name="Level" value="${i}" />
+					<input type="hidden" name="SkillLevels[${i}].Level" value="${i}" />
             `)
         );
         i++;
@@ -36,5 +36,6 @@ $(document).ready(function() {
     $(document).on("click", ".delete", function() {
         var elem = this.id.substring(6, this.id.length);
         $('#' + elem).remove();
+        i--;
     });
 });

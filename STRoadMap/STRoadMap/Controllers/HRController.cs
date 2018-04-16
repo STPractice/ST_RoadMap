@@ -17,10 +17,10 @@ namespace STRoadMap.Controllers
             this.HRLogic = HRLogic;
         }
         // GET: HR
-        public ActionResult Index()
+        public string Index()
         {
             
-            return CreateSkill(new Skill() { Name = "testInController", SkillId = 8 });
+            return "It works!)";
         }
 
         [HttpGet]
