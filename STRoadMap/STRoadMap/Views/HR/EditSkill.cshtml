@@ -9,14 +9,14 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreateSkill.css" />
-    <script defer src="~/Scripts/HR/CreateSkill/HRCreateSkill.js"></script>
+    <script defer src="~/Scripts/HR/EditSkill/HREditSkill.js"></script>
     <script defer src="~/Scripts/HR/CreateSkill/jquery.js"></script>
 </head>
 <body>
-
+    <div class="@Model.SkillLevels.Count.ToString()" id="counter"></div>
     <div class="skill-container">
 
-        <form method="post" class="createSkill">
+        <form method="post" class="createSkill" id="container">
             <div id="createSkill">
                 <p>Skill name</p>
                 <input type="text" name="Name" id="skillname" value="@Model.Name" required>

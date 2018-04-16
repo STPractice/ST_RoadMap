@@ -104,10 +104,11 @@ namespace Service
             {
                 if (newSkillLevel.SkillLevelId == 0)
                 {
-                    newSkillLevel.SkillLevelId = 3;
+                    newSkillLevel.SkillId = skill.SkillId;
                     UoW.SkillLevels.Create(newSkillLevel);
                 }
             }
+            
             return UoW.Commit();
         }
     }
