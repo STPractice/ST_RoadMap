@@ -177,7 +177,7 @@
           </Key>
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Level" Type="int" Nullable="false" />
-          <Property Name="SkillLevelId" Type="int" Nullable="false" />
+          <Property Name="SkillLevelId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="1000" />
           <Property Name="SkillId" Type="int" Nullable="false" />
         </EntityType>
@@ -219,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Checkpoin__Skill__08B54D69">
+        <Association Name="FK__Checkpoin__Skill__65370702">
           <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -247,20 +247,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employees__Skill__0A9D95DB">
-          <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SkillLevel">
-              <PropertyRef Name="SkillLevelId" />
-            </Principal>
-            <Dependent Role="EmployeesSkillLevel">
-              <PropertyRef Name="SkillLevelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Employees__Skill__489AC854">
           <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -272,6 +258,20 @@
             </Principal>
             <Dependent Role="EmployeesSkillLevel">
               <PropertyRef Name="SkillMatrixId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employees__Skill__6442E2C9">
+          <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillLevel">
+              <PropertyRef Name="SkillLevelId" />
+            </Principal>
+            <Dependent Role="EmployeesSkillLevel">
+              <PropertyRef Name="SkillLevelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -383,20 +383,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__RequiredS__Skill__151B244E">
-          <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="RequiredSkillLevel" Type="Self.RequiredSkillLevel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SkillLevel">
-              <PropertyRef Name="SkillLevelId" />
-            </Principal>
-            <Dependent Role="RequiredSkillLevel">
-              <PropertyRef Name="SkillLevelId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__RequiredS__Skill__44CA3770">
           <End Role="Skill" Type="Self.Skill" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -408,6 +394,20 @@
             </Principal>
             <Dependent Role="RequiredSkill">
               <PropertyRef Name="SkillId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RequiredS__Skill__634EBE90">
+          <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RequiredSkillLevel" Type="Self.RequiredSkillLevel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkillLevel">
+              <PropertyRef Name="SkillLevelId" />
+            </Principal>
+            <Dependent Role="RequiredSkillLevel">
+              <PropertyRef Name="SkillLevelId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -453,7 +453,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SkillLeve__Skill__45BE5BA9">
+        <Association Name="FK__SkillLeve__Skill__625A9A57">
           <End Role="Skill" Type="Self.Skill" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
@@ -605,7 +605,7 @@
             <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
             <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
           </AssociationSet>
-          <AssociationSet Name="FK__Checkpoin__Skill__08B54D69" Association="Self.FK__Checkpoin__Skill__08B54D69">
+          <AssociationSet Name="FK__Checkpoin__Skill__65370702" Association="Self.FK__Checkpoin__Skill__65370702">
             <End Role="SkillLevel" EntitySet="SkillLevel" />
             <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
           </AssociationSet>
@@ -613,12 +613,12 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employees__Skill__0A9D95DB" Association="Self.FK__Employees__Skill__0A9D95DB">
-            <End Role="SkillLevel" EntitySet="SkillLevel" />
-            <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
-          </AssociationSet>
           <AssociationSet Name="FK__Employees__Skill__489AC854" Association="Self.FK__Employees__Skill__489AC854">
             <End Role="SkillMatrix" EntitySet="SkillMatrix" />
+            <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employees__Skill__6442E2C9" Association="Self.FK__Employees__Skill__6442E2C9">
+            <End Role="SkillLevel" EntitySet="SkillLevel" />
             <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
           </AssociationSet>
           <AssociationSet Name="FK__Mentor__UserId__2EDAF651" Association="Self.FK__Mentor__UserId__2EDAF651">
@@ -653,13 +653,13 @@
             <End Role="Position" EntitySet="Position" />
             <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
           </AssociationSet>
-          <AssociationSet Name="FK__RequiredS__Skill__151B244E" Association="Self.FK__RequiredS__Skill__151B244E">
-            <End Role="SkillLevel" EntitySet="SkillLevel" />
-            <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
-          </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Skill__44CA3770" Association="Self.FK__RequiredS__Skill__44CA3770">
             <End Role="Skill" EntitySet="Skill" />
             <End Role="RequiredSkill" EntitySet="RequiredSkill" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RequiredS__Skill__634EBE90" Association="Self.FK__RequiredS__Skill__634EBE90">
+            <End Role="SkillLevel" EntitySet="SkillLevel" />
+            <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
           </AssociationSet>
           <AssociationSet Name="FK__RequiredS__Speci__4E53A1AA" Association="Self.FK__RequiredS__Speci__4E53A1AA">
             <End Role="Specialization" EntitySet="Specialization" />
@@ -673,7 +673,7 @@
             <End Role="Employee" EntitySet="Employee" />
             <End Role="RoadMap" EntitySet="RoadMap" />
           </AssociationSet>
-          <AssociationSet Name="FK__SkillLeve__Skill__45BE5BA9" Association="Self.FK__SkillLeve__Skill__45BE5BA9">
+          <AssociationSet Name="FK__SkillLeve__Skill__625A9A57" Association="Self.FK__SkillLeve__Skill__625A9A57">
             <End Role="Skill" EntitySet="Skill" />
             <End Role="SkillLevel" EntitySet="SkillLevel" />
           </AssociationSet>
