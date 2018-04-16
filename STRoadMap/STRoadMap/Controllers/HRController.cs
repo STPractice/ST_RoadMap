@@ -19,7 +19,35 @@ namespace STRoadMap.Controllers
         // GET: HR
         public string Index()
         {
+            
             return "It works!)";
+        }
+
+        [HttpGet]
+        public ActionResult CreateSkill()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateSkill(Skill skill)
+        {
+            if (skill == null)
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.CreateSkill(skill))
+                {
+                    return RedirectToAction("SkillList", "HR");
+                }
+                else
+                {
+                    Response.StatusCode = 404;
+                    return HttpNotFound();
+                }
+            }
         }
         
         [HttpGet]

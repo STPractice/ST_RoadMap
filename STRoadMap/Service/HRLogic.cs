@@ -1,5 +1,5 @@
 ﻿using Extensibility;
-
+using System;
 using System.Collections.Generic;
 using Domain;
 using System.IO;
@@ -51,6 +51,19 @@ namespace Service
                 return true;
             }
             else
+            {
+                return false;
+            }
+        }
+
+        public bool CreateSkill(Skill skill)
+        {
+            try
+            {
+                UoW.Skills.Create(skill);                
+                return UoW.Commit();                
+            }
+            catch (Exception)
             {
                 return false;
             }

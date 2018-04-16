@@ -1,5 +1,5 @@
 
-STRoadMap/\.vs/STRoadMap/
+STRoadMap/\.vs/STRoadMap/v15/
 
 STRoadMap/Domain/bin/
 
@@ -16,3 +16,5 @@ STRoadMap/STRoadMap/obj/
 STRoadMap/Service/bin/
 
 STRoadMap/Service/obj/
+
+STRoadMap/Extensibility/
