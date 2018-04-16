@@ -9,11 +9,20 @@ namespace Extensibility
 {
     public interface IHRLogic
     {
-        bool CreateSkill(Skill skill);
+        
         IEnumerable<Specialization> GetSpecializationList();
         bool DeleteSpecialization(int id);
 
         IEnumerable<Skill> GetSkillList();
+
+        Skill GetSkill(int SkillId);
+
+        bool CreateSkill(Skill skill);
+
+        bool EditSkill(Skill skill);
+
         bool DeleteSkill(int id);
+
+        
     }
 }

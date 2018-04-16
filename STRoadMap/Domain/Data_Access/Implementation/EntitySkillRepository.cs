@@ -45,5 +45,14 @@ namespace Domain
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             return entity.SkillId;
         }
+
+        public int Update(int id, string name)
+        {
+            Skill currentSkill = Find(id);
+            currentSkill.SkillId = id;
+            currentSkill.Name = name;
+            context.Entry(currentSkill).State = System.Data.Entity.EntityState.Modified;
+            return currentSkill.SkillId;
+        }
     }
 }

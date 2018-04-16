@@ -22,23 +22,24 @@
             </th>
             <th></th>
         </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Name, "Skill", new { id = item.SkillId }) 
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "EditSkill", new { id=item.SkillId })            
-                @using (Html.BeginForm())
-                {
-                    <input type="hidden" name="SkillId" value="@item.SkillId">
-                    <input type="submit" value="Delete">
-                }
-            </td>
-        </tr>
-    }
-    
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.Name, "Skill", new { id = item.SkillId })
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditSkill", new{ SkillId = item.SkillId })
+                    @using (Html.BeginForm())
+                    {
+                        <input type="hidden" name="SkillId" value="@item.SkillId">
+                        <input type="submit" value="Delete">
+                    }
+                </td>
+            </tr>
+        }
+
     </table>
 </body>
 </html>
