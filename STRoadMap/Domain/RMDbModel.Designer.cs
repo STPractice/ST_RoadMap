@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\elrib\source\repos\sigma\ST_RoadMap\STRoadMap\Domain\RMDbModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\elrib\source\repos\ST_RoadMap\STRoadMap\Domain\RMDbModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

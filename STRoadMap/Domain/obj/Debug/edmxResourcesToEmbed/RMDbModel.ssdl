@@ -64,7 +64,7 @@
     <Key>
       <PropertyRef Name="EmpolyeeId" />
     </Key>
-    <Property Name="EmpolyeeId" Type="int" Nullable="false" />
+    <Property Name="EmpolyeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="EmployeesSkillLevel">
@@ -79,7 +79,7 @@
     <Key>
       <PropertyRef Name="MentorId" />
     </Key>
-    <Property Name="MentorId" Type="int" Nullable="false" />
+    <Property Name="MentorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="MentorCheckpointComment">
@@ -106,7 +106,7 @@
     </Key>
     <Property Name="Content" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="url" Type="varchar" MaxLength="255" />
-    <Property Name="NotificationId" Type="int" Nullable="false" />
+    <Property Name="NotificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="Position">
@@ -114,8 +114,9 @@
       <PropertyRef Name="PositionId" />
     </Key>
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="PositionId" Type="int" Nullable="false" />
+    <Property Name="PositionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SpecializationId" Type="int" Nullable="false" />
+    <Property Name="PositionLevel" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RegistrationKey">
     <Key>
@@ -145,7 +146,7 @@
       <PropertyRef Name="RMCheckpointId" />
     </Key>
     <Property Name="Achieved" Type="int" Nullable="false" />
-    <Property Name="RMCheckpointId" Type="int" Nullable="false" />
+    <Property Name="RMCheckpointId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Deadline" Type="date" Nullable="false" />
     <Property Name="RoadMapId" Type="int" Nullable="false" />
   </EntityType>
@@ -154,7 +155,7 @@
       <PropertyRef Name="RoadMapId" />
     </Key>
     <Property Name="Deadline" Type="date" Nullable="false" />
-    <Property Name="RoadMapId" Type="int" Nullable="false" />
+    <Property Name="RoadMapId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Closed" Type="int" Nullable="false" />
     <Property Name="EmpolyeeId" Type="int" Nullable="false" />
   </EntityType>
@@ -163,7 +164,7 @@
       <PropertyRef Name="SkillId" />
     </Key>
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="SkillId" Type="int" Nullable="false" />
+    <Property Name="SkillId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="SkillLevel">
     <Key>
@@ -179,7 +180,7 @@
     <Key>
       <PropertyRef Name="SkillMatrixId" />
     </Key>
-    <Property Name="SkillMatrixId" Type="int" Nullable="false" />
+    <Property Name="SkillMatrixId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SpecializationId" Type="int" Nullable="false" />
     <Property Name="EmpolyeeId" Type="int" Nullable="false" />
   </EntityType>
@@ -188,7 +189,7 @@
       <PropertyRef Name="SpecializationId" />
     </Key>
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="SpecializationId" Type="int" Nullable="false" />
+    <Property Name="SpecializationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="UserCheckpointComment">
     <Key>
@@ -199,8 +200,10 @@
     <Property Name="EmpolyeeId" Type="int" Nullable="false" />
     <Property Name="RMCheckpointId" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Checkpoin__RMChe__6EF57B66">
-    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1" />
+  <Association Name="FK__Checkpoin__RMChe__3A4CA8FD">
+    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RMCheckpoint">
@@ -211,8 +214,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Checkpoin__Skill__6FE99F9F">
-    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
+  <Association Name="FK__Checkpoin__Skill__08B54D69">
+    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="CheckpointsSkill" Type="Self.CheckpointsSkill" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SkillLevel">
@@ -223,8 +228,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employee__UserId__5165187F">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+  <Association Name="FK__Employee__UserId__29221CFB">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
@@ -235,8 +242,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employees__Skill__60A75C0F">
-    <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="1" />
+  <Association Name="FK__Employees__Skill__0A9D95DB">
+    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SkillLevel">
+        <PropertyRef Name="SkillLevelId" />
+      </Principal>
+      <Dependent Role="EmployeesSkillLevel">
+        <PropertyRef Name="SkillLevelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employees__Skill__489AC854">
+    <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SkillMatrix">
@@ -247,20 +270,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Employees__Skill__619B8048">
-    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
-    <End Role="EmployeesSkillLevel" Type="Self.EmployeesSkillLevel" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="SkillLevel">
-        <PropertyRef Name="SkillLevelId" />
-      </Principal>
-      <Dependent Role="EmployeesSkillLevel">
-        <PropertyRef Name="SkillLevelId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Mentor__UserId__5441852A">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+  <Association Name="FK__Mentor__UserId__2EDAF651">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Mentor" Type="Self.Mentor" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
@@ -271,7 +284,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MentorChe__Mento__693CA210">
+  <Association Name="FK__MentorChe__Mento__2FCF1A8A">
     <End Role="Mentor" Type="Self.Mentor" Multiplicity="1" />
     <End Role="MentorCheckpointComment" Type="Self.MentorCheckpointComment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -283,8 +296,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MentorChe__RMChe__68487DD7">
-    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1" />
+  <Association Name="FK__MentorChe__RMChe__3D2915A8">
+    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MentorCheckpointComment" Type="Self.MentorCheckpointComment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RMCheckpoint">
@@ -295,7 +310,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MentorRMC__Mento__72C60C4A">
+  <Association Name="FK__MentorRMC__Mento__30C33EC3">
     <End Role="Mentor" Type="Self.Mentor" Multiplicity="1" />
     <End Role="MentorRMComment" Type="Self.MentorRMComment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -307,8 +322,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__MentorRMC__RoadM__73BA3083">
-    <End Role="RoadMap" Type="Self.RoadMap" Multiplicity="1" />
+  <Association Name="FK__MentorRMC__RoadM__40058253">
+    <End Role="RoadMap" Type="Self.RoadMap" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="MentorRMComment" Type="Self.MentorRMComment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RoadMap">
@@ -319,8 +336,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Notificat__UserI__440B1D61">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+  <Association Name="FK__Notificat__UserI__339FAB6E">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Notification" Type="Self.Notification" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="AspNetUsers">
@@ -331,8 +350,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Position__Specia__3D5E1FD2">
-    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+  <Association Name="FK__Position__Specia__4D5F7D71">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Position" Type="Self.Position" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Specialization">
@@ -343,8 +364,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RequiredS__Posit__4D94879B">
-    <End Role="Position" Type="Self.Position" Multiplicity="1" />
+  <Association Name="FK__RequiredS__Posit__37703C52">
+    <End Role="Position" Type="Self.Position" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RequiredSkillLevel" Type="Self.RequiredSkillLevel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Position">
@@ -355,20 +378,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RequiredS__Skill__4AB81AF0">
-    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
-    <End Role="RequiredSkill" Type="Self.RequiredSkill" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Skill">
-        <PropertyRef Name="SkillId" />
-      </Principal>
-      <Dependent Role="RequiredSkill">
-        <PropertyRef Name="SkillId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__RequiredS__Skill__4E88ABD4">
-    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1" />
+  <Association Name="FK__RequiredS__Skill__151B244E">
+    <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RequiredSkillLevel" Type="Self.RequiredSkillLevel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="SkillLevel">
@@ -379,8 +392,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RequiredS__Speci__49C3F6B7">
-    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+  <Association Name="FK__RequiredS__Skill__44CA3770">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="RequiredSkill" Type="Self.RequiredSkill" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Skill">
+        <PropertyRef Name="SkillId" />
+      </Principal>
+      <Dependent Role="RequiredSkill">
+        <PropertyRef Name="SkillId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__RequiredS__Speci__4E53A1AA">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RequiredSkill" Type="Self.RequiredSkill" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Specialization">
@@ -391,8 +420,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RMCheckpo__RoadM__5DCAEF64">
-    <End Role="RoadMap" Type="Self.RoadMap" Multiplicity="1" />
+  <Association Name="FK__RMCheckpo__RoadM__41EDCAC5">
+    <End Role="RoadMap" Type="Self.RoadMap" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RoadMap">
@@ -403,8 +434,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__RoadMap__Empolye__5AEE82B9">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+  <Association Name="FK__RoadMap__Empolye__40F9A68C">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="RoadMap" Type="Self.RoadMap" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
@@ -415,8 +448,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SkillLeve__Skill__38996AB5">
-    <End Role="Skill" Type="Self.Skill" Multiplicity="1" />
+  <Association Name="FK__SkillLeve__Skill__45BE5BA9">
+    <End Role="Skill" Type="Self.Skill" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SkillLevel" Type="Self.SkillLevel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Skill">
@@ -427,8 +462,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SkillMatr__Empol__5812160E">
-    <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+  <Association Name="FK__SkillMatr__Empol__4A8310C6">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Employee">
@@ -439,8 +476,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__SkillMatr__Speci__571DF1D5">
-    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+  <Association Name="FK__SkillMatr__Speci__4F47C5E3">
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="SkillMatrix" Type="Self.SkillMatrix" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Specialization">
@@ -451,7 +490,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserCheck__Empol__76969D2E">
+  <Association Name="FK__UserCheck__Empol__2BFE89A6">
     <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
     <End Role="UserCheckpointComment" Type="Self.UserCheckpointComment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -463,8 +502,10 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserCheck__RMChe__778AC167">
-    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1" />
+  <Association Name="FK__UserCheck__RMChe__3B40CD36">
+    <End Role="RMCheckpoint" Type="Self.RMCheckpoint" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="UserCheckpointComment" Type="Self.UserCheckpointComment" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="RMCheckpoint">
@@ -555,95 +596,95 @@
     <EntitySet Name="SkillMatrix" EntityType="Self.SkillMatrix" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserCheckpointComment" EntityType="Self.UserCheckpointComment" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Checkpoin__RMChe__6EF57B66" Association="Self.FK__Checkpoin__RMChe__6EF57B66">
+    <AssociationSet Name="FK__Checkpoin__RMChe__3A4CA8FD" Association="Self.FK__Checkpoin__RMChe__3A4CA8FD">
       <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
       <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Checkpoin__Skill__6FE99F9F" Association="Self.FK__Checkpoin__Skill__6FE99F9F">
+    <AssociationSet Name="FK__Checkpoin__Skill__08B54D69" Association="Self.FK__Checkpoin__Skill__08B54D69">
       <End Role="SkillLevel" EntitySet="SkillLevel" />
       <End Role="CheckpointsSkill" EntitySet="CheckpointsSkill" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employee__UserId__5165187F" Association="Self.FK__Employee__UserId__5165187F">
+    <AssociationSet Name="FK__Employee__UserId__29221CFB" Association="Self.FK__Employee__UserId__29221CFB">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Employee" EntitySet="Employee" />
     </AssociationSet>
-    <AssociationSet Name="FK__Employees__Skill__60A75C0F" Association="Self.FK__Employees__Skill__60A75C0F">
-      <End Role="SkillMatrix" EntitySet="SkillMatrix" />
-      <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Employees__Skill__619B8048" Association="Self.FK__Employees__Skill__619B8048">
+    <AssociationSet Name="FK__Employees__Skill__0A9D95DB" Association="Self.FK__Employees__Skill__0A9D95DB">
       <End Role="SkillLevel" EntitySet="SkillLevel" />
       <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
     </AssociationSet>
-    <AssociationSet Name="FK__Mentor__UserId__5441852A" Association="Self.FK__Mentor__UserId__5441852A">
+    <AssociationSet Name="FK__Employees__Skill__489AC854" Association="Self.FK__Employees__Skill__489AC854">
+      <End Role="SkillMatrix" EntitySet="SkillMatrix" />
+      <End Role="EmployeesSkillLevel" EntitySet="EmployeesSkillLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Mentor__UserId__2EDAF651" Association="Self.FK__Mentor__UserId__2EDAF651">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Mentor" EntitySet="Mentor" />
     </AssociationSet>
-    <AssociationSet Name="FK__MentorChe__Mento__693CA210" Association="Self.FK__MentorChe__Mento__693CA210">
+    <AssociationSet Name="FK__MentorChe__Mento__2FCF1A8A" Association="Self.FK__MentorChe__Mento__2FCF1A8A">
       <End Role="Mentor" EntitySet="Mentor" />
       <End Role="MentorCheckpointComment" EntitySet="MentorCheckpointComment" />
     </AssociationSet>
-    <AssociationSet Name="FK__MentorChe__RMChe__68487DD7" Association="Self.FK__MentorChe__RMChe__68487DD7">
+    <AssociationSet Name="FK__MentorChe__RMChe__3D2915A8" Association="Self.FK__MentorChe__RMChe__3D2915A8">
       <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
       <End Role="MentorCheckpointComment" EntitySet="MentorCheckpointComment" />
     </AssociationSet>
-    <AssociationSet Name="FK__MentorRMC__Mento__72C60C4A" Association="Self.FK__MentorRMC__Mento__72C60C4A">
+    <AssociationSet Name="FK__MentorRMC__Mento__30C33EC3" Association="Self.FK__MentorRMC__Mento__30C33EC3">
       <End Role="Mentor" EntitySet="Mentor" />
       <End Role="MentorRMComment" EntitySet="MentorRMComment" />
     </AssociationSet>
-    <AssociationSet Name="FK__MentorRMC__RoadM__73BA3083" Association="Self.FK__MentorRMC__RoadM__73BA3083">
+    <AssociationSet Name="FK__MentorRMC__RoadM__40058253" Association="Self.FK__MentorRMC__RoadM__40058253">
       <End Role="RoadMap" EntitySet="RoadMap" />
       <End Role="MentorRMComment" EntitySet="MentorRMComment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Notificat__UserI__440B1D61" Association="Self.FK__Notificat__UserI__440B1D61">
+    <AssociationSet Name="FK__Notificat__UserI__339FAB6E" Association="Self.FK__Notificat__UserI__339FAB6E">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
       <End Role="Notification" EntitySet="Notification" />
     </AssociationSet>
-    <AssociationSet Name="FK__Position__Specia__3D5E1FD2" Association="Self.FK__Position__Specia__3D5E1FD2">
+    <AssociationSet Name="FK__Position__Specia__4D5F7D71" Association="Self.FK__Position__Specia__4D5F7D71">
       <End Role="Specialization" EntitySet="Specialization" />
       <End Role="Position" EntitySet="Position" />
     </AssociationSet>
-    <AssociationSet Name="FK__RequiredS__Posit__4D94879B" Association="Self.FK__RequiredS__Posit__4D94879B">
+    <AssociationSet Name="FK__RequiredS__Posit__37703C52" Association="Self.FK__RequiredS__Posit__37703C52">
       <End Role="Position" EntitySet="Position" />
       <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
     </AssociationSet>
-    <AssociationSet Name="FK__RequiredS__Skill__4AB81AF0" Association="Self.FK__RequiredS__Skill__4AB81AF0">
-      <End Role="Skill" EntitySet="Skill" />
-      <End Role="RequiredSkill" EntitySet="RequiredSkill" />
-    </AssociationSet>
-    <AssociationSet Name="FK__RequiredS__Skill__4E88ABD4" Association="Self.FK__RequiredS__Skill__4E88ABD4">
+    <AssociationSet Name="FK__RequiredS__Skill__151B244E" Association="Self.FK__RequiredS__Skill__151B244E">
       <End Role="SkillLevel" EntitySet="SkillLevel" />
       <End Role="RequiredSkillLevel" EntitySet="RequiredSkillLevel" />
     </AssociationSet>
-    <AssociationSet Name="FK__RequiredS__Speci__49C3F6B7" Association="Self.FK__RequiredS__Speci__49C3F6B7">
+    <AssociationSet Name="FK__RequiredS__Skill__44CA3770" Association="Self.FK__RequiredS__Skill__44CA3770">
+      <End Role="Skill" EntitySet="Skill" />
+      <End Role="RequiredSkill" EntitySet="RequiredSkill" />
+    </AssociationSet>
+    <AssociationSet Name="FK__RequiredS__Speci__4E53A1AA" Association="Self.FK__RequiredS__Speci__4E53A1AA">
       <End Role="Specialization" EntitySet="Specialization" />
       <End Role="RequiredSkill" EntitySet="RequiredSkill" />
     </AssociationSet>
-    <AssociationSet Name="FK__RMCheckpo__RoadM__5DCAEF64" Association="Self.FK__RMCheckpo__RoadM__5DCAEF64">
+    <AssociationSet Name="FK__RMCheckpo__RoadM__41EDCAC5" Association="Self.FK__RMCheckpo__RoadM__41EDCAC5">
       <End Role="RoadMap" EntitySet="RoadMap" />
       <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
     </AssociationSet>
-    <AssociationSet Name="FK__RoadMap__Empolye__5AEE82B9" Association="Self.FK__RoadMap__Empolye__5AEE82B9">
+    <AssociationSet Name="FK__RoadMap__Empolye__40F9A68C" Association="Self.FK__RoadMap__Empolye__40F9A68C">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="RoadMap" EntitySet="RoadMap" />
     </AssociationSet>
-    <AssociationSet Name="FK__SkillLeve__Skill__38996AB5" Association="Self.FK__SkillLeve__Skill__38996AB5">
+    <AssociationSet Name="FK__SkillLeve__Skill__45BE5BA9" Association="Self.FK__SkillLeve__Skill__45BE5BA9">
       <End Role="Skill" EntitySet="Skill" />
       <End Role="SkillLevel" EntitySet="SkillLevel" />
     </AssociationSet>
-    <AssociationSet Name="FK__SkillMatr__Empol__5812160E" Association="Self.FK__SkillMatr__Empol__5812160E">
+    <AssociationSet Name="FK__SkillMatr__Empol__4A8310C6" Association="Self.FK__SkillMatr__Empol__4A8310C6">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="SkillMatrix" EntitySet="SkillMatrix" />
     </AssociationSet>
-    <AssociationSet Name="FK__SkillMatr__Speci__571DF1D5" Association="Self.FK__SkillMatr__Speci__571DF1D5">
+    <AssociationSet Name="FK__SkillMatr__Speci__4F47C5E3" Association="Self.FK__SkillMatr__Speci__4F47C5E3">
       <End Role="Specialization" EntitySet="Specialization" />
       <End Role="SkillMatrix" EntitySet="SkillMatrix" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserCheck__Empol__76969D2E" Association="Self.FK__UserCheck__Empol__76969D2E">
+    <AssociationSet Name="FK__UserCheck__Empol__2BFE89A6" Association="Self.FK__UserCheck__Empol__2BFE89A6">
       <End Role="Employee" EntitySet="Employee" />
       <End Role="UserCheckpointComment" EntitySet="UserCheckpointComment" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserCheck__RMChe__778AC167" Association="Self.FK__UserCheck__RMChe__778AC167">
+    <AssociationSet Name="FK__UserCheck__RMChe__3B40CD36" Association="Self.FK__UserCheck__RMChe__3B40CD36">
       <End Role="RMCheckpoint" EntitySet="RMCheckpoint" />
       <End Role="UserCheckpointComment" EntitySet="UserCheckpointComment" />
     </AssociationSet>

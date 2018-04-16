@@ -125,6 +125,7 @@
     <Property Name="SpecializationId" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Specialization" Relationship="Self.FK__Position__Specia__3D5E1FD2" FromRole="Position" ToRole="Specialization" />
     <NavigationProperty Name="SkillLevels" Relationship="Self.RequiredSkillLevel" FromRole="Position" ToRole="SkillLevel" />
+    <Property Name="PositionLevel" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="RegistrationKey">
     <Key>

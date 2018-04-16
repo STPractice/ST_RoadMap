@@ -102,6 +102,7 @@
     <EntitySetMapping Name="Positions">
       <EntityTypeMapping TypeName="Model.Position">
         <MappingFragment StoreEntitySet="Position">
+          <ScalarProperty Name="PositionLevel" ColumnName="PositionLevel" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="PositionId" ColumnName="PositionId" />
           <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
