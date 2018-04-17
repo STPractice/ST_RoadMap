@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HRCreateSkill.css" />
+    <Content Include="Content\HRVIewSkill.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -286,6 +287,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\HR\SpecializationList.cshtml" />
     <Content Include="Views\HR\SkillList.cshtml" />
+    <Content Include="Views\HR\Skill.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\HR\CreateSkill.cshtml" />
   </ItemGroup>

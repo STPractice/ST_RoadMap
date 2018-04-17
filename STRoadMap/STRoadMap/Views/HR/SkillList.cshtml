@@ -26,10 +26,16 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.ActionLink(item.Name, "Skill", new { id = item.SkillId }) 
+                @Html.ActionLink(item.Name, "Skill", routeValues: new
+                {
+                    SkillId = item.SkillId,
+                }) 
             </td>
             <td>
-                @Html.ActionLink("Edit", "EditSkill", new { id=item.SkillId })            
+                @Html.ActionLink("Edit", "EditSkill", routeValues: new
+           {
+               SkillId = item.SkillId,
+           })            
                 @using (Html.BeginForm())
                 {
                     <input type="hidden" name="SkillId" value="@item.SkillId">
