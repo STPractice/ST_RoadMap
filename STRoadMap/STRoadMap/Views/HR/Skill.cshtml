@@ -20,7 +20,7 @@
         <form method="post" class="createSkill">
         <div id="createSkill">
             <p>Skill name</p>
-            <input type="text" name="Name" id="skillname" value="@Model.Name" required>
+            <input readonly="readonly" type="text" name="Name" id="skillname" value="@Model.Name" required>
             <input type="hidden" name="SkillId" value="@Model.SkillId" />
             @{List<Domain.SkillLevel> skillLevels = Model.SkillLevels.ToList<Domain.SkillLevel>();
                 skillLevels.Sort(new Comparison<Domain.SkillLevel>((Domain.SkillLevel a, Domain.SkillLevel b) =>
