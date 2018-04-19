@@ -8,5 +8,6 @@ namespace Domain
 {
     public interface ISkillRepository : IRepository<Skill>
     {
+        int Update(int id, string name);
     }
 }

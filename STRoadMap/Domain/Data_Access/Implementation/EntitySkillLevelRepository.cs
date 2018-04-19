@@ -45,5 +45,22 @@ namespace Domain
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             return entity.SkillLevelId;
         }
+
+        public int Update(
+           int id,
+           string name,
+           string description,
+           int skillId,
+           int level
+           )
+        {
+            SkillLevel currentSkillLevel = Find(id);
+            currentSkillLevel.Name = name;
+            currentSkillLevel.Level = level;
+            currentSkillLevel.SkillId = skillId;
+            currentSkillLevel.Description = description;
+            context.Entry(currentSkillLevel).State = System.Data.Entity.EntityState.Modified;
+            return currentSkillLevel.SkillId;
+        }
     }
 }

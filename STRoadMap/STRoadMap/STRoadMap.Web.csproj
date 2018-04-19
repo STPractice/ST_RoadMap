@@ -238,7 +238,8 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\HR\CreateSkill\HRCreateSkill.js" />
-    <Content Include="Scripts\HR\CreateSkill\jquery.js" />
+    <Content Include="Scripts\HR\EditSkill\HREditSkill.js" />
+    <Content Include="Scripts\HR\jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -290,6 +291,7 @@
     <Content Include="Views\HR\Skill.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\HR\CreateSkill.cshtml" />
+    <Content Include="Views\HR\EditSkill.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

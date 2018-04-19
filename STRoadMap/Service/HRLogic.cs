@@ -69,9 +69,47 @@ namespace Service
             }
         }
 
-        public Skill GetSkill(int skillId)
+        public Skill GetSkill(int id)
         {
-            return UoW.Skills.Find(skillId);
+            return UoW.Skills.Find(id);
+        }
+
+        public bool EditSkill(Skill skill)
+        {
+
+            UoW.Skills.Update(skill.SkillId, skill.Name);
+
+            List<SkillLevel> OldSkillLevels = UoW.Skills.Find(skill.SkillId).SkillLevels.ToList<SkillLevel>();
+            List<SkillLevel> NewSkillLevels = skill.SkillLevels.ToList<SkillLevel>();
+
+            foreach (SkillLevel OldSkillLevel in OldSkillLevels)
+            {
+                bool exist = false;
+
+                foreach (SkillLevel newSkillLevel in NewSkillLevels)
+                {
+                    if (OldSkillLevel.SkillLevelId == newSkillLevel.SkillLevelId)
+                    {
+                        UoW.SkillLevels.Update(newSkillLevel.SkillLevelId, newSkillLevel.Name, newSkillLevel.Description, newSkillLevel.SkillId, newSkillLevel.Level);
+                        exist = true;
+                    }
+                }
+
+                if (exist == false)
+                {
+                    UoW.SkillLevels.Delete(OldSkillLevel);
+                }
+            }
+            foreach (SkillLevel newSkillLevel in NewSkillLevels)
+            {
+                if (newSkillLevel.SkillLevelId == 0)
+                {
+                    newSkillLevel.SkillId = skill.SkillId;
+                    UoW.SkillLevels.Create(newSkillLevel);
+                }
+            }
+            
+            return UoW.Commit();
         }
     }
 }
