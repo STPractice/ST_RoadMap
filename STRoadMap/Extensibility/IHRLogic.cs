@@ -15,5 +15,7 @@ namespace Extensibility
 
         IEnumerable<Skill> GetSkillList();
         bool DeleteSkill(int id);
+        Skill GetSkill(int skillId);
+
     }
 }

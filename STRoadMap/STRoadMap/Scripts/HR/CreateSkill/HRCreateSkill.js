@@ -1,16 +1,7 @@
-'use strict'
+'use strict';
 
 var i = 1;
 $(document).ready(function() {
-
-    // $('#add').click(function(e) {
-    //     var form = document.getElementById('createSkill');
-    //     var block = document.getElementById('createSkill-block');
-    //     var newBlock = block.cloneNode(true);
-    //     newBlock.Id += i
-    //     form.appendChild(newBlock);
-    //     i++;
-    // });
 
 
     $('#add').click(function(e) {

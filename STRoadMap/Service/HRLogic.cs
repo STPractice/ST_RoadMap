@@ -68,5 +68,10 @@ namespace Service
                 return false;
             }
         }
+
+        public Skill GetSkill(int skillId)
+        {
+            return UoW.Skills.Find(skillId);
+        }
     }
 }

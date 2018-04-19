@@ -112,5 +112,47 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        public ActionResult Skill(Skill skill)
+        {
+            if (skill == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.DeleteSkill(skill.SkillId))
+                {
+                    return RedirectToAction("SkillList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Skill(int? skillId)
+        {
+            
+            if (skillId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var skill =HRLogic.GetSkill((int)skillId);
+                if (skill != null)
+                {
+                    return View(skill);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }
