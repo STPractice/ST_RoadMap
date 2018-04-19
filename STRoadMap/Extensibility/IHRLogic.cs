@@ -22,7 +22,5 @@ namespace Extensibility
         bool EditSkill(Skill skill);
 
         bool DeleteSkill(int id);
-		
-        Skill GetSkill(int skillId);
     }
 }

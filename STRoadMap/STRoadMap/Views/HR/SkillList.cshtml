@@ -27,10 +27,10 @@
         {
             <tr>
                 <td>
-                    @Html.ActionLink(item.Name, "Skill", new { id = item.SkillId })
+                    @Html.ActionLink(item.Name, "Skill", new { SkillId = item.SkillId })
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "EditSkill", new{ SkillId = item.SkillId })
+                    @Html.ActionLink("Edit", "EditSkill", new { SkillId = item.SkillId })
                     @using (Html.BeginForm())
                     {
                         <input type="hidden" name="SkillId" value="@item.SkillId">
