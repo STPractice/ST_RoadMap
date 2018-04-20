@@ -130,5 +130,16 @@ namespace Service
             UoW.Positions.Delete(UoW.Positions.Find(id));
             return UoW.Commit();
         }
+
+        public Specialization GetSpecialization(int SpecializationId)
+        {
+            return UoW.Specializations.Find(SpecializationId);
+        }
+
+        public bool CreatePosition(Position position)
+        {
+            UoW.Positions.Create(position);
+            return UoW.Commit();
+        }
     }
 }

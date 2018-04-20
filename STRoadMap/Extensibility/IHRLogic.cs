@@ -11,6 +11,7 @@ namespace Extensibility
     {
         
         IEnumerable<Specialization> GetSpecializationList();
+
         bool DeleteSpecialization(int id);
 
         IEnumerable<Skill> GetSkillList();
@@ -26,5 +27,9 @@ namespace Extensibility
         IEnumerable<Position> GetPositionList(int SpecializationId);
 
         bool DeletePosition(int id);
+
+        Specialization GetSpecialization(int SpecializationId);
+
+        bool CreatePosition(Position position);
     }
 }

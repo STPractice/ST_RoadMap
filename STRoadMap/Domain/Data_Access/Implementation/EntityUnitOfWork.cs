@@ -131,7 +131,7 @@ namespace Domain
             get
             {
                 if (positions == null)
-                    positions = new EntityPositionRepository(context);
+                    positions = new EntityPositionRepository(context, this);
                 return positions;
             }
         }
