@@ -292,6 +292,7 @@
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\HR\CreateSkill.cshtml" />
     <Content Include="Views\HR\EditSkill.cshtml" />
+    <Content Include="Views\HR\PositionList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

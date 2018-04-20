@@ -111,5 +111,24 @@ namespace Service
             
             return UoW.Commit();
         }
+
+        public IEnumerable<Position> GetPositionList(int SpecializationId)
+        {
+            if (UoW.Specializations.Find(SpecializationId) == null)
+            {
+                return null;
+            }
+            else
+            {
+                IEnumerable<Position> positions = UoW.Positions.Get(new Func<Position, bool>((Position a) => { return a.SpecializationId == SpecializationId; }));
+                return positions;
+            }
+        }
+
+        public bool DeletePosition(int id)
+        {
+            UoW.Positions.Delete(UoW.Positions.Find(id));
+            return UoW.Commit();
+        }
     }
 }

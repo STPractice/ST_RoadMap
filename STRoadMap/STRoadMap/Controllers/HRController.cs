@@ -196,5 +196,47 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public ActionResult PositionList(int? SpecializationId)
+        {
+            if (SpecializationId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                IEnumerable<Position> pos = HRLogic.GetPositionList((int)SpecializationId);
+                if (pos!=null)
+                {
+                    return View(pos);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult PositionList(int? PositionId, int? SpecializationId)
+        {
+            if(PositionId==null||SpecializationId==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.DeletePosition((int)PositionId) == true)                    
+                {
+                    ViewBag.SpecializationId = SpecializationId;
+                    return RedirectToAction("PositionList", new { SpecializationId=SpecializationId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }
