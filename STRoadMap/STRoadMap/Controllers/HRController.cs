@@ -198,25 +198,44 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult PositionList()
-        { 
-            IEnumerable<Position> positions = HRLogic.GetPositionList();
-            return View(positions);
-        }
-
-        [HttpPost]
-        public ActionResult PositionList(int? PositionId)
+        public ActionResult PositionList(int? SpecializationId)
         {
-            if(PositionId==null)
+            if (SpecializationId == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                if (HRLogic.DeleteSkill(int.Parse(PositionId.ToString())) == true)
-                    return RedirectToAction("PositionList");
+                IEnumerable<Position> pos = HRLogic.GetPositionList((int)SpecializationId);
+                if (pos!=null)
+                {
+                    return View(pos);
+                }
                 else
+                {
                     return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult PositionList(int? PositionId, int? SpecializationId)
+        {
+            if(PositionId==null||SpecializationId==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.DeletePosition((int)PositionId) == true)                    
+                {
+                    ViewBag.SpecializationId = SpecializationId;
+                    return RedirectToAction("PositionList", new { SpecializationId=SpecializationId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
             }
         }
     }
