@@ -57,10 +57,70 @@ namespace Domain
             return context.Specializations.ToList();
         }
 
-        public int Update(Specialization entity)
+        public int Update(Specialization spec)
         {
-            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            return entity.SpecializationId;
+        
+            List<Skill> innerSkills = new List<Skill>();
+            foreach (Skill foreignSkill in spec.Skills)
+            {
+                Skill innerSkill = UoW.Skills.Find(foreignSkill.SkillId);
+                if (innerSkill != null)
+                {
+                    innerSkills.Add(innerSkill);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            spec.Skills = innerSkills;
+
+            Specialization currentSpec = Find(spec.SpecializationId);
+            if (currentSpec == null) return 0;
+            currentSpec.Name = spec.Name;            
+
+            List<Skill> OldSkills = currentSpec.Skills.ToList<Skill>();
+            List<Skill> NewSkills = spec.Skills.ToList<Skill>();
+            
+            foreach (Skill oldSkill in OldSkills)
+            {
+                bool exist = false;
+
+                foreach (Skill newSkill in NewSkills)
+                {
+                    if (oldSkill.SkillId == newSkill.SkillId)
+                    {                        
+                        exist = true;
+                    }
+                }
+                if (exist == false)
+                {
+                    currentSpec.Skills.Remove(oldSkill);
+                }
+            }
+            foreach (Skill newSkill in NewSkills)
+            {
+                bool exist = false;
+                foreach (Skill oldSkill in OldSkills)
+                {
+                    if (newSkill.SkillId == oldSkill.SkillId) exist = true;
+                }
+                if (exist == false)
+                {
+                    currentSpec.Skills.Add(newSkill);
+                }
+            }
+
+            try
+            {
+                context.Entry(currentSpec).State = System.Data.Entity.EntityState.Modified;
+                return currentSpec.SpecializationId;
+            }
+
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }

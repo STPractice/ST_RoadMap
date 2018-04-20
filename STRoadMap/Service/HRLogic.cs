@@ -164,5 +164,16 @@ namespace Service
                 return false;
             }
         }
+
+        public bool EditSpecialization(Specialization spec)
+        {
+            bool success = UoW.Specializations.Update(spec)!= 0;
+            return success && UoW.Commit();
+        }
+
+        public Specialization GetSpecialization(int SpecializationId)
+        {
+            return UoW.Specializations.Find(SpecializationId);
+        }
     }
 }

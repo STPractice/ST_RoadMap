@@ -299,10 +299,14 @@
     <Content Include="Views\HR\CreateSkill.cshtml" />
     <Content Include="Views\HR\EditSkill.cshtml" />
     <Content Include="Views\HR\PositionList.cshtml" />
+<<<<<<< dev
     <Content Include="Views\HR\EditPosition.cshtml" />
     <Content Include="Views\HR\CreateSpecialization.cshtml" />
     <Content Include="Views\HR\CreatePosition.cshtml" />
     <Content Include="Views\Mentor\EmployeeList.cshtml" />
+=======
+    <Content Include="Views\HR\EditSpecialization.cshtml" />
+>>>>>>> Logic implemented
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
