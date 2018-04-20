@@ -111,5 +111,27 @@ namespace Service
             
             return UoW.Commit();
         }
+
+        public IEnumerable<Position> GetPositionList()
+        {
+            IEnumerable<Position> positions =  UoW.Positions.GetAll();
+            return positions;
+        }
+
+        public bool DeletePosition(int id)
+        {
+            UoW.Positions.Delete(UoW.Positions.Find(id));
+            bool state = UoW.Commit();
+
+            if(state==true)
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
+        }
     }
 }
