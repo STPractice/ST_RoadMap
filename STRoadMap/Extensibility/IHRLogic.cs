@@ -28,6 +28,10 @@ namespace Extensibility
 
         bool DeletePosition(int id);
 
+        Position GetPosition(int PositionId);
+
+        bool EditPosition(Position position); 
+
         Specialization GetSpecialization(int SpecializationId);
 
         bool CreatePosition(Position position);

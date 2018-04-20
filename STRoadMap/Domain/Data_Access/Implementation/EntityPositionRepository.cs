@@ -63,8 +63,68 @@ namespace Domain
 
         public int Update(Position entity)
         {
-            context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
-            return entity.PositionId;
+            List<SkillLevel> innerSkillLevels = new List<SkillLevel>();
+            foreach (SkillLevel foreignSkillLevel in entity.SkillLevels)
+            {
+                SkillLevel innerSkillLevel = UoW.SkillLevels.Find(foreignSkillLevel.SkillLevelId);
+                if (innerSkillLevel != null)
+                {
+                    innerSkillLevels.Add(innerSkillLevel);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            entity.SkillLevels = innerSkillLevels;
+
+            Position currentPosition = Find(entity.PositionId);
+            if (currentPosition == null) return 0;
+            currentPosition.Name = entity.Name;
+            currentPosition.PositionLevel = entity.PositionLevel;
+            
+            List<SkillLevel> OldSkillLevels = currentPosition.SkillLevels.ToList<SkillLevel>();
+            List<SkillLevel> NewSkillLevels = entity.SkillLevels.ToList<SkillLevel>();
+
+            foreach (SkillLevel oldSkillLevel in OldSkillLevels)
+            {
+                bool exist = false;
+
+                foreach (SkillLevel newSkillLevel in NewSkillLevels)
+                {
+                    if (oldSkillLevel.SkillLevelId == newSkillLevel.SkillLevelId)
+                    {
+                        exist = true;
+                    }
+                }
+                if (exist == false)
+                {
+                    currentPosition.SkillLevels.Remove(oldSkillLevel);
+                }
+            }
+            foreach (SkillLevel newSkillLevel in NewSkillLevels)
+            {
+                bool exist = false;
+                foreach (SkillLevel oldSkillLevel in OldSkillLevels)
+                {
+                    if (newSkillLevel.SkillLevelId == oldSkillLevel.SkillLevelId) exist = true;
+                }
+                if (exist == false)
+                {
+                    currentPosition.SkillLevels.Add(newSkillLevel);
+                }
+            }
+
+            try
+            {
+                context.Entry(currentPosition).State = System.Data.Entity.EntityState.Modified;
+                return currentPosition.SpecializationId;
+            }
+
+            catch (Exception)
+            {
+                return 0;
+            }
         }
     }
 }
