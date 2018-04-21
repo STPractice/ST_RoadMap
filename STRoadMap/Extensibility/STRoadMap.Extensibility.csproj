@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAccountLogic.cs" />
     <Compile Include="IEmployeesLogic.cs" />
     <Compile Include="IHRLogic.cs" />
     <Compile Include="IMentorLogic.cs" />

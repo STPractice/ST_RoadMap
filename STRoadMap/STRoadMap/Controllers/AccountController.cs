@@ -5,10 +5,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Domain;
+using Extensibility;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using STRoadMap.Models;
+using Unity;
 
 namespace STRoadMap.Controllers
 {
@@ -17,15 +20,21 @@ namespace STRoadMap.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IAccountLogic accountLogic;
 
         public AccountController()
         {
+            UnityContainer container = IoCSingleton.GetContainer();
+            this.accountLogic = container.Resolve<IAccountLogic>();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            
+
+            
         }
 
         public ApplicationSignInManager SignInManager
@@ -153,6 +162,7 @@ namespace STRoadMap.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id);
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
