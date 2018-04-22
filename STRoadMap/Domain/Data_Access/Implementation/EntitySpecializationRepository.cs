@@ -9,14 +9,31 @@ namespace Domain
     public class EntitySpecializationRepository : ISpecializationRepository
     {
         private readonly Entities1 context;
+        private readonly IUnitOfWork UoW;
 
-        public EntitySpecializationRepository(Entities1 context)
+        public EntitySpecializationRepository(Entities1 context, IUnitOfWork UoW)
         {
             this.context = context;
+            this.UoW = UoW;
         }
 
         public int Create(Specialization entity)
         {
+            List<Skill> innerSkills = new List<Skill>();
+            foreach (Skill outSkill in entity.Skills)
+            {
+                Skill innerSkill = UoW.Skills.Find(outSkill.SkillId);
+                if (innerSkill != null)
+                {
+                    innerSkills.Add(innerSkill);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            entity.Skills = innerSkills;
+
             return context.Specializations.Add(entity).SpecializationId;
         }
 

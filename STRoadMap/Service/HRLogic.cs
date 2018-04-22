@@ -5,7 +5,6 @@ using Domain;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Domain;
 
 namespace Service
 {
@@ -129,6 +128,19 @@ namespace Service
         {
             UoW.Positions.Delete(UoW.Positions.Find(id));
             return UoW.Commit();
+        }
+
+        public bool CreateSpecialization(Specialization specialization)
+        {
+            try
+            {
+                UoW.Specializations.Create(specialization);
+                return UoW.Commit();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
     }
 }

@@ -26,5 +26,7 @@ namespace Extensibility
         IEnumerable<Position> GetPositionList(int SpecializationId);
 
         bool DeletePosition(int id);
+
+        bool CreateSpecialization(Specialization specialization);
     }
 }

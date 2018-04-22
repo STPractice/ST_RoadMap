@@ -208,7 +208,7 @@ namespace Domain
             get
             {
                 if (specializations == null)
-                    specializations = new EntitySpecializationRepository(context);
+                    specializations = new EntitySpecializationRepository(context, this);
                 return specializations;
             }
         }
