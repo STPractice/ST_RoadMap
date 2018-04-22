@@ -20,3 +20,5 @@ STRoadMap/Service/obj/
 STRoadMap/Extensibility/
 
 STRoadMap/\.vs/config/applicationhost\.config
+
+STRoadMap/Domain/App_Data/
