@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Domain;
 using Extensibility;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using STRoadMap.Models;
@@ -147,7 +148,7 @@ namespace STRoadMap.Controllers
         // GET: /Account/Register
         [AllowAnonymous]
         public ActionResult Register()
-        {
+        {           
             return View();
         }
 
@@ -160,12 +161,20 @@ namespace STRoadMap.Controllers
         {
             if (ModelState.IsValid)
             {
+               
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id);
+                var result = await UserManager.CreateAsync(user, model.Password);                
                 if (result.Succeeded)
                 {
+                    accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id);
+
+                    ApplicationDbContext context = new ApplicationDbContext();
+                    var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
+                    UserManager.AddToRole(UserManager.FindByName(user.UserName).Id, "Employee");
+
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
