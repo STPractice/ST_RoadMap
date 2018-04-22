@@ -94,15 +94,15 @@ namespace STRoadMap.Controllers
         }
 
         [HttpPost]
-        public ActionResult SpecializationList(int? id)
+        public ActionResult SpecializationList(int? SpecializationId)
         {            
-            if (id == null)
+            if (SpecializationId == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                if (HRLogic.DeleteSpecialization(int.Parse(id.ToString())))
+                if (HRLogic.DeleteSpecialization(int.Parse(SpecializationId.ToString())))
                 {
                     return RedirectToAction("SpecializationList", "HR");
                 }

@@ -35,10 +35,20 @@
                         <td>
                             <div class="row">
                                 <div class="buttonContainer">
+                                    @Html.ActionLink("Position list", "PositionList", routeValues: new
+                               {
+                                   SpecializationId = item.SpecializationId
+                               }
+                                        , htmlAttributes: new
+                                        {
+                                            @class = "edit"
+                                        })
+                                </div>
+                                <div class="buttonContainer">
                                     @Html.ActionLink("Edit", "EditSpecialization", routeValues: new
-                                    {
-                                        SkillId = item.SpecializationId
-                                    }
+                               {
+                                   SpecializationId = item.SpecializationId
+                               }
                                         , htmlAttributes: new
                                         {
                                             @class = "edit"
@@ -48,7 +58,7 @@
                                 <div class="buttonContainer">
                                     @using (Html.BeginForm())
                                     {
-                                        <input type="hidden" name="SkillId" value="@item.SpecializationId">
+                                        <input type="hidden" name="SpecializationId" value="@item.SpecializationId">
                                         <input type="submit" value="Delete" class="delete">
                                     }
                                 </div>
