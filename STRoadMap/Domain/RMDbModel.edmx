@@ -71,6 +71,7 @@
           </Key>
           <Property Name="EmpolyeeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="EmployeesSkillLevel">
           <Key>
@@ -787,6 +788,7 @@
           <NavigationProperty Name="RoadMaps" Relationship="Self.FK__RoadMap__Empolye__5AEE82B9" FromRole="Employee" ToRole="RoadMap" />
           <NavigationProperty Name="SkillMatrices" Relationship="Self.FK__SkillMatr__Empol__5812160E" FromRole="Employee" ToRole="SkillMatrix" />
           <NavigationProperty Name="UserCheckpointComments" Relationship="Self.FK__UserCheck__Empol__76969D2E" FromRole="Employee" ToRole="UserCheckpointComment" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Mentor">
           <Key>
@@ -1352,6 +1354,7 @@
           <EntitySetMapping Name="Employees">
             <EntityTypeMapping TypeName="Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="EmpolyeeId" ColumnName="EmpolyeeId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
               </MappingFragment>
