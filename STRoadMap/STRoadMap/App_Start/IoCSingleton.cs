@@ -7,6 +7,8 @@ using System.Web.Mvc;
 using Unity;
 using Unity.AspNet.Mvc;
 using Domain;
+using STRoadMap.Controllers;
+using Unity.Injection;
 
 namespace STRoadMap
 {
@@ -31,7 +33,11 @@ namespace STRoadMap
             freshContainer.RegisterType<Extensibility.IEmployeeLogic, Service.EmployeeLogic>();
             freshContainer.RegisterType<Extensibility.IMentorLogic, Service.MentorLogic>();
             freshContainer.RegisterType<Extensibility.IHRLogic, Service.HRLogic>();
+            freshContainer.RegisterType<Extensibility.IAccountLogic, Service.AccountLogic>();
             freshContainer.RegisterType<Domain.IUnitOfWork, Domain.EntityUnitOfWork>();
+            freshContainer.RegisterType<AccountController>(new InjectionConstructor());            
+            freshContainer.RegisterType<ManageController>(new InjectionConstructor());
+            
         }
     }
 }

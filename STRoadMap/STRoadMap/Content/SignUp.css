@@ -1,0 +1,148 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    background-color: #e6eceb;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 700px;
+    height: 400px;
+    position: relative;
+    margin: 100px auto;
+    background-color: #63cdd7;
+    border-radius: 8px;
+}
+
+.logIn-block {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 40px;
+}
+
+.logIn-block p {
+    position: relative;
+    font-size: 24px;
+    padding: 100px 0 20px 0;
+    color: #fff;
+}
+
+.btn_signIn {
+    width: 100px;
+    font-size: 20px;
+    text-align: center;
+    margin: 10px auto;
+    padding: 8px;
+    border: 2px solid #fff;
+    color: #fff;
+    transition: .5s all;
+    cursor: pointer;
+}
+
+.btn_signIn:hover {
+    transform: scale(1.1);
+}
+
+.signUp-block {
+    position: absolute;
+    width: 330px;
+    height: 450px;
+    top: -25px;
+    right: 25px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+li {
+    list-style-type: none;
+    color: #63cdd7;
+}
+
+.regForm {    
+    text-align: center;
+}
+
+::-webkit-input-placeholder {
+    color: #63cdd7;
+    opacity: 0.5;
+}
+
+::-moz-placeholder {
+    color: #63cdd7;
+    opacity: 0.5;
+}
+
+:-moz-placeholder {
+    color: #63cdd7;
+    opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+    color: #63cdd7;
+    opacity: 0.5;
+}
+.regForm input {
+    margin: 10px 0;
+    width: 276px;
+    padding: 7px;
+    border: 2px solid #63cdd7;
+    color: #43bdb7;
+        
+}
+
+.btn-signUp {    
+    background: none;
+    width: 100px;
+    font-size: 20px;
+    text-align: center;
+    margin: 30px auto;
+    padding: 8px;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    transition: .5s all;
+    cursor: pointer;
+}
+
+.btn-signUp:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 700px) {
+    .container {
+        width: auto;
+        height: auto;
+        margin: auto;
+        text-align: center;
+    }
+    .logIn-block {
+        position: relative;
+        margin: auto;
+    }
+    .signUp-block {
+        position: relative;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .signUp-block {
+        padding-top: 10px;
+        position: relative;
+        width: 100%;
+        margin: 0;
+        right: 0;
+    }
+}
