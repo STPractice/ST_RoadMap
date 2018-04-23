@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    background-color: #e6eceb;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    color: #3e4d4e;
+}
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: #63cdd7;
+}
+
+form input {
+    padding: 3px;
+}
+
+.base {
+    position: relative;
+    margin: auto 250px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.skills {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    border: 2px solid #e6eceb;
+    overflow: auto;
+    width: 50%;
+    height: 300px;
+    margin: 5px auto;
+    overflow: auto;
+}
+
+.available {
+    margin-right: 4px;
+}
+
+.chosen {
+    margin-left: 4px;
+}
+
+.title {
+    width: 100%;
+    background-color: #63cdd7;
+    padding: 4px;
+}
+
+.skill {
+    margin-top: 10px;
+    display: flex;
+    height: 25px;
+    line-height: 25px;
+    flex-direction: row;
+    padding: 3px;
+}
+
+.add {
+    border: 2px solid #63cdd7;
+    height: 25px;
+    text-align: center;        
+    cursor: pointer;
+    margin-left: 30%;
+    transition: .5s all;  
+}
+
+.add:hover {
+    background-color: #63cdd7;
+    color: #fff;
+}
+
+.delete {
+    border: 2px solid #d83737;
+    height: 25px;
+    text-align: center;    
+    cursor: pointer;
+    margin-left: 30%;
+    transition: .5s all;
+}
+
+.delete:hover {
+    background-color: #d83737;
+    color: #fff;
+}
+
+.submit {
+    width: auto;
+    margin-left: 89%;
+    height: 30px;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    transition: .5s all;
+}
+
+.submit:hover {
+    transform: scale(1.1);
+}
+
+@media screen and (max-width: 1125px) {
+    .base {
+        margin: auto 100px;
+    }
+    .list {
+        width: 45%;
+        margin: 5px auto;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .skills {
+        flex-direction: column;
+    }
+    .base {
+        margin: 0;
+        width: 100%;
+    }
+    .list {
+        width: 100%;
+    }
+    .submit {
+        margin: 0;
+        width: 100%;
+    }
+}

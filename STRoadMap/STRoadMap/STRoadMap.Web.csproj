@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HRCreateSkill.css" />
+    <Content Include="Content\HRCreateSpecialization.css" />
     <Content Include="Content\HRVIewSkill.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -238,6 +239,7 @@
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\HR\CreateSkill\HRCreateSkill.js" />
+    <Content Include="Scripts\HR\CreateSpecialization\HRCreateSpecialization.js" />
     <Content Include="Scripts\HR\EditSkill\HREditSkill.js" />
     <Content Include="Scripts\HR\jquery.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -293,6 +295,7 @@
     <Content Include="Views\HR\CreateSkill.cshtml" />
     <Content Include="Views\HR\EditSkill.cshtml" />
     <Content Include="Views\HR\PositionList.cshtml" />
+    <Content Include="Views\HR\CreateSpecialization.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
