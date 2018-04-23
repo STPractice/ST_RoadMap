@@ -1,8 +1,6 @@
 ﻿@model IEnumerable<Domain.Position>
 
-@{
-    Layout = null;
-}
+
 
 <!DOCTYPE html>
 
@@ -15,31 +13,33 @@
 <body>
     <div class="list-block">
         <div class="items-container">
-            <div class="addbuttoncontainer">
-                @Html.ActionLink("Create new position ", "CreatePosition", routeValues: new { }, htmlAttributes: new
-                {
-                    @class = "add"
-                })
-            </div>
-            <div>
-                <table class="table">
-                    <tr>
-                        <th>
-                            <p>Positions</p>
-                        </th>
-                    </tr>
+            <table class="table" style="border-top: 0px solid ">
+                <tr class=" rowContainer" style="background-color:#ffffff; border: none;">
+                    <td style="border-top: none;">
+                        <h1>Position</h1>
+                    </td>
 
+                    <td class="addbuttoncontainer" style="border-top: none;">
+                        @Html.ActionLink("Create new position ", "CreatePosition", routeValues: new { }, htmlAttributes: new { @class = "add", style = "margin-top:5px" })
+                    </td>
+
+                </tr>
+            </table>
+            
+       
+                <table class="table">
+       
                     @foreach (var item in Model)
                     {
 
                         <tr class=" rowContainer">
-                            <td class="lableContainer">
+                            <td class="lableContainer" style="border-top: none;">
                                 @Html.ActionLink(item.Name, "Position", new { PositionId = item.PositionId }, htmlAttributes: new
                                 {
                                     @class = "lable"
                                 })
                             </td>
-                            <td>
+                            <td style="border-top: none;">
                                 <div class="row">
                                     <div class="buttonContainer">
                                         @Html.ActionLink("Edit", "EditPosition", routeValues: new

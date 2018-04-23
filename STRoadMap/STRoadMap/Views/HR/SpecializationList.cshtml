@@ -11,62 +11,63 @@
 <body>
 <div class="list-block">
     <div class="items-container">
-        <div class="addbuttoncontainer">
-            @Html.ActionLink("Create new specialization", "CreateSpecialization", routeValues: new {}, htmlAttributes: new
-            {
-                @class = "add"
-            })
-        </div>
+        <table class="table" style="border-top: 0px solid ">
+            <tr class=" rowContainer" style="background-color:#ffffff; border: none;">
+                <td style="border-top: none;">
+                    <h1>Specialization</h1>
+                </td>
+
+                <td class="addbuttoncontainer" style="border-top: none;">
+                    @Html.ActionLink("Create new specialization", "CreateSpecialization", routeValues: new { }, htmlAttributes: new{@class = "add", style="margin-top:5px"})
+                </td>
+
+            </tr>
+        </table>        
         <div>
-            <table class="table">
-                <tr>
-                    <th>
-                        <p>Specializations</p>
-                    </th>
-                </tr>
+            <table class="table">                
 
                 @foreach (var item in Model)
-                {
-                   
-                    <tr class =" rowContainer">
-                        <td class="lableContainer">
-                            @Html.ActionLink(item.Name, "Specialization", new {SkillId = item.SpecializationId})
-                        </td>
-                        <td>
-                            <div class="row">
-                                <div class="buttonContainer">
-                                    @Html.ActionLink("Position list", "PositionList", routeValues: new
-                               {
-                                   SpecializationId = item.SpecializationId
-                               }
-                                        , htmlAttributes: new
-                                        {
-                                            @class = "edit"
-                                        })
-                                </div>
-                                <div class="buttonContainer">
-                                    @Html.ActionLink("Edit", "EditSpecialization", routeValues: new
-                               {
-                                   SpecializationId = item.SpecializationId
-                               }
-                                        , htmlAttributes: new
-                                        {
-                                            @class = "edit"
-                                        })
-                                </div>
+            {
 
-                                <div class="buttonContainer">
-                                    @using (Html.BeginForm())
-                                    {
-                                        <input type="hidden" name="SpecializationId" value="@item.SpecializationId">
-                                        <input type="submit" value="Delete" class="delete">
-                                    }
-                                </div>
+                <tr class=" rowContainer">
+                    <td class="lableContainer" style="border-top: none;">
+                        @Html.ActionLink(item.Name, "Specialization", new { SkillId = item.SpecializationId })
+                    </td>
+                    <td style="border-top: none;">
+                        <div class="row">
+                            <div class="buttonContainer">
+                                @Html.ActionLink("Position list", "PositionList", routeValues: new
+                            {
+                                SpecializationId = item.SpecializationId
+                            }
+                                     , htmlAttributes: new
+                                     {
+                                         @class = "edit"
+                                     })
                             </div>
-                        </td>
-                    </tr>
-                    
-                }
+                            <div class="buttonContainer">
+                                @Html.ActionLink("Edit", "EditSpecialization", routeValues: new
+                            {
+                                SpecializationId = item.SpecializationId
+                            }
+                                     , htmlAttributes: new
+                                     {
+                                         @class = "edit"
+                                     })
+                            </div>
+
+                            <div class="buttonContainer">
+                                @using (Html.BeginForm())
+                            {
+                                <input type="hidden" name="SpecializationId" value="@item.SpecializationId">
+                                <input type="submit" value="Delete" class="delete">
+                        }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+        }
             </table>
         </div>
     </div>

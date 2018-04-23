@@ -9,58 +9,61 @@
     <meta name="viewport" content="width=device-width"/>
     <title>SkillList</title>
 </head>
+
 <body>
     <div class="list-block">
         <div class="items-container">
-            <div class="addbuttoncontainer">
-                @Html.ActionLink("Create new skill", "CreateSkill", routeValues: new {}, htmlAttributes: new
-                {
-                    @class = "add"
-                })
-            </div>
+            <table class="table" style="border-top: 0px solid ">
+                <tr class=" rowContainer" style="background-color:#ffffff; border: none;">
+                    <td style="border-top: none;">
+                        <h1>Skills</h1>
+                    </td>
+
+                    <td class="addbuttoncontainer" style="border-top: none;">
+                        @Html.ActionLink("Create new skill", "CreateSkill", routeValues: new { }, htmlAttributes: new { @class = "add" })
+                    </td>
+
+                </tr>
+            </table>
             <div>
                 <table class="table">
-                    <tr>
-                        <th>
-                            <p>Skills</p>
-                        </th>
-                    </tr>
+
 
                     @foreach (var item in Model)
-                    {
-                   
-                        <tr class =" rowContainer">
-                            <td class="lableContainer">
-                                @Html.ActionLink(item.Name, "Skill", new {SkillId = item.SkillId},htmlAttributes: new
-                                {
-                                    @class = "lable"
-                                })
-                            </td>
-                            <td>
-                                <div class="row">
-                                    <div class="buttonContainer">
-                                        @Html.ActionLink("Edit", "EditSkill", routeValues: new
             {
-                SkillId = item.SkillId,
-            }
-                     , htmlAttributes: new
-                     {
-                         @class = "edit"
-                     })
-                                    </div>
 
-                                    <div class="buttonContainer">
-                                        @using (Html.BeginForm())
-            {
+                <tr class=" rowContainer" style="">
+                    <td class="lableContainer" style="border-top: none;">
+                        @Html.ActionLink(item.Name, "Skill", new { SkillId = item.SkillId }, htmlAttributes: new
+                   {
+                       @class = "lable"                   
+                   })
+                    </td>
+                    <td style="border-top: none;">
+                        <div class="row">
+                            <div class="buttonContainer">
+                                @Html.ActionLink("Edit", "EditSkill", routeValues: new
+                        {
+                            SkillId = item.SkillId,
+                        }
+, htmlAttributes: new
+{
+           @class = "edit"
+})
+                            </div>
+
+                            <div class="buttonContainer">
+                                @using (Html.BeginForm())
+                        {
                             <input type="hidden" name="SkillId" value="@item.SkillId">
                             <input type="submit" value="Delete" class="delete">
-}
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    
-                    }
+                }
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+    }
                 </table>
             </div>
         </div>
