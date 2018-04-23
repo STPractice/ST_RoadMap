@@ -208,6 +208,7 @@ namespace STRoadMap.Controllers
                 IEnumerable<Position> pos = HRLogic.GetPositionList((int)SpecializationId);
                 if (pos != null)
                 {
+                    ViewBag.SpecializationId = SpecializationId;
                     return View(pos);
                 }
                 else
@@ -254,6 +255,7 @@ namespace STRoadMap.Controllers
                 }
                 else
                 {
+                    
                     return View(spec);
                 }
             }

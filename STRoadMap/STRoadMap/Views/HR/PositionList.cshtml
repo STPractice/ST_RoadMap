@@ -20,7 +20,7 @@
                     </td>
 
                     <td class="addbuttoncontainer" style="border-top: none;">
-                        @Html.ActionLink("Create new position ", "CreatePosition", routeValues: new { }, htmlAttributes: new { @class = "add", style = "margin-top:5px" })
+                        @Html.ActionLink("Create new position", "CreatePosition", new { SpecializationId = ViewBag.SpecializationId },  new { @class = "add", style = "margin-top:5px" })
                     </td>
 
                 </tr>
