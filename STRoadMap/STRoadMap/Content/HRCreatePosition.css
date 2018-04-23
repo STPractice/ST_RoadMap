@@ -7,9 +7,12 @@ body {
     font-size: 16px;
     justify-content: center;
     background-color: #e6eceb;
+    color: #63cdd7;
 }
-p {
+div p {
     margin: 0 0 0 0;
+    color: #63cdd7;
+    font-weight: bold;
 }
 .position-container {
     position: relative;
@@ -33,31 +36,46 @@ form input {
     margin-top:20px;
 }
 .block, #positionName {
-    border: 2px solid #e6eceb;
-    height:100%;
+    border: 2px solid #63cdd7;
+    height: 100%;
 }
 #positionName {
     width:380px;
+    padding: 5px;
+}
+::-webkit-input-placeholder {
+    color: #98e2e8;
+}
+
+::-moz-placeholder {
+    color: #98e2e8;
+}
+/* Firefox 19+ */
+:-moz-placeholder {
+    color: #98e2e8;
+}
+/* Firefox 18- */
+:-ms-input-placeholder {
+    color: #98e2e8;
 }
 
 .positionSkills, .skillLevels {
-        display: inline-block;
+    display: inline-block;
+    margin: 20px 0;
 }
 .positionSkills {
     padding: 0;
-    margin: 10px 0;
     flex-basis:49%;
-    height:300px;
     /*flex-grow: 1;*/
     align-self: stretch;
 }
 .skillLevels {
-    margin:10px 0;
     display: none;
     /*flex-grow: 1;*/
     align-self: stretch;
     flex-basis:49%;
 }
+
 ul.block li {
     width:100%;
     padding: 10px;
@@ -65,10 +83,10 @@ ul.block li {
 ul li:hover {
     background-color: #e6eceb;
 }
-#skillsList {
+#skillsList, #skillLevelsList {
     list-style-type: none;
     list-style-position: outside;
-    padding:0  !important;
+    padding: 0 !important;
 }
 #skillLevels0 {
     display:inline-block;
@@ -86,6 +104,9 @@ ul li:hover {
 }
 .submit:hover {
     transform: scale(1.1);
+}
+label {
+    font-weight: normal;
 }
 
 @media screen and (max-width: 768px) {
