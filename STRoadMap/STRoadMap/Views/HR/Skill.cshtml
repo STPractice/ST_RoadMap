@@ -46,18 +46,17 @@
                 </div>
             }
         </div>
-            <div>
-                <input type="submit" class="delete" value="Delete">
-                @Html.ActionLink("Edit", "EditSkill", routeValues: new
-                {
-                    SkillId = Model.SkillId,
-                }
-                    , htmlAttributes: new
-                    {
-                        @class = "edit"
-                    })
-
-            </div>
+            <table>
+                <tr>
+                    <td class="item">
+                        @Html.ActionLink("Edit", "EditSkill", routeValues: new { SkillId = Model.SkillId }, htmlAttributes: new { @class = "edit" })
+                    </td>
+                    <td class="item"  style="align-items:flex-end; width:90vw; ">                        
+                        <input type="submit" class="delete" value="Delete" style="right:1px; margin-right:0 !important;">                         
+                    </td>
+                </tr>
+            
+    </table>
 </form>
     
     

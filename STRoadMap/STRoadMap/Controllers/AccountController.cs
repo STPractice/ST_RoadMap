@@ -170,7 +170,7 @@ namespace STRoadMap.Controllers
 
                     ApplicationDbContext context = new ApplicationDbContext();
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-
+                    
                     UserManager.AddToRole(UserManager.FindByName(user.UserName).Id, "Employee");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
