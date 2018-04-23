@@ -292,7 +292,7 @@ namespace STRoadMap.Controllers
             {
                 if (HRLogic.CreatePosition(position))
                 {
-                    return RedirectToAction("PositionList", "HR");
+                    return RedirectToAction("PositionList", "HR", new { SpecializationId=position.SpecializationId });
                 }
                 else
                 {
