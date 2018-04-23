@@ -1,67 +1,68 @@
-﻿@model Domain.Position
-
-@{
-    Layout = null;
-}
-
+﻿@model Domain.Specialization
+@using Domain
 <!DOCTYPE html>
-
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreatePosition.css" />
     <title>CreatePosition</title>
+    <script>
+        function changeBlock(id) {
+            var skillLevels = document.querySelectorAll(".skillLevels");
+            for (var i = 0; i < skillLevels.length; i++) {
+                var skillLevelsId = skillLevels[i].id.substring(11);
+                if (skillLevelsId == id) {
+                    skillLevels[i].style = "display:inline-block";
+                }
+                else {
+                    skillLevels[i].style = "display:none";
+                }
+            }
+            }
+    </script>
 </head>
 <body>
-    @using (Html.BeginForm()) 
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Position</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PositionId, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PositionId, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PositionId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.SpecializationId, "SpecializationId", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("SpecializationId", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.SpecializationId, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.PositionLevel, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.PositionLevel, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.PositionLevel, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>
+    <form method="post" class="position-container">
+        <div>
+            <p>Position name</p>
+            <input type="text" name="Name" id="positionName" placeholder="Name of position" required />
+            <br />
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+        <div class="createPosition-block">
+            <div class="positionSkills">
+                <p>Skills</p>
+                <ul class="block " id="skillsList">
+                    @for (int i = 0; i < Model.Skills.Count; i++)
+                    {
+                    <li id="skill@(i)" onclick="changeBlock(@i)">
+                        @Model.Skills.ElementAt(i).Name
+                    </li>
+                    }
+                </ul>
+            </div>
+            @for (int j = 0; j < Model.Skills.Count; j++)
+            {
+            <div class="skillLevels" id="skillLevels@(j)">
+                <p>Skill levels (@Model.Skills.ElementAt(j).Name)</p>
+                <div class="block">
+                    @for (int i = 0; i < Model.Skills.ElementAt(j).SkillLevels.Count; i++)
+                    {
+                    <input type="radio" name="SkillLevels[@j].SkillLevelId" value=@Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).SkillLevelId checked /> @Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).Name
+                    <br />
+                    }
+                </div>
+            </div>
+            }
+        </div>
+        <br />
+        @{
+            var count = (Model.Positions == null || Model.Positions.Count == 0) ? 0 : (Model.Positions.Last().PositionLevel + 1);
+        }
+        <input type="hidden" name="SpecializationId" value=@Model.SpecializationId />
+        <input type="hidden" name="PositionLevel" value=@count />
+        <input type="hidden" name="Specialization" value=@Model />
+        <input type="submit" class="submit" name="CreatePosition" value="Create Position" />
+    </form>
 </body>
 </html>

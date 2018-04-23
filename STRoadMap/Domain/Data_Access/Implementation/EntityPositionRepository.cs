@@ -19,7 +19,7 @@ namespace Domain
 
         public int Create(Position entity)
         {
-            Specialization innerSpecialization = UoW.Specializations.Find(entity.Specialization.SpecializationId);
+            Specialization innerSpecialization = UoW.Specializations.Find(entity.SpecializationId);
             if (innerSpecialization == null)
             {
                 return 0;

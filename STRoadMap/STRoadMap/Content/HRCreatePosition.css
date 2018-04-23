@@ -1,0 +1,88 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    justify-content: center;
+    background-color: #e6eceb;
+}
+p {
+    margin: 0 0 0 0;
+}
+.position-container {
+    position: relative;
+    width:66.66666vw;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    min-width:320px;
+}
+form input {
+    padding: 3px;
+}
+.createPosition-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: space-between;
+    margin-bottom:20px;
+    margin-top:20px;
+}
+.block, #positionName {
+    border: 2px solid #e6eceb;
+    height:100%;
+}
+#positionName {
+    width:380px;
+}
+
+.positionSkills, .skillLevels {
+        display: inline-block;
+}
+.positionSkills {
+    padding: 0;
+    margin: 10px 0;
+    flex-basis:380px;
+    /*flex-grow: 1;*/
+    align-self: stretch;
+}
+.skillLevels {
+    margin:10px 0;
+    display: none;
+    /*flex-grow: 1;*/
+    align-self: stretch;
+    flex-basis:380px;
+}
+ul.block li {
+    width:100%;
+    padding: 10px;
+}
+ul li:hover {
+    background-color: #e6eceb;
+}
+#skillsList {
+    list-style-type: none;
+    list-style-position: outside;
+    padding:0  !important;
+}
+#skillLevels0 {
+    display:inline-block;
+}
+.submit {
+    margin: 10px 0;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: .5s;
+}
+.submit:hover {
+    transform: scale(1.1);
+}
