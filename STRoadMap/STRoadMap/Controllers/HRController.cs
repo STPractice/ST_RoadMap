@@ -19,7 +19,6 @@ namespace STRoadMap.Controllers
         // GET: HR
         public string Index()
         {
-            
             return "It works!)";
         }
 
@@ -49,7 +48,7 @@ namespace STRoadMap.Controllers
                 }
             }
         }
-        
+
         [HttpGet]
         public ActionResult SkillList()
         {
@@ -61,13 +60,13 @@ namespace STRoadMap.Controllers
         public ActionResult SkillList(int? SkillId)
         {
 
-            if(SkillId==null)
+            if (SkillId == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                if(HRLogic.DeleteSkill(int.Parse(SkillId.ToString()))==true)
+                if (HRLogic.DeleteSkill(int.Parse(SkillId.ToString())) == true)
                 {
                     return RedirectToAction("SkillList");
                 }
@@ -82,8 +81,8 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult SpecializationList()
         {
-            IEnumerable<Specialization> spec= HRLogic.GetSpecializationList();
-            if(spec== null)
+            IEnumerable<Specialization> spec = HRLogic.GetSpecializationList();
+            if (spec == null)
             {
                 return HttpNotFound();
             }
@@ -113,6 +112,28 @@ namespace STRoadMap.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Skill(int? skillId)
+        {
+
+            if (skillId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var skill = HRLogic.GetSkill((int)skillId);
+                if (skill != null)
+                {
+                    return View(skill);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
         [HttpPost]
         public ActionResult Skill(Skill skill)
         {
@@ -125,28 +146,6 @@ namespace STRoadMap.Controllers
                 if (HRLogic.DeleteSkill(skill.SkillId))
                 {
                     return RedirectToAction("SkillList", "HR");
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
-            }
-        }
-
-        [HttpGet]
-        public ActionResult Skill(int? skillId)
-        {
-            
-            if (skillId == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                var skill =HRLogic.GetSkill((int)skillId);
-                if (skill != null)
-                {
-                    return View(skill);
                 }
                 else
                 {
@@ -207,7 +206,7 @@ namespace STRoadMap.Controllers
             else
             {
                 IEnumerable<Position> pos = HRLogic.GetPositionList((int)SpecializationId);
-                if (pos!=null)
+                if (pos != null)
                 {
                     return View(pos);
                 }
@@ -221,16 +220,79 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult PositionList(int? PositionId, int? SpecializationId)
         {
-            if(PositionId==null||SpecializationId==null)
+            if (PositionId == null || SpecializationId == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                if (HRLogic.DeletePosition((int)PositionId) == true)                    
+                if (HRLogic.DeletePosition((int)PositionId) == true)
                 {
                     ViewBag.SpecializationId = SpecializationId;
-                    return RedirectToAction("PositionList", new { SpecializationId=SpecializationId });
+                    return RedirectToAction("PositionList", new { SpecializationId = SpecializationId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult CreatePosition(int? SpecializationId)
+        {
+            if (SpecializationId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                Specialization spec = HRLogic.GetSpecialization((int)SpecializationId);
+                if (spec == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    return View(spec);
+                }
+            }
+
+            //Specialization spec = HRLogic.GetSpecialization((int)SpecializationId);
+            //Skill skill = new Skill();
+            //skill.Name = "English";
+            //SkillLevel sl1 = new SkillLevel();
+            //sl1.Name = "first";
+            //SkillLevel sl2 = new SkillLevel();
+            //sl2.Name = "second";
+            //skill.SkillLevels.Add(sl1);
+            //skill.SkillLevels.Add(sl2);
+            //spec.Skills.Add(skill);
+
+            //Skill skill2 = new Skill();
+            //skill2.Name = ".Net";
+            //SkillLevel sl21 = new SkillLevel();
+            //sl21.Name = "first1";
+            //SkillLevel sl22 = new SkillLevel();
+            //sl22.Name = "second2";
+            //skill2.SkillLevels.Add(sl21);
+            //skill2.SkillLevels.Add(sl22);
+            //spec.Skills.Add(skill2);
+            //int i = (spec.Positions == null || spec.Positions.Count == 0) ? 0 : spec.Positions.Last().PositionLevel + 1;
+            //return View(spec);
+        }
+        [HttpPost]
+        public ActionResult CreatePosition(Position position)
+        {
+            if (position == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.CreatePosition(position))
+                {
+                    return RedirectToAction("PositionList", "HR", new { SpecializationId=position.SpecializationId });
                 }
                 else
                 {
