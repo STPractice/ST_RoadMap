@@ -226,6 +226,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\HRCreateSkill.css" />
+    <Content Include="Content\HRLists.css" />
     <Content Include="Content\HRVIewSkill.css" />
     <Content Include="Content\SignIn.css" />
     <Content Include="Content\SignUp.css" />
