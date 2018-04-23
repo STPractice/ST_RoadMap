@@ -302,5 +302,42 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public ActionResult CreateSpecialization()
+        {
+
+            List<Skill> skills = HRLogic.GetSkillList().ToList<Skill>();
+            if (skills != null)
+            {
+                return View(skills);
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult CreateSpecialization(Specialization specialization)
+        {
+            if (specialization == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.CreateSpecialization(specialization))
+                {
+                    return RedirectToAction("SpecializationList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+
     }
 }

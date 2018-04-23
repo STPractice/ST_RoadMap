@@ -31,5 +31,7 @@ namespace Extensibility
         Specialization GetSpecialization(int SpecializationId);
 
         bool CreatePosition(Position position);
+
+        bool CreateSpecialization(Specialization specialization);
     }
 }

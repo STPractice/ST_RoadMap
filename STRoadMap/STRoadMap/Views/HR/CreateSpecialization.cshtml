@@ -1,0 +1,48 @@
+﻿@model ICollection<Domain.Skill>
+@using Domain
+
+@{
+    ViewBag.Title = "Create Specialization";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />    
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreateSpecialization.css" />
+    <script defer src="~/Scripts/HR/jquery.js"></script>
+    <script defer src="~/Scripts/HR/CreateSpecialization/HRCreateSpecialization.js"></script>
+</head>
+<body>
+    <div class="base">
+        <form method="post">
+            <p>Specialization name</p>
+            <input type="text" name="Name" id="name">
+
+            <div class="skills">
+                <div class="available list">
+                    <div class="title">
+                        <p>Available skills:</p>
+                    </div>
+                    @{System.Int32 i = 100; }
+                    @foreach (Skill item in Model)
+                    {
+                        <div class="skill" id="@i">
+                            <p>@item.SkillId</p>
+                            <div class="add" id=@("add" + i.ToString()) >Add</div>
+                        </div>
+                        i++;
+                    }
+                </div>
+                <div class="chosen list">
+                    <div class="title">
+                        <p>Chosen skills:</p>
+                    </div>
+                </div>
+            </div>
+            <input type="submit" class="submit" value="Submit">
+        </form>                
+    </div>
+</body>
+</html>
