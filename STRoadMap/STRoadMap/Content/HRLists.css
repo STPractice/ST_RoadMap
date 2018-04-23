@@ -191,4 +191,27 @@ a.lable {
     .container {
         margin: auto;
     }
+
+}
+
+@media screen and (max-width: 768px) {
+    .list-block{
+        width:100%;
+    }
+    .items-container{
+        margin: 0;
+    }
+    h1{
+        font-size: 16px;
+    }
+    a.edit, input.delete{
+        font-size:12px;
+    }
+    a.lable {
+        font-size: 13px;
+        
+    }
+    .rowContainer {
+        border: 2px solid #63cdd7;
+    }
 }

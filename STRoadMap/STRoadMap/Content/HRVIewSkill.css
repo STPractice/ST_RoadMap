@@ -120,3 +120,8 @@ div.description-block {
         margin: auto;
     }
 }
+@media screen and (max-width: 768px) {
+    .skill-container {
+        margin: 0;
+    }
+}
