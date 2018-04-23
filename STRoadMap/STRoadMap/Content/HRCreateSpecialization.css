@@ -31,7 +31,7 @@ form input {
     position: relative;
     margin: auto 250px;
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
 }
 
 .skills {
@@ -42,7 +42,6 @@ form input {
 
 .list {
     border: 2px solid #e6eceb;
-    overflow: auto;
     width: 50%;
     height: 300px;
     margin: 5px auto;
@@ -69,16 +68,19 @@ form input {
     height: 25px;
     line-height: 25px;
     flex-direction: row;
+    justify-content: space-between;    
     padding: 3px;
 }
 
 .add {
     border: 2px solid #63cdd7;
     height: 25px;
-    text-align: center;        
-    cursor: pointer;
-    margin-left: 30%;
-    transition: .5s all;  
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;  
+    margin: 0 10px;   
+    padding: 0 2px;
+    transition: .5s all;    
 }
 
 .add:hover {
@@ -89,9 +91,11 @@ form input {
 .delete {
     border: 2px solid #d83737;
     height: 25px;
-    text-align: center;    
+    line-height: 25px;
+    text-align: center;
     cursor: pointer;
-    margin-left: 30%;
+    margin: 0 10px;
+    padding: 0 2px;
     transition: .5s all;
 }
 
@@ -101,8 +105,7 @@ form input {
 }
 
 .submit {
-    width: auto;
-    margin-left: 89%;
+    width: auto;    
     height: 30px;
     background-color: #fff;
     border: 2px solid #63cdd7;
@@ -127,7 +130,7 @@ form input {
     }
 }
 
-@media screen and (max-width: 414px) {
+@media screen and (max-width: 768px) {
     .skills {
         flex-direction: column;
     }

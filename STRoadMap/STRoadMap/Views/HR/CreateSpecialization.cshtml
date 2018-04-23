@@ -24,13 +24,15 @@
                 <div class="available list">
                     <div class="title">
                         <p>Available skills:</p>
-                    </div>                    
+                    </div>
+                    @{System.Int32 i = 100; }
                     @foreach (Skill item in Model)
                     {
-                        <div class="skill" id="0">
+                        <div class="skill" id="@i">
                             <p>@item.SkillId</p>
-                            <div class="add" id="add0">Add</div>
+                            <div class="add" id=@("add" + i.ToString()) >Add</div>
                         </div>
+                        i++;
                     }
                 </div>
                 <div class="chosen list">

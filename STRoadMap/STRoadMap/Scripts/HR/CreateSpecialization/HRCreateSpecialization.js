@@ -2,26 +2,23 @@
 
 var i = 0;
 $(document).ready(function () {
-    var elements = document.getElementById('1');
     $(document).on('click', '.add', function () {
         var addedSkill = document.getElementById(this.id.substring(3, this.id.length));
-        var elem = $('#' + this.id.substring(3, this.id.length));
+        var elem = this.id.substring(3, this.id.length);
         var text = addedSkill.firstElementChild.textContent;
-        elem.remove();
+        $('#' + elem).remove();
         $('.chosen').append($('<div></div>')
             .addClass('skill')
             .attr('id', i)
             .html(`
            <p>${text}</p>
-           <button class="delete" id="delete${i}">Delete</button>
-           <input type="hidden" name="Skill[${i}].SkillId" value="${text}" />
+           <div class="delete" id="delete${i}">Delete</div>
         `)
         );
         i++;
     });
 
-    $(document).on('click', '.delete', function () {
-        i--;
+    $(document).on('click', '.delete', function () {        
         var deletedSkill = document.getElementById(this.id.substring(6, this.id.length));
         var text = deletedSkill.firstElementChild.textContent;
         var elem = this.id.substring(6, this.id.length);
@@ -29,13 +26,13 @@ $(document).ready(function () {
 
         $('.available').append($('<div></div>')
             .addClass('skill')
-            .attr('id', elem)
+            .attr('id', i + 100)
             .html(`
            <p>${text}</p>
-           <button class="add" id="add${elem}">Add</button>
+           <div class="add" id="add${i + 100}">Add</div>
         `)
         );
-
+        i--;
     });
 
 });
