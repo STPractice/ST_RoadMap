@@ -242,46 +242,23 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult CreatePosition(int? SpecializationId=103)
         {
-            //if (SpecializationId == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //else
-            //{
-            //    Specialization spec = HRLogic.GetSpecialization((int)SpecializationId);
-            //    if (spec == null)
-            //    {
-            //        return HttpNotFound();
-            //    }
-            //    else
-            //    {
-                    
-            //        return View(spec);
-            //    }
-            //}
+            if (SpecializationId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                Specialization spec = HRLogic.GetSpecialization((int)SpecializationId);
+                if (spec == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
 
-            Specialization spec = HRLogic.GetSpecialization((int)SpecializationId);
-            Skill skill = new Skill();
-            skill.Name = "English";
-            SkillLevel sl1 = new SkillLevel();
-            sl1.Name = "first";
-            SkillLevel sl2 = new SkillLevel();
-            sl2.Name = "second";
-            skill.SkillLevels.Add(sl1);
-            skill.SkillLevels.Add(sl2);
-            spec.Skills.Add(skill);
-
-            Skill skill2 = new Skill();
-            skill2.Name = ".Net";
-            SkillLevel sl21 = new SkillLevel();
-            sl21.Name = "first1";
-            SkillLevel sl22 = new SkillLevel();
-            sl22.Name = "second2";
-            skill2.SkillLevels.Add(sl21);
-            skill2.SkillLevels.Add(sl22);
-            spec.Skills.Add(skill2);
-            int i = (spec.Positions == null || spec.Positions.Count == 0) ? 0 : spec.Positions.Last().PositionLevel + 1;
-            return View(spec);
+                    return View(spec);
+                }
+            }
         }
         [HttpPost]
         public ActionResult CreatePosition(Position position)
