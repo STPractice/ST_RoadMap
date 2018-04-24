@@ -29,7 +29,7 @@
 
                     <tr class=" rowContainer">
                         <td class="lableContainer" style="border-top: none;">
-                            @Html.ActionLink(item.Name, "EmployeeReview", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
+                            @Html.ActionLink(item.Name, "Employee", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
                             {
                                 @class = "lable"
                             })
@@ -37,7 +37,7 @@
                         <td style="border-top: none;">
                             <div class="row">
                                 <div class="buttonContainer">
-                                    @Html.ActionLink("RoadMap", "RoadMapReview", routeValues: new
+                                    @Html.ActionLink("RoadMap", "RoadMap", routeValues: new
                                     {
                                         EmployeeId = item.EmpolyeeId,
                                     }
