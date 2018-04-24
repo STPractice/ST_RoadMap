@@ -299,6 +299,7 @@
     <Content Include="Views\HR\CreateSkill.cshtml" />
     <Content Include="Views\HR\EditSkill.cshtml" />
     <Content Include="Views\HR\PositionList.cshtml" />
+    <Content Include="Views\HR\EditPosition.cshtml" />
     <Content Include="Views\HR\CreateSpecialization.cshtml" />
     <Content Include="Views\HR\CreatePosition.cshtml" />
   </ItemGroup>

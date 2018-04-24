@@ -130,6 +130,17 @@ namespace Service
             return UoW.Commit();
         }
 
+        public Position GetPosition(int PositionId)
+        {
+            return UoW.Positions.Find(PositionId);
+        }
+
+        public bool EditPosition(Position position)
+        {
+            int success = UoW.Positions.Update(position);
+            return UoW.Commit() && (success != 0);
+        }
+
         public Specialization GetSpecialization(int SpecializationId)
         {
             return UoW.Specializations.Find(SpecializationId);

@@ -13,12 +13,12 @@ namespace STRoadMap.Controllers
         private readonly IHRLogic HRLogic;
 
         public HRController(IHRLogic HRLogic)
-        {
+        {            
             this.HRLogic = HRLogic;
         }
         // GET: HR
         public string Index()
-        {
+        {         
             return "It works!)";
         }
 
@@ -137,12 +137,13 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult Skill(Skill skill)
         {
+
             if (skill == null)
             {
                 return HttpNotFound();
             }
             else
-            {
+            {                
                 if (HRLogic.DeleteSkill(skill.SkillId))
                 {
                     return RedirectToAction("SkillList", "HR");
@@ -316,5 +317,47 @@ namespace STRoadMap.Controllers
         }
 
 
+
+        [HttpGet]
+        public ActionResult EditPosition(int? PositionId)
+        {
+
+            if (PositionId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                Position position = HRLogic.GetPosition((int)PositionId);
+                if (position != null)
+                {
+                    return View(position);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult EditPosition(Position position)
+        {
+            if (position == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                if (HRLogic.EditPosition(position))
+                {
+                    return RedirectToAction("PositionList", "HR", new { SpecializationId = position.SpecializationId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }
