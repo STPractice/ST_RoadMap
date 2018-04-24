@@ -301,11 +301,11 @@
     <Content Include="Views\HR\PositionList.cshtml" />
     <Content Include="Views\HR\CreateSpecialization.cshtml" />
     <Content Include="Views\HR\CreatePosition.cshtml" />
+    <Content Include="Views\Mentor\EmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Employee\" />
-    <Folder Include="Views\Mentor\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
