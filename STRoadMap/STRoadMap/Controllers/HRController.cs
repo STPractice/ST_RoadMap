@@ -138,14 +138,13 @@ namespace STRoadMap.Controllers
         public ActionResult Skill(Skill skill)
         {
 
-            if (skillId == null)
+            if (skill == null)
             {
                 return HttpNotFound();
             }
             else
-            {
-                var skill = HRLogic.GetSkill((int)skillId);
-                if (skill != null)
+            {                
+                if (HRLogic.DeleteSkill(skill.SkillId))
                 {
                     return RedirectToAction("SkillList", "HR");
                 }
