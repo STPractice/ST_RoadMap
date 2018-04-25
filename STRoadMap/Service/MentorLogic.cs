@@ -16,5 +16,10 @@ namespace Service
         {
             UoW = uoW;
         }
+
+        public IEnumerable<Employee> GetEmployeeList()
+        {
+            return UoW.Employees.GetAll();
+        }
     }
 }
