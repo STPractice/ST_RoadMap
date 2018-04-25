@@ -17,31 +17,33 @@
 <body>
     <div class="base">
         <form method="post">
-            <p>Specialization name</p>
-            <input type="text" name="Name" id="name">
+            <p class="name" style=" margin-bottom:3px;">Specialization name</p>
+            <input type="text" name="Name" id="name" class="specializationName" placeholder="Specialization name" required>
 
             <div class="skills">
                 <div class="available list">
                     <div class="title">
-                        <p>Available skills:</p>
+                        <p class="name">Available skills:</p>
                     </div>
                     @{System.Int32 i = 100; }
                     @foreach (Skill item in Model)
                     {
                         <div class="skill" id="@i">
-                            <p>@item.SkillId</p>
-                            <div class="add" id=@("add" + i.ToString()) >Add</div>
+                            <p>@item.Name</p><p class="small">@item.SkillId</p>
+                            <div class="add" id=@("add" + i.ToString()) >Add</div>                           
                         </div>
                         i++;
                     }
                 </div>
                 <div class="chosen list">
                     <div class="title">
-                        <p>Chosen skills:</p>
+                        <p class="name">Chosen skills:</p>
                     </div>
                 </div>
             </div>
-            <input type="submit" class="submit" value="Submit">
+            <div class="submitbtn">
+                <input type="submit" class="submit" value="Submit">
+            </div>
         </form>                
     </div>
 </body>
