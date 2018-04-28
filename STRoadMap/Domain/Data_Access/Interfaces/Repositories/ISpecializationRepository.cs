@@ -8,5 +8,6 @@ namespace Domain
 {
     public interface ISpecializationRepository : IRepository<Specialization>
     {
+        
     }
 }
