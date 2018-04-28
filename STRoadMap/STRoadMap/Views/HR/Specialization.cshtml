@@ -1,19 +1,40 @@
 ﻿@model Domain.Specialization
-
+@using Domain
 @{
-    Layout = null;
+    ViewBag.Title = "Create Specialization";
 }
 
-<h3>@Model.Name</h3>
-@foreach (var item in Model.Skills)
-{
-    <h2>@item.Name</h2>
-}
-@Html.ActionLink("Edit Specialization", "EditSpecialization",routeValues: new {
-    SpecializationId= @Model.SpecializationId ,      
-})}
-@using (Html.BeginForm())
-{
-    <input type="hidden" name="SkillId" value="@Model.SpecializationId">
-    <input type="submit" value="Delete">
-}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreateSpecialization.css" />
+    <script defer src="~/Scripts/HR/jquery.js"></script>    
+</head>
+<body>
+
+    <div class="base">
+        
+        <p class="name" style=" margin-bottom:8px; font-size:20px;">@Model.Name</p>
+
+                                    
+                <div class="chosen list" style="width: 100%; height: auto; max-height: 400px; margin: 0px auto;">
+                    <div class="title">
+                        <p class="name">Skills:</p>
+                    </div>
+                    
+                    @foreach (Skill item in Model.Skills)
+                    {
+                        <div class="skill">
+                            <p>@item.Name</p>      
+                        </div>
+                    }
+                </div>
+          
+        
+    </div>
+    
+</body>
+</html>
+

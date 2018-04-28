@@ -53,12 +53,7 @@ namespace Service
             {
                 return false;
             }
-        }
-
-        public Specialization GetSpecialization(int id)
-        {
-            return UoW.Specializations.Find(id);
-        }
+        }        
 
         public bool CreateSkill(Skill skill)
         {
