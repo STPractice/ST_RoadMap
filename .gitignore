@@ -21,4 +21,10 @@ STRoadMap/Extensibility/
 
 STRoadMap/\.vs/config/applicationhost\.config
 
-STRoadMap/Domain/App_Data/
+STRoadMap/Domain/
+
+STRoadMap/\.vs/
+
+STRoadMap/STRoadMap/
+
+STRoadMap/Service/
