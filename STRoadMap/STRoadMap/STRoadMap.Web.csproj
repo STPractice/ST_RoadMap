@@ -231,6 +231,7 @@
     <Content Include="Content\HRLists.css" />
     <Content Include="Content\HRVIewSkill.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\RoadMap.css" />
     <Content Include="Content\SignIn.css" />
     <Content Include="Content\SignUp.css" />
     <Content Include="Content\_Toolbox.css" />
@@ -248,6 +249,7 @@
     <Content Include="Scripts\HR\CreateSpecialization\HRCreateSpecialization.js" />
     <Content Include="Scripts\HR\EditSkill\HREditSkill.js" />
     <Content Include="Scripts\HR\jquery.js" />
+    <Content Include="Scripts\HR\RoadMap\RoadMap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -311,6 +313,7 @@
     <Content Include="Views\Shared\_ToolBar.cshtml" />
     <Content Include="Views\HR\EmployeeList.cshtml" />
     <Content Include="Views\Mentor\EmployeeProfile.cshtml" />
+    <Content Include="Views\HR\RoadMap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

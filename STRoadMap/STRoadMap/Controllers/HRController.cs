@@ -516,6 +516,12 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
+        public ActionResult RoadMap(int RoadMapId)
+        {
+            return View();
+        }
+
+        [HttpGet]
         public ActionResult EditSpecialization(int? SpecializationId)
         {
             if (!IsAuthorized())
