@@ -1,7 +1,7 @@
 ﻿@model Domain.Specialization
-
+@using Domain
 @{
-    Layout = null;
+    ViewBag.Title = "Create Specialization";
 }
 
 <!DOCTYPE html>
@@ -9,37 +9,64 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>EditSpecialization</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreateSpecialization.css" />
+    <script defer src="~/Scripts/HR/jquery.js"></script>
+    <script defer src="~/Scripts/HR/CreateSpecialization/HRCreateSpecialization.js"></script>
 </head>
 <body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>Specialization</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+    <div class="base">
+        <form method="post">
+            <p class="name" style=" margin-bottom:3px;">Specialization name</p>
+            <input type="text" name="Name" id="name" class="specializationName" placeholder="Specialization name" value="@Model.Name" required>
+
+            <div class="skills">
+                <div class="available list">
+                    <div class="title">
+                        <p class="name">Available skills:</p>
+                    </div>
+                    @{List<Skill> existingSkills = new List<Skill>();}
+                    @{System.Int32 i = 100; }
+                    @foreach (Skill item in ViewBag.Skills)
+                    {
+
+                        if (Model.Skills.Contains(item))
+                        {
+                            existingSkills.Add(item);
+                        }
+                        else
+                        {
+                            <div class="skill" id="@i">
+                                <p>@item.Name</p><p class="small">@item.SkillId</p>
+                                <div class="add" id=@("add" + i.ToString())>Add</div>
+                            </div>
+                            i++;
+                        }
+                    }
+                </div>
+                <div class="chosen list">
+                    <div class="title">
+                        <p class="name">Chosen skills:</p>
+                    </div>
+                    @{System.Int32 j = 0; }
+                        @foreach (Skill item in existingSkills)
+                        {
+                        <div class="skill" id="@i">
+                            <p>@item.Name</p><p class="small">@item.SkillId</p>
+                            <input type="hidden" name="Skills[@j].SkillId" value="@item.SkillId" />
+                            <div class="delete" id=@("delete" + i.ToString())>Delete</div>
+                        </div>
+                        i++;
+                        j++;
+                    }
                 </div>
             </div>
-    
-            @Html.HiddenFor(model => model.SpecializationId)
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
+            <div class="submitbtn">
+                <input type="submit" class="submit" value="Submit">
             </div>
-        </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
+        </form>
     </div>
+    <div id="choosenSkillsCount" hidden="hidden">@j</div>
 </body>
 </html>
+

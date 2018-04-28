@@ -38,8 +38,6 @@ namespace Extensibility
 
         bool CreateSpecialization(Specialization specialization);
 
-        bool EditSpecialization(Specialization spec);
-
-        Specialization GetSpecialization(int SpecializationId);
+        bool EditSpecialization(Specialization spec);        
     }
 }

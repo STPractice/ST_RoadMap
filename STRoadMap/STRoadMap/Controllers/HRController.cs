@@ -373,6 +373,7 @@ namespace STRoadMap.Controllers
                 Specialization specialization = HRLogic.GetSpecialization((int)SpecializationId);
                 if (specialization != null)
                 {
+                    ViewBag.Skills = HRLogic.GetSkillList();
                     return View(specialization);
                 }
                 else
@@ -392,7 +393,7 @@ namespace STRoadMap.Controllers
             else
             {
                 if (HRLogic.EditSpecialization(specialization))
-                {
+                {                    
                     return RedirectToAction("SpecializationList", "HR");
                 }
                 else
