@@ -10,5 +10,7 @@ namespace Extensibility
     public interface IMentorLogic
     {
         IEnumerable<Employee> GetEmployeeList();
+
+        AspNetUser GetEmployeesProfile(string employeeId);
     }
 }

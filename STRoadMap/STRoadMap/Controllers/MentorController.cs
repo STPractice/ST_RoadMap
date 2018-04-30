@@ -35,5 +35,26 @@ namespace STRoadMap.Controllers
                 return View(spec);
             }
         }
+
+        [HttpGet]
+        public ActionResult EmployeeProfile(string employeeId= "1f2dc159-0b55-48a1-afec-d8f0066ba569")
+        {
+            if(employeeId==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var user = MentorLogic.GetEmployeesProfile(employeeId);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }

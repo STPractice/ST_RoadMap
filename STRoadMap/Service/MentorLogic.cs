@@ -21,5 +21,10 @@ namespace Service
         {
             return UoW.Employees.GetAll();
         }
+
+        public AspNetUser GetEmployeesProfile(string employeeId)
+        {
+            return UoW.AspNetUsers.Find(employeeId);
+        }
     }
 }
