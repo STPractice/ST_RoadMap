@@ -638,5 +638,26 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        [HttpGet]
+        public ActionResult EmployeesProfile(string employeeId= "fb49ae2e-e3a3-4276-aefb-a19308b0761e")
+        {
+            if(employeeId==null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var user = HRLogic.GetEmployeesProfile(employeeId);
+                if(user!=null)
+                {
+                    return View(user);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
     }
 }

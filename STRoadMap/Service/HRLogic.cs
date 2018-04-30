@@ -204,5 +204,10 @@ namespace Service
             UoW.RMCheckpoints.Update(checkpoint);
             return UoW.Commit();
         }
+
+        public AspNetUser GetEmployeesProfile(string employeeId)
+        {
+            return UoW.AspNetUsers.Find(employeeId);
+        }
     }
 }
