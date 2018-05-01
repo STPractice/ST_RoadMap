@@ -305,10 +305,10 @@
     <Content Include="Views\Mentor\EmployeeList.cshtml" />
     <Content Include="Views\HR\Specialization.cshtml" />
     <Content Include="Views\HR\EditSpecialization.cshtml" />
+    <Content Include="Views\Employee\PerformanceReview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Employee\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
