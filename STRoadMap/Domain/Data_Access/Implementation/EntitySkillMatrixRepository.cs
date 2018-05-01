@@ -19,6 +19,24 @@ namespace Domain
 
         public int Create(SkillMatrix entity)
         {
+            Specialization innerSpecialization = UoW.Specializations.Find(entity.SpecializationId);
+            if (innerSpecialization == null)
+            {
+                return 0;
+            }
+            entity.Specialization = innerSpecialization;
+
+            List<SkillLevel> innerSkillLevels = new List<SkillLevel>();
+            foreach (SkillLevel skillLevel in entity.SkillLevels)
+            {
+                SkillLevel innerSkillLevel = UoW.SkillLevels.Find(skillLevel.SkillLevelId);
+                innerSkillLevels.Add(innerSkillLevel);
+                if (innerSkillLevel == null)
+                {
+                    return 0;
+                }
+            }
+            entity.SkillLevels = innerSkillLevels;
             return context.SkillMatrices.Add(entity).SkillMatrixId;
         }
 
