@@ -1,5 +1,8 @@
 ﻿@model Domain.Specialization
 @using Domain
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +69,7 @@
             var count = (Model.Positions == null || Model.Positions.Count == 0) ? 0 : (Model.Positions.Last().PositionLevel + 1);
         }
         <input type="hidden" name="SpecializationId" value=@Model.SpecializationId />
-        <input type="hidden" name="PositionLevel" value=@count />        
+        <input type="hidden" name="PositionLevel" value=@count />
         <input type="submit" class="submit" name="CreatePosition" value="Create Position" />
     </form>
 </body>
