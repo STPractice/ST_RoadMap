@@ -25,23 +25,25 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult PerformanceReview(int? SpecializationId = 103)
         {
-            if (SpecializationId == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                Specialization spec = employeeLogic.GetSpecialization((int)SpecializationId);
-                if (spec == null)
-                {
-                    return HttpNotFound();
-                }
-                else
-                {
+            //if (SpecializationId == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //else
+            //{
+            //    Specialization spec = employeeLogic.GetSpecialization((int)SpecializationId);
+            //    if (spec == null)
+            //    {
+            //        return HttpNotFound();
+            //    }
+            //    else
+            //    {
 
-                    return View(spec);
-                }
-            }
+            //        return View(spec);
+            //    }
+            //}
+            IEnumerable<Specialization> specs = employeeLogic.GetSpecializations();
+            return View(specs);
         }
 
         [HttpPost]

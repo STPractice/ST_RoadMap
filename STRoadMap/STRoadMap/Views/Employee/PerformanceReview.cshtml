@@ -1,4 +1,4 @@
-﻿@model Domain.Specialization
+﻿@model IEnumerable<Domain.Specialization>
 @using Domain
 <!DOCTYPE html>
 <html>
@@ -20,53 +20,72 @@
                 }
             }
         }
+        function changeSpecialization() {
+            var dropspec = document.querySelector("#dropSpecializations").options.selectedIndex;
+            var specializations = document.querySelectorAll("form");
+            for (var i = 0; i < specializations.length; i++) {
+                if (i == dropspec) {
+                    specializations[i].style = "display:inline-block";
+                }
+                else {
+                    specializations[i].style = "display:none";
+                }
+            }
+        }
     </script>
 </head>
 <body>
-    <form method="post" class="position-container">
-        <div>
-            <p>Specialization: @Model.Name</p>
-            <br />
-        </div>
-        <div class="createPosition-block">
-            <div class="positionSkills">
-                <p>Skills</p>
-                <ul class="block " id="skillsList" style="height:200px">
-                    @for (int i = 0; i < Model.Skills.Count; i++)
+    <div id="performanceReview">
+        <div id="chooseSpec">
+            <p>Specialization</p>
+            <select id="dropSpecializations" class="dropdownSpecializations" name="SpecializationId" onchange="changeSpecialization()" autofocus>
+                @foreach (var specialization in Model)
                 {
-                    <li id="skill@(i)" onclick="changeBlock(@i)">
-                        @Model.Skills.ElementAt(i).Name
-                    </li>
-            }
-                </ul>
-            </div>
-            @for (int j = 0; j < Model.Skills.Count; j++)
+                    <option value="@specialization.SpecializationId">@specialization.Name</option>
+                }
+            </select>
+        </div>
+        @for (int i = 0; i < Model.Count(); i++)
         {
-            <div class="skillLevels" id="skillLevels@(j)">
-                <p>Skill levels (@Model.Skills.ElementAt(j).Name)</p>
-                <ul class="block" id="skillLevelsList" style="height:200px">
-                    @for (int i = 0; i < Model.Skills.ElementAt(j).SkillLevels.Count; i++)
-                {
-                    <li>
-                        @{
-                        var ch = i == 0 ? true : false;
-                        }
-                        <input type="radio" name="SkillLevels[@j].SkillLevelId" value=@Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).SkillLevelId checked="@ch" />
-                        <label for="SkillLevels[@j].SkillLevelId">@Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).Name</label>
-                        <br />
-                    </li>
-            }
-                </ul>
-            </div>
-    }
-        </div>
-        <br />
-        @{
-        var count = (Model.Positions == null || Model.Positions.Count == 0) ? 0 : (Model.Positions.Last().PositionLevel + 1);
+            <form method="post" class="position-container forSpecialization" id="specialization@(i)">
+                <div class="createPosition-block">
+                    <div class="positionSkills">
+                        <p>Skills</p>
+                        <ul class="block " id="skillsList" style="height:200px">
+                            @for (int j = 0; j < Model.ElementAt(i).Skills.Count; j++)
+                            {
+                                <li id="skill@(j)" onclick="changeBlock(@j)">
+                                    @Model.ElementAt(i).Skills.ElementAt(j).Name
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    @for (int j = 0; j < Model.ElementAt(i).Skills.Count; j++)
+                    {
+                        <div class="skillLevels" id="skillLevels@(j)">
+                            <p>Skill levels (@Model.ElementAt(i).Skills.ElementAt(j).Name)</p>
+                            <ul class="block" id="skillLevelsList" style="height:200px">
+                                @for (int k = 0; k < Model.ElementAt(i).Skills.ElementAt(j).SkillLevels.Count; k++)
+                                {
+                                    <li>
+                                        @{
+                                            var ch = k == 0 ? true : false;
+                                        }
+                                        <input type="radio" name="SkillLevels[@j].SkillLevelId" value=@Model.ElementAt(i).Skills.ElementAt(j).SkillLevels.ElementAt(k).SkillLevelId checked="@ch" />
+                                        <label for="SkillLevels[@j].SkillLevelId">@Model.ElementAt(i).Skills.ElementAt(j).SkillLevels.ElementAt(k).Name</label>
+                                        <br />
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+                    }
+                </div>
+                <input type="submit" class="submit" name="PerformanceReview" value="Submit" />
+                <input type="hidden" name="SpecializationId" value=@Model.ElementAt(i).SpecializationId />
+                <input type="hidden" name="EmployeeId" value=@(100) />
+
+            </form>
         }
-        <input type="hidden" name="SpecializationId" value=@Model.SpecializationId />
-        <input type="hidden" name="EmployeeId" value=@(100) />
-        <input type="submit" class="submit" name="PerformanceReview" value="Submit" />
-    </form>
+    </div>
 </body>
 </html>

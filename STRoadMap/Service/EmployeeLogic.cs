@@ -40,5 +40,9 @@ namespace Service
         {
             return UoW.Specializations.Find(SpecializationId);
         }
+        public IEnumerable<Specialization> GetSpecializations()
+        {
+            return UoW.Specializations.GetAll();
+        }
     }
 }
