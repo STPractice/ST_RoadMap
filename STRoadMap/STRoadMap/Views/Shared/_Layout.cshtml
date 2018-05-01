@@ -1,8 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Ajax.Utilities
+@using Microsoft.AspNet.Identity
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/_Toolbox.css" />
     <link rel="shortcut icon" href="Content\analytics.ico" type="image/x-icon">
     <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
@@ -25,9 +28,14 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                  
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+            @if (Request.IsAuthenticated)
+            {
+                @Html.Partial("_ToolBar")
+            }
         </div>
     </div>
     <div class="container body-content">

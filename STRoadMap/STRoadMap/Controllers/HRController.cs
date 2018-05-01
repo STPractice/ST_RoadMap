@@ -5,6 +5,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Domain;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using STRoadMap.Models;
 
 namespace STRoadMap.Controllers
 {
@@ -48,7 +51,6 @@ namespace STRoadMap.Controllers
                 }
             }
         }
-
         [HttpGet]
         public ActionResult SkillList()
         {
