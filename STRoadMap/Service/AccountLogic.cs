@@ -15,9 +15,9 @@ namespace Service
         {
             this.UoW = uoW;
         }
-        public bool CreateEmployee(string Id)
+        public bool CreateEmployee(string Id, string userName)
         {
-            this.UoW.Employees.Create(new Employee() { UserId=Id });
+            this.UoW.Employees.Create(new Employee() { UserId=Id, Name=userName });
             return UoW.Commit();
         }
     }

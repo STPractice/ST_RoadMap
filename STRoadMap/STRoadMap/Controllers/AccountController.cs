@@ -166,7 +166,7 @@ namespace STRoadMap.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);                
                 if (result.Succeeded)
                 {
-                    accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id);
+                    bool succeed = accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id, user.UserName);
 
                     ApplicationDbContext context = new ApplicationDbContext();
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
