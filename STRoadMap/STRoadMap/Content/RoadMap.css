@@ -27,6 +27,10 @@ a {
     cursor: pointer;
 }
 
+.skillInfo{
+    width:95%;
+}
+
 .mobile {
     display: none;
 }
@@ -39,11 +43,16 @@ a {
 
 .listOfCheckpoints {
     padding: 3px;
-    width: 300px;
+    width: 25%;
     height: inherit;
     overflow-y: auto;
     border-right: 2px solid #e6eceb;
     overflow: hidden;
+}
+
+.checkbox{
+    min-height:0px;
+    margin-top:20px;
 }
 
     .listOfCheckpoints p {
@@ -69,6 +78,7 @@ a {
 
 .listOfSkills {
     display: flex;
+    width:75%;
     flex-direction: column;
 }
 
@@ -82,11 +92,7 @@ a {
 
 
 
-@media screen and (min-width: 1920px) {
-    .base {
-        margin: auto 400px;
-    }
-}
+
 
 @media screen and (max-width: 768px) {
     .base {

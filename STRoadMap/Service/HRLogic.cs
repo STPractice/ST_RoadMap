@@ -172,6 +172,18 @@ namespace Service
             return success && UoW.Commit();
         }
 
+
+        public RoadMap GetRoadMap(int RoadMapId)
+        {
+            return UoW.RoadMaps.Find(RoadMapId);
+        }
+
+        public bool DeleteRoadMap(int RoadMapId)
+        {
+            UoW.RoadMaps.Delete(UoW.RoadMaps.Find(RoadMapId));
+            return UoW.Commit();
+        }
+
         public IEnumerable<Employee> GetEmployeeList()
         {
            return UoW.Employees.GetAll();

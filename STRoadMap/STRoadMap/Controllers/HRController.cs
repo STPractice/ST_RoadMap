@@ -516,9 +516,44 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult RoadMap(int RoadMapId)
+        public ActionResult RoadMap(int? RoadMapId)
         {
-            return View();
+            if (RoadMapId != null)
+            {
+                RoadMap roadMap = HRLogic.GetRoadMap((int)RoadMapId);
+                if (roadMap != null)
+                {
+                    return View(roadMap);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRoadMap(int? RoadMapId)
+        {
+            if (RoadMapId != null)
+            {                
+                if (HRLogic.DeleteRoadMap((int)RoadMapId))
+                {
+                    return RedirectToAction("EmolyeeList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
         }
 
         [HttpGet]
