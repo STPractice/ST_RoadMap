@@ -8,6 +8,7 @@ using System.Text;
 
 namespace Service
 {
+
     public class HRLogic : IHRLogic
     {
         IUnitOfWork UoW;
@@ -170,6 +171,10 @@ namespace Service
             bool success = UoW.Specializations.Update(spec)!= 0;
             return success && UoW.Commit();
         }
-        
+
+        public IEnumerable<Employee> GetEmployeeList()
+        {
+           return UoW.Employees.GetAll();
+        }
     }
 }

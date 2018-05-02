@@ -42,7 +42,7 @@
         position: absolute;
         left: 1px;
         display: none;
-        width: 100px;
+        min-width: 100px;
         margin: 0;
         padding: 0;
         list-style: none;

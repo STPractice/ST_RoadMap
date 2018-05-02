@@ -2,12 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Domain;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using STRoadMap.Models;
 
 namespace STRoadMap.Controllers
 {
@@ -16,8 +12,9 @@ namespace STRoadMap.Controllers
         private readonly IHRLogic HRLogic;
 
         public HRController(IHRLogic HRLogic)
-        {            
+        {
             this.HRLogic = HRLogic;
+           
         }
         // GET: HR
         public string Index()
@@ -25,14 +22,28 @@ namespace STRoadMap.Controllers
             return "It works!)";
         }
 
+        private bool IsAuthorized()
+        {
+            return HttpContext.User.IsInRole("HR");
+        }
+
         [HttpGet]
         public ActionResult CreateSkill()
         {
+            if (!IsAuthorized()) {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             return View();
         }
         [HttpPost]
         public ActionResult CreateSkill(Skill skill)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (skill == null)
             {
                 Response.StatusCode = 404;
@@ -54,6 +65,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult SkillList()
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             IEnumerable<Skill> skillList = HRLogic.GetSkillList();
             return View(skillList);
         }
@@ -61,6 +77,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult SkillList(int? SkillId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
 
             if (SkillId == null)
             {
@@ -78,11 +99,32 @@ namespace STRoadMap.Controllers
                 }
             }
         }
-
+        public ActionResult EmployeeList()
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            IEnumerable<Employee> spec = HRLogic.GetEmployeeList();
+            if (spec == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(spec);
+            }
+        }
 
         [HttpGet]
         public ActionResult SpecializationList()
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             IEnumerable<Specialization> spec = HRLogic.GetSpecializationList();
             if (spec == null)
             {
@@ -96,7 +138,12 @@ namespace STRoadMap.Controllers
 
         [HttpPost]
         public ActionResult SpecializationList(int? SpecializationId)
-        {            
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (SpecializationId == null)
             {
                 return HttpNotFound();
@@ -117,6 +164,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult Specialization(int? specializationId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (specializationId == null)
             {
                 return HttpNotFound();
@@ -138,6 +190,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult Specialization(Specialization specialization)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (specialization != null)
             {
                 if (HRLogic.DeleteSpecialization(specialization.SpecializationId))
@@ -158,7 +215,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult Skill(int? skillId)
         {
-
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (skillId == null)
             {
                 return HttpNotFound();
@@ -180,7 +241,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult Skill(Skill skill)
         {
-
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (skill == null)
             {
                 return HttpNotFound();
@@ -201,7 +266,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EditSkill(int? SkillId)
         {
-
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (SkillId == null)
             {
                 return HttpNotFound();
@@ -223,6 +292,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult EditSkill(Skill skill)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (skill == null)
             {
                 return HttpNotFound();
@@ -243,6 +317,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult PositionList(int? SpecializationId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (SpecializationId == null)
             {
                 return HttpNotFound();
@@ -265,6 +344,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult PositionList(int? PositionId, int? SpecializationId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (PositionId == null || SpecializationId == null)
             {
                 return HttpNotFound();
@@ -286,6 +370,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult CreatePosition(int? SpecializationId=103)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (SpecializationId == null)
             {
                 return HttpNotFound();
@@ -307,6 +396,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult CreatePosition(Position position)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (position == null)
             {
                 return HttpNotFound();
@@ -327,7 +421,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult CreateSpecialization()
         {
-
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             List<Skill> skills = HRLogic.GetSkillList().ToList<Skill>();
             if (skills != null)
             {
@@ -342,6 +440,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult CreateSpecialization(Specialization specialization)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (specialization == null)
             {
                 return HttpNotFound();
@@ -364,7 +467,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EditPosition(int? PositionId)
         {
-
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (PositionId == null)
             {
                 return HttpNotFound();
@@ -386,6 +493,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult EditPosition(Position position)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (position == null)
             {
                 return HttpNotFound();
@@ -406,6 +518,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EditSpecialization(int? SpecializationId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
 
             if (SpecializationId == null)
             {
@@ -428,7 +545,10 @@ namespace STRoadMap.Controllers
 
         [HttpPost]
         public ActionResult EditSpecialization(Specialization specialization)
-        {
+        {           if (!IsAuthorized()) { 
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (specialization == null)
             {
                 return HttpNotFound();

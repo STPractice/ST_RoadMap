@@ -307,6 +307,7 @@
     <Content Include="Views\HR\Specialization.cshtml" />
     <Content Include="Views\HR\EditSpecialization.cshtml" />
     <Content Include="Views\Shared\_ToolBar.cshtml" />
+    <Content Include="Views\HR\EmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

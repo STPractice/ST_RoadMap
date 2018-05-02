@@ -38,6 +38,7 @@ namespace Extensibility
 
         bool CreateSpecialization(Specialization specialization);
 
-        bool EditSpecialization(Specialization spec);        
+        bool EditSpecialization(Specialization spec);
+        IEnumerable<Employee> GetEmployeeList();
     }
 }
