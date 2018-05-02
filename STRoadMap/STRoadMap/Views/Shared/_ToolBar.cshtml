@@ -4,9 +4,9 @@
     <ul class="main-menu">
         <li><p>My profile</p>
             <ul class="sub-menu">
-                <li>@Html.ActionLink("Pass performance review", "../PerformanceReview")</li>
+                <li>@Html.ActionLink("Pass performance review", "../Employee/PerformanceReview")</li>
                 <li>@Html.ActionLink("SkillMatrix", "../Employee/SkillMatrix")</li>
-                <li>@Html.ActionLink("News", "../News")</li>
+                <li>@Html.ActionLink("News", "../Employee/News")</li>
             </ul></li>
 @if (HttpContext.Current.User.IsInRole("Mentor") || HttpContext.Current.User.IsInRole("HR"))
 {
@@ -26,7 +26,7 @@
         <ul class="sub-menu">
             <li>@Html.ActionLink("Employees", "../HR/EmployeeList")</li>
             <li>@Html.ActionLink("Skills", "../HR/SkillList")</li>
-            <li>@Html.ActionLink("Positions", "../HR/SpecializationList")</li>
+            <li>@Html.ActionLink("Specializations", "../HR/SpecializationList")</li>
         </ul>
     </li>
 }
