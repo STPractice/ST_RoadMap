@@ -24,13 +24,16 @@
                 </button>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">                
-                    <li> @if (Request.IsAuthenticated)
-                         {
-                             @Html.Partial("_ToolBar")
-                         }</li>
-                    <li> @Html.Partial("_LoginPartial")</li>
+                <ul class="nav navbar-nav">
+                    <li>
+                        @if (Request.IsAuthenticated)
+            {
+                @Html.Partial("_ToolBar")
+}
+                    </li>
+
                 </ul>
+                @Html.Partial("_LoginPartial")
             </div>
            
         </div>

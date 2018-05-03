@@ -22,7 +22,7 @@
         display: inline-block;
         margin-right: -3px;
         background: #222222;
-        border-right: 2px #999999 solid;
+       
     }
 
     .main-menu p {
@@ -33,7 +33,6 @@
         height: 50px;
         text-align: center;
         display: block;
-        padding-right: 5px;
         color: #999999;
     }
 
