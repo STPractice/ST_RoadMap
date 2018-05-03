@@ -1,0 +1,38 @@
+﻿<link rel="stylesheet" type="text/css" media="screen" href="~/Content/_Toolbox.css" />
+@if (Request.IsAuthenticated)
+{
+    <ul class="main-menu">
+        <li><p>My profile</p>
+            <ul class="sub-menu">
+                <li>@Html.ActionLink("Pass performance review", "../Employee/PerformanceReview")</li>
+                <li>@Html.ActionLink("SkillMatrix", "../Employee/SkillMatrix")</li>
+                <li>@Html.ActionLink("News", "../Employee/News")</li>
+            </ul></li>
+@if (HttpContext.Current.User.IsInRole("Mentor") || HttpContext.Current.User.IsInRole("HR"))
+{
+    <li>
+        <p>Mentoring</p>
+        <ul class="sub-menu">
+            <li>@Html.ActionLink("Employees", "../Mentor/EmployeeList")</li>
+        </ul>
+    </li>
+}
+@if (HttpContext.Current.User.IsInRole("HR") )
+{
+
+    <li>
+        <p>HR</p>
+
+        <ul class="sub-menu">
+            <li>@Html.ActionLink("Employees", "../HR/EmployeeList")</li>
+            <li>@Html.ActionLink("Skills", "../HR/SkillList")</li>
+            <li>@Html.ActionLink("Specializations", "../HR/SpecializationList")</li>
+        </ul>
+    </li>
+}
+    </ul>
+}
+else
+{
+
+}

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Extensibility;
 
 namespace STRoadMap.Controllers
@@ -14,6 +10,10 @@ namespace STRoadMap.Controllers
         public EmployeeController(IEmployeeLogic EmployeeLogic)
         {
             this.EmployeeLogic = EmployeeLogic;
+        }
+        private bool IsAuthorized()
+        {
+            return HttpContext.User.IsInRole("HR") || HttpContext.User.IsInRole("Mentor") || HttpContext.User.IsInRole("Employee");
         }
         // GET: Employee
         public string Index()

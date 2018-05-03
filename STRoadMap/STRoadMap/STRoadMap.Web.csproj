@@ -232,6 +232,7 @@
     <Content Include="Content\HRVIewSkill.css" />
     <Content Include="Content\SignIn.css" />
     <Content Include="Content\SignUp.css" />
+    <Content Include="Content\_Toolbox.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -305,6 +306,8 @@
     <Content Include="Views\Mentor\EmployeeList.cshtml" />
     <Content Include="Views\HR\Specialization.cshtml" />
     <Content Include="Views\HR\EditSpecialization.cshtml" />
+    <Content Include="Views\Shared\_ToolBar.cshtml" />
+    <Content Include="Views\HR\EmployeeList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -18,6 +18,10 @@ namespace STRoadMap.Controllers
             this.MentorLogic = MentorLogic;
         }
         // GET: Mentor
+        private bool IsAuthorized()
+        {
+            return HttpContext.User.IsInRole("HR")|| HttpContext.User.IsInRole("Mentor");
+        }
         public string Index()
         {
             return "It works)";
@@ -25,6 +29,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EmployeeList()
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             IEnumerable<Employee> spec = MentorLogic.GetEmployeeList();
             if (spec == null)
             {
