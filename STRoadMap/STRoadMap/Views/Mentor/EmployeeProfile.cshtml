@@ -1,0 +1,60 @@
+﻿@using Domain
+@model Domain.AspNetUser
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/Profile.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    <div class="list-block">
+        <div class="items-container">
+            <table>
+                <tr>
+                    <td class="photo"><img src="http://cs8.pikabu.ru/post_img/2017/03/29/6/1490776107120626903.jpg" width="180" /></td>
+
+                    <td class="info">
+                        @{
+                        List<Employee> employees = Model.Employees.ToList<Employee>();
+                        foreach (var employee in employees)
+                        {
+                            <p>@employee.Name</p>
+                        List<SkillMatrix> skillMatrices = employee.SkillMatrices.ToList<SkillMatrix>();
+                        foreach (var skillMatrix in skillMatrices)
+                        {
+                            Specialization specialization = skillMatrix.Specialization;
+                            <p>@specialization.Name</p>
+                    }
+                }
+                        }
+
+                        @{
+                        List<AspNetRole> roles = Model.AspNetRoles.ToList<AspNetRole>();
+                        foreach (var role in roles)
+                        {
+                            <p>@role.Name</p>
+                    }
+                        }
+                    </td>
+                </tr>
+                <tr class="row">
+
+                    <td class="buttonContainer">
+                        @Html.ActionLink("Skill Matrix", "SkillMatrix")
+                    </td>
+                    <td class="buttonContainer">
+                        @Html.ActionLink("Road Map", "RoadMap")
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
