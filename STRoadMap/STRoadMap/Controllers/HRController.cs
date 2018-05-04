@@ -10,10 +10,12 @@ namespace STRoadMap.Controllers
     public class HRController : Controller
     {
         private readonly IHRLogic HRLogic;
+        private readonly IAccountLogic AccountLogic;
 
-        public HRController(IHRLogic HRLogic)
+        public HRController(IHRLogic HRLogic, IAccountLogic accountLogic)
         {
             this.HRLogic = HRLogic;
+            this.AccountLogic = accountLogic;
            
         }       
         
@@ -638,5 +640,53 @@ namespace STRoadMap.Controllers
                 }
             }
         }
-    }
+
+        [HttpGet]
+        public ActionResult CreateRoadMap(int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                Employee employee = HRLogic.GetEmployee((int) EmployeeId);
+                if (employee!=null)
+                {
+                    return View(employee);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult CreateRoadMap(RoadMap roadMap)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+
+            int id = HRLogic.CreateRoadMap(roadMap);
+            if (id!=0)
+            {
+                return RedirectToAction("RoadMap", "HR", new { RoadMapId = id });
+            }
+            else
+            {
+                return HttpNotFound();
+            };
+        }
+    }    
+
 }

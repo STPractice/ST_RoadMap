@@ -190,6 +190,16 @@ namespace Service
         {
            return UoW.Employees.GetAll();
         }
+
+        public Employee GetEmployee(int EmployeeId)
+        {
+            return UoW.Employees.Find(EmployeeId);
+        }
+
+        public int CreateRoadMap(RoadMap roadMap)
+        {
+            return UoW.RoadMaps.Create(roadMap);
+        }
         public bool AcceptCheckpoint(int RMCheckpointId)
         {
             RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);

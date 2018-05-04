@@ -48,5 +48,10 @@ namespace Extensibility
 
         bool AcceptCheckpoint(int RMCheckpointId);
         bool RefuseCheckpoint(int RMCheckpointId);
+        IEnumerable<Employee> GetEmployeeList();
+
+        Employee GetEmployee(int EmployeeId);
+
+        int CreateRoadMap(RoadMap roadMap);
     }
 }
