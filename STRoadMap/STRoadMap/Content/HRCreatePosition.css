@@ -44,21 +44,7 @@ form input {
     width:380px;
     padding: 5px;
 }
-::-webkit-input-placeholder {
-    color: #98e2e8;
-}
 
-::-moz-placeholder {
-    color: #98e2e8;
-}
-/* Firefox 19+ */
-:-moz-placeholder {
-    color: #98e2e8;
-}
-/* Firefox 18- */
-:-ms-input-placeholder {
-    color: #98e2e8;
-}
 
 .positionSkills, .skillLevels {
     display: inline-block;
@@ -123,9 +109,10 @@ form.forSpecialization {
 }
 #chooseSpec {
     padding:20px;
-    margin:10px;
 }
-
+.container {
+    padding-top:0;
+}
 @media screen and (max-width: 768px) {
     .positionSkills {
         flex-basis: 100%;
@@ -133,4 +120,9 @@ form.forSpecialization {
     .skillLevels {
         flex-basis: 100%;
     }
+}
+#dropSpecializations {
+    border:2px solid #63cdd7;
+    padding:10px;
+    color:#63cdd7;
 }
