@@ -11,16 +11,19 @@ namespace Service
     public class EmployeeLogic:IEmployeeLogic
     {
         private readonly IUnitOfWork UoW;
-        private readonly Employee employee;
+        
 
         public EmployeeLogic(IUnitOfWork uoW)
         {
             UoW = uoW;
-            employee = UoW.Employees.Find(100);
+            
+            
         }
 
-        public bool CreateSkillMatrix(SkillMatrix matrix)
+        public bool CreateSkillMatrix(SkillMatrix matrix, string userId)
         {
+            Employee employee = UoW.Employees.FindByUserId(userId);
+            matrix.EmpolyeeId = employee.EmpolyeeId;
             try
             {
                 if (employee.SkillMatrices.Count != 0)

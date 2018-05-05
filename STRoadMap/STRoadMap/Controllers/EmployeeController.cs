@@ -5,12 +5,19 @@ using System.Web;
 using System.Web.Mvc;
 using Domain;
 using Extensibility;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using STRoadMap.Models;
 
 namespace STRoadMap.Controllers
 {
     public class EmployeeController : Controller
-    {
+    {        
         private readonly IEmployeeLogic employeeLogic;
+
+        protected ApplicationDbContext ApplicationDbContext { get; set; }
+
+        protected UserManager<ApplicationUser> UserManager { get; set; }
 
         public EmployeeController(IEmployeeLogic EmployeeLogic)
         {
@@ -23,43 +30,26 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult PerformanceReview(int? SpecializationId = 103)
-        {
-            //if (SpecializationId == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //else
-            //{
-            //    Specialization spec = employeeLogic.GetSpecialization((int)SpecializationId);
-            //    if (spec == null)
-            //    {
-            //        return HttpNotFound();
-            //    }
-            //    else
-            //    {
-
-            //        return View(spec);
-            //    }
-            //}
+        public ActionResult PerformanceReview()
+        {            
             IEnumerable<Specialization> specs = employeeLogic.GetSpecializations();
             return View(specs);
         }
 
         [HttpPost]
         public ActionResult PerformanceReview(SkillMatrix position)
-        {
-            position.EmpolyeeId = 100;
+        {            
             if (position == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                if (employeeLogic.CreateSkillMatrix(position))
+                this.ApplicationDbContext = new ApplicationDbContext();
+                this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));                
+                if (employeeLogic.CreateSkillMatrix(position, UserManager.FindByName(HttpContext.User.Identity.Name).Id))
                 {
-                    return View("Index");
-                    //return RedirectToAction("PositionList", "HR", new { SpecializationId = position.SpecializationId });
+                    return View("Employee", "Employee");                    
                 }
                 else
                 {

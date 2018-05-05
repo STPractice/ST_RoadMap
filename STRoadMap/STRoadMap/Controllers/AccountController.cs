@@ -166,7 +166,7 @@ namespace STRoadMap.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);                
                 if (result.Succeeded)
                 {
-                    accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id);
+                    accountLogic.CreateEmployee(UserManager.FindByName(user.UserName).Id, user.UserName);
 
                     ApplicationDbContext context = new ApplicationDbContext();
                     var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
@@ -440,6 +440,10 @@ namespace STRoadMap.Controllers
             }
 
             base.Dispose(disposing);
+        }
+        public string UserId(string Name)
+        {
+            return UserManager.FindByName(Name).Id;
         }
 
         #region Helpers

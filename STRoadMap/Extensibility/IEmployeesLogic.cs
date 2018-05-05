@@ -10,7 +10,7 @@ namespace Extensibility
     public interface IEmployeeLogic
     {
         Specialization GetSpecialization(int SpecializationId);
-        bool CreateSkillMatrix(SkillMatrix matrix);
+        bool CreateSkillMatrix(SkillMatrix matrix, string userName);
         IEnumerable<Specialization> GetSpecializations();
     }
 }

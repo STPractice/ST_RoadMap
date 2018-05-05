@@ -9,6 +9,6 @@ namespace Extensibility
 {
     public interface IAccountLogic
     {
-        bool CreateEmployee(string Id);
+        bool CreateEmployee(string Id, string Name);
     }
 }

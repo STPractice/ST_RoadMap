@@ -8,5 +8,6 @@ namespace Domain
 {
     public interface IEmployeeRepository : IRepository<Employee>
     {
+        Employee FindByUserId(string id);
     }
 }
