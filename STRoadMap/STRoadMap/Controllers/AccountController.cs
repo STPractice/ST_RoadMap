@@ -441,6 +441,10 @@ namespace STRoadMap.Controllers
 
             base.Dispose(disposing);
         }
+        public string UserId(string Name)
+        {
+            return UserManager.FindByName(Name).Id;
+        }
 
         #region Helpers
         // Used for XSRF protection when adding external logins

@@ -186,7 +186,7 @@ namespace Domain
             get
             {
                 if (skillMatrices == null)
-                    skillMatrices = new EntitySkillMatrixRepository(context);
+                    skillMatrices = new EntitySkillMatrixRepository(context, this);
                 return skillMatrices;
             }
         }

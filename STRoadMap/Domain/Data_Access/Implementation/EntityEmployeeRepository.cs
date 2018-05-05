@@ -45,5 +45,13 @@ namespace Domain
             context.Entry(entity).State = System.Data.Entity.EntityState.Modified;
             return entity.EmpolyeeId;
         }
+        public Employee FindByUserId(string id)
+        {
+            foreach (Employee employee in context.Employees)
+            {
+                if(employee.UserId==id) return employee;
+            }
+            return null;
+        }
     }
 }

@@ -111,6 +111,20 @@ label {
     font-weight: normal;
     margin-bottom: 0;
 }
+form.forSpecialization {
+    display:none;
+    width:100%;
+}
+#specialization0 {
+    display: block;
+}
+#performanceReview {
+    background-color:white;
+}
+#chooseSpec {
+    padding:20px;
+    margin:10px;
+}
 
 @media screen and (max-width: 768px) {
     .positionSkills {
