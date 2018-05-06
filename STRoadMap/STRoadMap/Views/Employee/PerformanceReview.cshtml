@@ -21,10 +21,12 @@
             }
         }
         function changeSpecialization() {
-            var dropspec = document.querySelector("#dropSpecializations").options.selectedIndex;
+            var dropspec = document.querySelector("#dropSpecializations");
+            var specId = dropspec.options[dropspec.selectedIndex].value;
             var specializations = document.querySelectorAll("form");
             for (var i = 0; i < specializations.length; i++) {
-                if (i == dropspec) {
+                var formSpecId = specializations[i].id.substring(14);
+                if (formSpecId==specId) {
                     specializations[i].style = "display:inline-block";
                 }
                 else {
@@ -39,6 +41,7 @@
         <div id="chooseSpec">
             <p>Specialization</p>
             <select id="dropSpecializations" class="dropdownSpecializations" name="SpecializationId" onchange="changeSpecialization()" autofocus>
+                <option value="">No specialization</option>
                 @foreach (var specialization in Model)
                 {
                     <option value="@specialization.SpecializationId">@specialization.Name</option>
@@ -47,7 +50,8 @@
         </div>
         @for (int i = 0; i < Model.Count(); i++)
         {
-            <form method="post" class="position-container forSpecialization" id="specialization@(i)">
+            int spcId = (Model.ElementAt(i) as Specialization).SpecializationId;
+            <form method="post" class="position-container forSpecialization" id="specialization@(spcId)">
                 <div class="createPosition-block">
                     <div class="positionSkills">
                         <p>Skills</p>
