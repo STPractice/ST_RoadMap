@@ -8,148 +8,62 @@ body {
     font-size: 16px;
     justify-content: center;
     background-color: #e6eceb;
-}
-
-a {
-    color: #63cdd7 !important;
-    text-decoration: none !important;
+    color: #63cdd7;
 }
 
 h1 {
     color: #63cdd7;
     font-weight: bold;
 }
-
-p {
-    margin: 0 0 0 0;
-    color: #63cdd7;
-    font-weight: bold;
-    text-align: left;
-    /*padding-left:575px;*/
-    /*padding-top:30px;*/
-    justify-content: flex-start;
-}
-
-th {
-    color: #63cdd7;
-    display: flex;
-    border-top: none;
-    justify-content: flex-end;
-}
-
-td {
-    border-top: none;
-}
-
-header {
-    width: 100%;
-    height: 50px;
-    background-color: #63cdd7;
-}
-
-.item-container {
-    position: relative;
-    margin: auto 150px;
-    background-color: #fff;
-    padding: 20px;
-}
-
-form input,
-select {
-    padding: 3px;
-}
-
-select {
-    transition: .3s;
-}
-
-.list-block {
-    position: relative;
-    margin: 50px auto;
-}
-
-.delete {
-    height: 45px;
-    width: 75px;
-    position: relative;
-    background-color: #fff;
-    border: 2px solid #63cdd7;
-    color: #63cdd7;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    padding: 8px;
-    transition: .5s;
-}
-
-div.itemName {
-    color: #63cdd7;
-    margin: 20px;
-}
-
-.rowContainer {
-    display: flex;
-    justify-content: space-between;
-    background: #ffffff;
-    margin-top: 5px;
-    border: 3px #63cdd7 solid;
-    align-items: center;
-}
-
-.description {
-    font-family: Arial, Helvetica, sans-serif;
-    resize: none;
-    padding: 3px;
-    width: 100%;
-    max-width: none;
-}
-
-.edit {
-    height: auto;
-    display: flex;
-    position: relative;
-    background-color: #fff;
-    border: 2px solid #63cdd7;
-    color: #63cdd7;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    padding: 10.5px;
-    transition: .5s;
-}
-
-delete:hover {
-    transform: scale(1.1);
-}
-
-.table {
-    width: 100%;
-    border-top: none;
-    margin-bottom: 5px;
-}
-
-.table-bordered th,
-.table-bordered td {
-    border-top: none;
-}
-
 .items-container {
+    width: 100%;
+    background-color: white;
+    min-height: 550px;
     position: relative;
-    margin: auto 300px;
-    background-color: #fff;
-    padding: 20px;
+}
+.flex-container {
+    width: 100%;
+    height: 360px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: row;
     justify-content: center;
-    /* align-items: center;*/
+    align-items: stretch;
     flex-wrap: wrap;
-    /*align-content:space-around;*/
+    align-content: space-around;
+}
+#profileImage {
+    width: 320px;
+    margin: auto;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+#profileInfo {
+    width: 320px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+#profilePhoto {
+    margin: 20px;
+}
+#userName {
+    font-size: 150%;
+    font-weight: bold;
+}
+.userSpecialization {
+    font-size: 125%;
+}
+.userJobInfo {
+    padding: 10px;
 }
 
-.add {
-    display: flex;
-    justify-content: end;
-    position: relative;
+#exInfo button {
+    margin: 0 10px;
     background-color: #fff;
     border: 2px solid #63cdd7;
     color: #63cdd7;
@@ -159,56 +73,24 @@ delete:hover {
     padding: 8px;
     transition: .5s;
 }
-
-a.edit, input.delete {
-    height: auto;
-    padding: 5px 10px 5px 10px;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
-
-a.lable {
-    margin-left: 5px;
-    font-weight: bold;
-    color: #63cdd7;
-}
-
-.buttonContainer {
-    position: relative;
-    margin-right: 20px;
-    border: 2px solid #63cdd7;
-}
-
-.addbuttoncontainer {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    padding: 5px;
-    padding-left: 20px;
-}
-
-.lable {
-    text-align: center;
-}
-
-.lableContainer {
-    display: flex;
-    align-items: center;
-    position: relative;
-    padding: 5px;
-    padding-left: 50px;
-}
-
-.add:hover,
-.edit:hover,
-.delete:hover {
+#exInfo button:hover {
     transform: scale(1.1);
 }
-
+#exInfo button a:link {
+    text-decoration: none;
+}
+#exInfo button a:visited {
+    text-decoration: none;
+}
+#exInfo button a:hover {
+    text-decoration: none;
+}
+#exInfo button a:active {
+    text-decoration: none;
+}
+#exInfo button a {
+    color: #63cdd7;
+}
 @media screen and (max-width: 950px) {
     .container {
         margin: auto;

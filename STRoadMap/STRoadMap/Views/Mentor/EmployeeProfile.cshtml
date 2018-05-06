@@ -1,10 +1,5 @@
 ﻿@using Domain
 @model Domain.AspNetUser
-
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
 
 <html>
@@ -14,47 +9,32 @@
     <title>Profile</title>
 </head>
 <body>
-    <div class="list-block">
-        <div class="items-container">
-            <table>
-                <tr>
-                    <td class="photo"><img src="http://cs8.pikabu.ru/post_img/2017/03/29/6/1490776107120626903.jpg" width="180" /></td>
-
-                    <td class="info">
-                        @{
-                        List<Employee> employees = Model.Employees.ToList<Employee>();
-                        foreach (var employee in employees)
-                        {
-                            <p>@employee.Name</p>
-                        List<SkillMatrix> skillMatrices = employee.SkillMatrices.ToList<SkillMatrix>();
-                        foreach (var skillMatrix in skillMatrices)
-                        {
-                            Specialization specialization = skillMatrix.Specialization;
-                            <p>@specialization.Name</p>
+<div class="items-container">
+    <div class="flex-container">
+    <div id="profilePhoto">
+        <img id="profileImage"src="http://cs8.pikabu.ru/post_img/2017/03/29/6/1490776107120626903.jpg" alt="photo" width="180"/>
+    </div>
+        <div id="profileInfo">
+            <div class="userJobInfo">
+                @{
+                    string empName = Model.Employees.ElementAt(0).Name;
+                    <p id="userName">@empName</p>
+                    foreach (var skillMatrix in Model.Employees.ElementAt(0).SkillMatrices)
+                    {
+                        <p class="userSpecialization">@skillMatrix.Specialization.Name</p>
+                    }
+                    foreach (var role in Model.AspNetRoles)
+                    {
+                        <p class="userRole">@role.Name</p>
                     }
                 }
-                        }
-
-                        @{
-                        List<AspNetRole> roles = Model.AspNetRoles.ToList<AspNetRole>();
-                        foreach (var role in roles)
-                        {
-                            <p>@role.Name</p>
-                    }
-                        }
-                    </td>
-                </tr>
-                <tr class="row">
-
-                    <td class="buttonContainer">
-                        @Html.ActionLink("Skill Matrix", "SkillMatrix")
-                    </td>
-                    <td class="buttonContainer">
-                        @Html.ActionLink("Road Map", "RoadMap")
-                    </td>
-                </tr>
-            </table>
+            </div>
+            <div id="exInfo">
+                <button name="skillMatrix"><a href="">Skill Matrix</a></button>
+                <button name="RoadMap"><a href="">RoadMap</a></button>
+            </div>
         </div>
     </div>
+</div>
 </body>
 </html>
