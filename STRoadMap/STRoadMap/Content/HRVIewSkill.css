@@ -106,13 +106,15 @@ div.description-block {
     padding: 5px 10px 5px 10px;
     transition: .5s;
 }
-.delete:hover {
-    transform: scale(1.1);
-}
+    .delete:hover {
+        transform: scale(1.1);
+        color: #63cdd7;
+    }
 
 .add:hover,
 .edit:hover {
     transform: scale(1.1);
+    color: #63cdd7;
 }
 
 @media screen and (max-width: 950px) {

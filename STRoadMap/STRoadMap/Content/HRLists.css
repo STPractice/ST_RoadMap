@@ -181,11 +181,12 @@ a.lable {
     padding: 5px;
     padding-left: 50px;
 }
-    .add:hover,
-    .edit:hover,
-    .delete:hover {
-        transform: scale(1.1);
-    }
+.add:hover,
+.edit:hover,
+.delete:hover {
+    transform: scale(1.1);
+    color: #63cdd7;
+}
 
 @media screen and (max-width: 950px) {
     .container {
