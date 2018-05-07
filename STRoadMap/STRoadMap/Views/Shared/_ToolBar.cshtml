@@ -2,31 +2,31 @@
 @if (Request.IsAuthenticated)
 {
     <ul class="main-menu">
-        <li><p>My profile</p>
-            <ul class="sub-menu">
-                <li>@Html.ActionLink("Pass performance review", "../Employee/PerformanceReview")</li>
-                <li>@Html.ActionLink("SkillMatrix", "../Employee/SkillMatrix")</li>
-                <li>@Html.ActionLink("News", "../Employee/News")</li>
-            </ul></li>
+        <li style="background-color:#63cdd7; min-height:0;">@Html.ActionLink("My profile", "../Employee/EmployeeProfile", null, new { style = "text-decoration: none !important; position: relative; display: block; height: 50px !important; color: #ffffff !important; font-weight: bold !important; padding-top:15px; padding-bottom: 15px; line-height:20px; font-size:16px; height:20px;" })
+            <ul class="sub-menu" style="border-bottom-left-radius: 5px; border-bottom-right-radius:5px; ">
+                <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px;">@Html.ActionLink("Pass performance review", "../Employee/PerformanceReview", null, new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
+                <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px; border-top:none;">@Html.ActionLink("SkillMatrix", "../Employee/SkillMatrix", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;"})</li>
+                <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top:none;">@Html.ActionLink("News", "../Employee/News", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
+            </ul>
 @if (HttpContext.Current.User.IsInRole("Mentor") || HttpContext.Current.User.IsInRole("HR"))
 {
-    <li>
-        <p>Mentoring</p>
-        <ul class="sub-menu">
-            <li>@Html.ActionLink("Employees", "../Mentor/EmployeeList")</li>
+    <li style="background-color:#63cdd7">
+        <p style="color: #ffffff !important; font-weight: bold !important;">Mentoring ▼</p>
+        <ul class="sub-menu" style="border-bottom-left-radius: 5px; border-bottom-right-radius:5px; ">
+            <li  style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px;">@Html.ActionLink("Employees", "../Mentor/EmployeeList", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
         </ul>
     </li>
 }
 @if (HttpContext.Current.User.IsInRole("HR") )
 {
 
-    <li>
-        <p>HR</p>
+    <li style="background-color:#63cdd7">
+        <p style="color: #ffffff !important; font-weight: bold !important;">HR ▼</p>
 
-        <ul class="sub-menu">
-            <li>@Html.ActionLink("Employees", "../HR/EmployeeList")</li>
-            <li>@Html.ActionLink("Skills", "../HR/SkillList")</li>
-            <li>@Html.ActionLink("Specializations", "../HR/SpecializationList")</li>
+        <ul class="sub-menu" style="border-bottom-left-radius: 5px; border-bottom-right-radius:5px; ">
+            <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px;">@Html.ActionLink("Employees", "../HR/EmployeeList", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
+            <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px; border-top: none;">@Html.ActionLink("Skills", "../HR/SkillList", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
+            <li style="background-color:#63cdd7; border: 2px solid; border-color:#53bdc7; text-align: center; padding: 5px; border-bottom-left-radius: 5px; border-bottom-right-radius:5px; border-top: none;">@Html.ActionLink("Specializations", "../HR/SpecializationList", null, htmlAttributes: new { style = "color: #ffffff !important; font-weight: bold !important;" })</li>
         </ul>
     </li>
 }
