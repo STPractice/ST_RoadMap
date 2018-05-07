@@ -22,9 +22,9 @@ namespace Service
             return UoW.Employees.GetAll();
         }
 
-        public AspNetUser GetEmployeesProfile(string employeeId)
+        public Employee GetEmployeesProfile(int employeeId)
         {
-            return UoW.AspNetUsers.Find(employeeId);
+            return UoW.Employees.Find(employeeId);
         }
     }
 }

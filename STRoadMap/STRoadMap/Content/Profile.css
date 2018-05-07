@@ -96,6 +96,9 @@ h1 {
         margin: auto;
     }
 }
+.Info-box {
+    margin-bottom: 10px;
+}
 
 @media screen and (max-width: 768px) {
     .list-block {
@@ -147,4 +150,21 @@ h1 {
         justify-content: flex-end;
         align-items: flex-end;
     }
+
+
+
+
+    .Info-box {
+        margin-bottom: 50px;
+    }
+
+    #profileInfo {
+        margin-top: 0;
+    }
+
+    .userJobInfo {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    
 }

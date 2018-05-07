@@ -37,15 +37,15 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult EmployeeProfile(string employeeId= "1f2dc159-0b55-48a1-afec-d8f0066ba569")
+        public ActionResult EmployeeProfile(int? EmployeeId)
         {
-            if(employeeId==null)
+            if(EmployeeId==null)
             {
                 return HttpNotFound();
             }
             else
             {
-                var user = MentorLogic.GetEmployeesProfile(employeeId);
+                var user = MentorLogic.GetEmployeesProfile((int) EmployeeId);
                 if (user != null)
                 {
                     return View(user);

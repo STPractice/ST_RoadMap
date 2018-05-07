@@ -11,6 +11,6 @@ namespace Extensibility
     {
         IEnumerable<Employee> GetEmployeeList();
 
-        AspNetUser GetEmployeesProfile(string employeeId);
+        Employee GetEmployeesProfile(int employeeId);
     }
 }
