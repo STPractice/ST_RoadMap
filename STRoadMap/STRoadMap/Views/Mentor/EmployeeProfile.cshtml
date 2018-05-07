@@ -12,7 +12,7 @@
 <div class="items-container">
     <div class="flex-container">
     <div id="profilePhoto">
-        <img id="profileImage"src="http://cs8.pikabu.ru/post_img/2017/03/29/6/1490776107120626903.jpg" alt="photo" width="180" style="border: 3px solid; border-radius: 5px;"/>
+        <img id="profileImage"src="~/Content/photo.jpg" alt="photo" width="180" style="border: 3px solid; border-radius: 5px;"/>
     </div>
         <div id="profileInfo">
             <div class="userJobInfo">
@@ -30,8 +30,8 @@
                 }
             </div>
             <div id="exInfo" class="Info-box">
-                <button name="skillMatrix"><a href="">Skill Matrix</a></button>
-                <button name="RoadMap"><a href="">RoadMap</a></button>     
+                @Html.ActionLink("Skill matrix", "SkillMatrix")
+                @Html.ActionLink("Road map", "RoadMap")
             </div>
         </div>
     </div>

@@ -37,7 +37,7 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult EmployeeProfile(int? EmployeeId)
+        public ActionResult EmployeeProfile(int? EmployeeId=100)
         {
             if(EmployeeId==null)
             {
