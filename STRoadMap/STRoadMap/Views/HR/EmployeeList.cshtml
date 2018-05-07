@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Domain.Employee>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRLists.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>EmployeeList</title>
+</head>
+<body>
+<div class="list-block">
+    <div class="items-container">
+        <table class="table" style="border-top: 0px solid ">
+            <tr class=" rowContainer" style="background-color:#ffffff; border: none;">
+                <td style="border-top: none;">
+                    <h1>EmployeeList</h1>
+                </td>
+            </tr>
+        </table>
+
+
+        <table class="table">
+
+            @foreach (var item in Model)
+            {
+
+                <tr class=" rowContainer">
+                    <td class="lableContainer" style="border-top: none;">
+                        @Html.ActionLink(item.Name, "Employee", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
+                        {
+                            @class = "lable"
+                        })
+                    </td>
+                    <td style="border-top: none;">
+                        <div class="row">
+                            <div class="buttonContainer">
+                                @Html.ActionLink("RoadMap", "RoadMap", routeValues: new
+                                {
+                                    EmployeeId = item.EmpolyeeId,
+                                }
+                                    , htmlAttributes: new
+                                    {
+                                        @class = "edit"
+                                    })
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+            }
+        </table>
+    </div>
+</div>
+</body>
+</html>
+
+
