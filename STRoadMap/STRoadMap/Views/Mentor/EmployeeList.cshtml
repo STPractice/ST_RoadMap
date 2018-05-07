@@ -30,10 +30,10 @@
 
                     <tr class=" rowContainer">
                         <td class="lableContainer" style="border-top: none;">
-                            @Html.ActionLink(item.Name, "Employee", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
-                            {
-                                @class = "lable"
-                            })
+                            @Html.ActionLink(item.Name + " (" + item.AspNetUser.Email + ")", "Employee", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
+                       {
+                           @class = "lable"
+                       })
                         </td>
                         <td style="border-top: none;">
                             <div class="row">
