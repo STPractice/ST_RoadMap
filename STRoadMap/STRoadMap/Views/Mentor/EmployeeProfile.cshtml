@@ -30,8 +30,15 @@
                 }
             </div>
             <div id="exInfo" class="Info-box">
-                @Html.ActionLink("Skill matrix", "SkillMatrix")
-                @Html.ActionLink("Road map", "RoadMap")
+                <table>
+                    <tr>
+                        <td>
+                            @Html.ActionLink("Skill matrix", "SkillMatrix", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button" })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Road map", "RoadMap", new { EmployeeId=Model.EmpolyeeId }, new { @class = "prof-button", style= "margin-left: 8px;" })
+                        </td>
+                </table>
             </div>
         </div>
     </div>

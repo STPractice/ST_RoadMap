@@ -174,9 +174,10 @@ form input {
     transition: .5s;
 }
 
-.submit:hover {
-    transform: scale(1.1);
-}
+    .submit:hover {
+        transform: scale(1.1);
+        color: #63cdd7;
+    }
 
 .submitbtn{
     

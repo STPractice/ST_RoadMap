@@ -62,19 +62,30 @@ h1 {
     padding: 10px;
 }
 
-#exInfo button {
-    margin: 0 10px;
+a:active {
+    color: #63cdd7;
+}
+.prof-button
+{
+    height: 50px;
+    display: flex;
+    text-decoration: none !important;
+    position: relative;
     background-color: #fff;
     border: 2px solid #63cdd7;
     color: #63cdd7;
     font-size: 18px;
     text-align: center;
     cursor: pointer;
-    padding: 8px;
+    padding: 10.5px;
     transition: .5s;
 }
-#exInfo button:hover {
+
+.prof-button:hover {
     transform: scale(1.1);
+}
+a.prof-button:hover {
+    color: #63cdd7;
 }
 #exInfo button a:link {
     text-decoration: none;
