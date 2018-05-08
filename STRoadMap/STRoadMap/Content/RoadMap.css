@@ -90,27 +90,10 @@ a {
     margin: 3px 0px;
 }
 
-
-
-
-
 @media screen and (max-width: 768px) {
     .base {
-        display: block;
+       
         margin: 0;
         width: 100%;
-    }
-
-    .desktop {
-        display: none;
-    }
-
-    .mobile {
-        display: block;
-        -webkit-user-select: none;
-    }
-
-    .listOfCheckpoints {
-        display: none;
     }
 }
