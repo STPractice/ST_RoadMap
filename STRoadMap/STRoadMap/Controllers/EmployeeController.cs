@@ -62,7 +62,7 @@ namespace STRoadMap.Controllers
             }
         }
 
-        public ActionResult SkillMatrixView()
+        public ActionResult SkillMatrix()
         {
             this.ApplicationDbContext = new ApplicationDbContext();
             this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
