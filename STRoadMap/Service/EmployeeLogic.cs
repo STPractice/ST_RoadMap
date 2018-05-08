@@ -47,5 +47,10 @@ namespace Service
         {
             return UoW.Specializations.GetAll();
         }
+
+        public Employee GetProfile(int employeeId)
+        {
+            return UoW.Employees.Find(employeeId);
+        }
     }
 }

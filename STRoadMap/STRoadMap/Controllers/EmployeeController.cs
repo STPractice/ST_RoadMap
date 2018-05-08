@@ -12,7 +12,7 @@ using STRoadMap.Models;
 namespace STRoadMap.Controllers
 {
     public class EmployeeController : Controller
-    {        
+    {
         private readonly IEmployeeLogic employeeLogic;
 
         protected ApplicationDbContext ApplicationDbContext { get; set; }
@@ -35,14 +35,14 @@ namespace STRoadMap.Controllers
 
         [HttpGet]
         public ActionResult PerformanceReview()
-        {            
+        {
             IEnumerable<Specialization> specs = employeeLogic.GetSpecializations();
             return View(specs);
         }
 
         [HttpPost]
         public ActionResult PerformanceReview(SkillMatrix position)
-        {            
+        {
             if (position == null)
             {
                 return HttpNotFound();
@@ -50,16 +50,38 @@ namespace STRoadMap.Controllers
             else
             {
                 this.ApplicationDbContext = new ApplicationDbContext();
-                this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));                
+                this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
                 if (employeeLogic.CreateSkillMatrix(position, UserManager.FindByName(HttpContext.User.Identity.Name).Id))
                 {
-                    return View("Employee", "Employee");                    
+                    return View("Employee", "Employee");
                 }
                 else
                 {
                     return HttpNotFound();
                 }
             }
+        }
+
+        [HttpGet]
+        public ActionResult ProfileEmployee(int? EmployeeId = 100)
+        {
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var user = employeeLogic.GetProfile((int)EmployeeId);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+
         }
     }
 }
