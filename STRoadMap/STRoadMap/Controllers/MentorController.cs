@@ -44,8 +44,9 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EmployeeProfile(int? EmployeeId=100)
         {
-            if (IsAuthorized() != true)
+            if (!IsAuthorized())
             {
+                Response.StatusCode = 404;
                 return HttpNotFound();
             }
             if (EmployeeId==null)
@@ -62,6 +63,32 @@ namespace STRoadMap.Controllers
                 else
                 {
                     return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult RoadMap(int? EmployeeId = 100)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var roadMap = MentorLogic.GetEmployeesRoadMap((int)EmployeeId);
+                if (roadMap != null)
+                {
+                    return View(roadMap);
+                }
+                else
+                {
+                    return View("RoadMapNotExists",MentorLogic.GetEmployeesProfile((int)EmployeeId) );
                 }
             }
         }

@@ -26,5 +26,10 @@ namespace Service
         {
             return UoW.Employees.Find(employeeId);
         }
+
+        public RoadMap GetEmployeesRoadMap(int employeeId)
+        {
+            return UoW.RoadMaps.GetAll().GetEnumerator().Current;
+        }
     }
 }
