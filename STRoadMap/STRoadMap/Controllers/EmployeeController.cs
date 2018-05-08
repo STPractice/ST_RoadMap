@@ -61,5 +61,20 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        public ActionResult SkillMatrixView()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+            try
+            {
+                SkillMatrix matrix = employeeLogic.GetSkillMatrix(UserManager.FindByName(HttpContext.User.Identity.Name).Id);
+                return View(matrix);
+            }
+            catch
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }

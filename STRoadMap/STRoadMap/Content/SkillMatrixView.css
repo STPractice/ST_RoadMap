@@ -1,0 +1,9 @@
+﻿.flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+    .flex-container div {
+        flex-grow: 1;
+        flex-basis: 100px;
+    }

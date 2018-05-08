@@ -233,6 +233,7 @@
     <Content Include="Content\Profile.css" />
     <Content Include="Content\SignIn.css" />
     <Content Include="Content\SignUp.css" />
+    <Content Include="Content\SkillMatrixView.css" />
     <Content Include="Content\_Toolbox.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Shared\_ToolBar.cshtml" />
     <Content Include="Views\HR\EmployeeList.cshtml" />
     <Content Include="Views\Mentor\EmployeeProfile.cshtml" />
+    <Content Include="Views\Employee\SkillMatrixView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
