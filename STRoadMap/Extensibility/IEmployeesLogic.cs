@@ -12,6 +12,6 @@ namespace Extensibility
         Specialization GetSpecialization(int SpecializationId);
         bool CreateSkillMatrix(SkillMatrix matrix, string userName);
         IEnumerable<Specialization> GetSpecializations();
-        Employee GetProfile(int employeeId);
+        Employee GetProfile(string UserId);
     }
 }

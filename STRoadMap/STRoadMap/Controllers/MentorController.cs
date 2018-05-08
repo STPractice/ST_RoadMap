@@ -22,10 +22,6 @@ namespace STRoadMap.Controllers
         {
             return HttpContext.User.IsInRole("HR")|| HttpContext.User.IsInRole("Mentor");
         }
-        public string Index()
-        {
-            return "It works)";
-        }
         [HttpGet]
         public ActionResult EmployeeList()
         {
@@ -48,7 +44,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EmployeeProfile(int? EmployeeId=100)
         {
-            if(EmployeeId==null)
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
+            if (EmployeeId==null)
             {
                 return HttpNotFound();
             }

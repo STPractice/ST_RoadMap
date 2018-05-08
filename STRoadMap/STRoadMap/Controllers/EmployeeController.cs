@@ -28,14 +28,14 @@ namespace STRoadMap.Controllers
             return HttpContext.User.IsInRole("HR") || HttpContext.User.IsInRole("Mentor") || HttpContext.User.IsInRole("Employee");
         }
         // GET: Employee
-        public string Index()
-        {
-            return "It works)";
-        }
-
+        
         [HttpGet]
         public ActionResult PerformanceReview()
         {
+            if(IsAuthorized() == false)
+            {
+                return HttpNotFound();
+            }
             IEnumerable<Specialization> specs = employeeLogic.GetSpecializations();
             return View(specs);
         }
@@ -43,6 +43,10 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult PerformanceReview(SkillMatrix position)
         {
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
             if (position == null)
             {
                 return HttpNotFound();
@@ -63,15 +67,14 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult ProfileEmployee(int? EmployeeId = 100)
+        public ActionResult EmployeeProfile()
         {
-            if (EmployeeId == null)
+            if (IsAuthorized() != true)
             {
                 return HttpNotFound();
             }
-            else
-            {
-                var user = employeeLogic.GetProfile((int)EmployeeId);
+            string UserId = HttpContext.User.Identity.GetUserId();           
+                Employee user = employeeLogic.GetProfile(UserId);
                 if (user != null)
                 {
                     return View(user);
@@ -79,8 +82,7 @@ namespace STRoadMap.Controllers
                 else
                 {
                     return HttpNotFound();
-                }
-            }
+                }            
 
         }
     }

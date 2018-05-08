@@ -311,7 +311,7 @@
     <Content Include="Views\Shared\_ToolBar.cshtml" />
     <Content Include="Views\HR\EmployeeList.cshtml" />
     <Content Include="Views\Mentor\EmployeeProfile.cshtml" />
-    <Content Include="Views\Employee\ProfileEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
