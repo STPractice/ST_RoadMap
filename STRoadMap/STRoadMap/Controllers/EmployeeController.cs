@@ -85,5 +85,26 @@ namespace STRoadMap.Controllers
                 }            
 
         }
+
+        [HttpGet]
+        public ActionResult RoadMap()
+        {
+            if (!IsAuthorized())
+            {
+                return HttpNotFound();
+            }
+            if (!employeeLogic.IsPerformanceReviewPassed(HttpContext.User.Identity.GetUserId()))
+            {
+                return View("PerformanceReviewNotPassed");
+            }
+            if (!employeeLogic.IsRoadMapExists(HttpContext.User.Identity.GetUserId()))
+            {
+                return View("RoadMapNotExists");
+            }
+            else
+            {
+                return View("RoadMap",employeeLogic.getRoadMap(HttpContext.User.Identity.GetUserId()));
+            }
+        }
     }
 }

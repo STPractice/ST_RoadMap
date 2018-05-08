@@ -1,9 +1,7 @@
 ﻿using Extensibility;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using Domain;
 
 namespace Service
@@ -46,6 +44,30 @@ namespace Service
         public IEnumerable<Specialization> GetSpecializations()
         {
             return UoW.Specializations.GetAll();
+        }
+
+        public bool IsPerformanceReviewPassed(string employeeId)
+        {
+            if (UoW.Employees.FindByUserId(employeeId).SkillMatrices.Count < 1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool IsRoadMapExists(string employeeId)
+        {
+            if (UoW.Employees.FindByUserId(employeeId).RoadMaps.Count < 1)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public RoadMap getRoadMap(string employeeId)
+        {
+            var Roadmaps = UoW.RoadMaps.GetAll();
+           return Roadmaps.GetEnumerator().Current;
         }
 
         public Employee GetProfile(string UserId)
