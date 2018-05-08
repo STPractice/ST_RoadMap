@@ -15,12 +15,8 @@ namespace STRoadMap.Controllers
         {
             this.HRLogic = HRLogic;
            
-        }
-        // GET: HR
-        public string Index()
-        {         
-            return "It works!)";
-        }
+        }       
+        
 
         private bool IsAuthorized()
         {
@@ -545,7 +541,8 @@ namespace STRoadMap.Controllers
 
         [HttpPost]
         public ActionResult EditSpecialization(Specialization specialization)
-        {           if (!IsAuthorized()) { 
+        {
+            if (!IsAuthorized()) { 
                 Response.StatusCode = 404;
                 return HttpNotFound();
             }

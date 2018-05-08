@@ -12,7 +12,7 @@ using STRoadMap.Models;
 namespace STRoadMap.Controllers
 {
     public class EmployeeController : Controller
-    {        
+    {
         private readonly IEmployeeLogic employeeLogic;
 
         protected ApplicationDbContext ApplicationDbContext { get; set; }
@@ -28,21 +28,25 @@ namespace STRoadMap.Controllers
             return HttpContext.User.IsInRole("HR") || HttpContext.User.IsInRole("Mentor") || HttpContext.User.IsInRole("Employee");
         }
         // GET: Employee
-        public string Index()
-        {
-            return "It works)";
-        }
-
+        
         [HttpGet]
         public ActionResult PerformanceReview()
-        {            
+        {
+            if(IsAuthorized() == false)
+            {
+                return HttpNotFound();
+            }
             IEnumerable<Specialization> specs = employeeLogic.GetSpecializations();
             return View(specs);
         }
 
         [HttpPost]
         public ActionResult PerformanceReview(SkillMatrix position)
-        {            
+        {
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
             if (position == null)
             {
                 return HttpNotFound();
@@ -50,16 +54,36 @@ namespace STRoadMap.Controllers
             else
             {
                 this.ApplicationDbContext = new ApplicationDbContext();
-                this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));                
+                this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
                 if (employeeLogic.CreateSkillMatrix(position, UserManager.FindByName(HttpContext.User.Identity.Name).Id))
                 {
-                    return View("Employee", "Employee");                    
+                    return View("Employee", "Employee");
                 }
                 else
                 {
                     return HttpNotFound();
                 }
             }
+        }
+
+        [HttpGet]
+        public ActionResult EmployeeProfile()
+        {
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
+            string UserId = HttpContext.User.Identity.GetUserId();           
+                Employee user = employeeLogic.GetProfile(UserId);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }            
+
         }
     }
 }
