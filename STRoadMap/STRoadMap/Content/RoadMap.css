@@ -83,17 +83,47 @@ p{
     display: flex;
     z-index: 3;
 }
-
-    .checkpoint:hover {
-        color: #63cdd7;
-        border-top: 1px solid #e6eceb;
-        border-bottom: 1px solid #e6eceb;
-        border-left: 2px solid #e6eceb;
-        border-right: 2px solid #e6eceb;
-        background-color: #fff;
-        z-index: 4;
-        transform: translateX(-2px) !important;
-    }
+.button {    
+    
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: .5s;
+    padding: 5px 10px 5px 10px;
+    
+}
+.manage-checkpoint {
+    justify-content: flex-end;
+    margin: 5px;
+    padding: 5px;
+    padding-bottom: 11px;
+    border: 2px solid #63cdd7;
+    flex-direction: row;
+    display: flex;
+}
+.about-checkpoint {
+    border-left: 2px solid #63cdd7;
+    display: flex;
+    height:400px;
+    justify-content:flex-start;
+    flex-direction: column;
+    width: 75%;
+}
+.checkpoint:hover {
+    color: #63cdd7;
+    border-top: 1px solid #e6eceb;
+    border-bottom: 1px solid #e6eceb;
+    border-left: 2px solid #e6eceb;
+    border-right: 2px solid #e6eceb;
+    background-color: #fff;
+    z-index: 4;
+    transform: translateX(-2px) !important;
+}
         /*  css for choosen
         .checkpoint:hover {
         color: #63cdd7;
@@ -105,21 +135,36 @@ p{
         z-index: 122;
         transform: scaleX(1.014);
     }*/
-        .listOfSkills {
-    position:relative;
-    display: flex;
-    width: 75%;
-    flex-direction: column;
-    border-left: 2px solid #63cdd7 ;
+.listOfSkills {
+    display:flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    
+    flex-direction: column;   
+    
     z-index: 200;
 }
+.futter-of-skill-list {
+    position: relative;
+    overflow-y: scroll;
+    flex-direction: column;
+    
+    margin-left: 3px;
+    margin-right: 3px;
+    height: 100%;
+}
+    .futter-of-skill-list::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
 
 .skill {
     display: flex;
     flex-direction: row;
     border: 2px solid #63cdd7;
     padding: 6px;
-    margin: 3px 3px 0px 3px;
+    margin: 3px 0px 0px 0px;
 }
 
 @media screen and (max-width: 768px) {
