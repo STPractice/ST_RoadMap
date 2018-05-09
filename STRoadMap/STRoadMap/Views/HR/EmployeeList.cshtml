@@ -26,22 +26,21 @@
 
                 <tr class=" rowContainer">
                     <td class="lableContainer" style="border-top: none;">
-                        @Html.ActionLink(item.Name+" (" + item.AspNetUser.Email+")", "Employee", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new
-                        {
-                            @class = "lable"
-                        })
+                        @Html.ActionLink(item.Name + " (" + item.AspNetUser.Email + ")", "Employee", new { RoadMapId = item.EmpolyeeId }, htmlAttributes: new { @class = "lable" })
                     </td>
                     <td style="border-top: none;">
-                        <div class="row">
+                        <div class="row" style="align-items:flex-end">
                             <div class="buttonContainer">
-                                @Html.ActionLink("RoadMap", "RoadMap", routeValues: new
-                                {
-                                    EmployeeId = item.EmpolyeeId,
-                                }
-                                    , htmlAttributes: new
-                                    {
-                                        @class = "edit"
-                                    })
+                                
+                                    @if (item.RoadMaps.FirstOrDefault() != null)
+                {
+                    @Html.ActionLink("RoadMap", "RoadMap", routeValues: new { RoadMapId = item.RoadMaps.FirstOrDefault().RoadMapId }, htmlAttributes: new { @class = "edit" });
+                }
+                else
+                {
+                    @Html.ActionLink("RoadMap", "RoadMap", routeValues: null, htmlAttributes: new { @class = "edit", style="margin-right:0px;" });
+                }
+            
                             </div>
                         </div>
                     </td>
