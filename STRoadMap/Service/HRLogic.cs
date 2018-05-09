@@ -205,9 +205,9 @@ namespace Service
             return UoW.Commit();
         }
 
-        public AspNetUser GetEmployeesProfile(string employeeId)
+        public Employee GetEmployeesProfile(int employeeId)
         {
-            return UoW.AspNetUsers.Find(employeeId);
+            return UoW.Employees.Find(employeeId);
         }
     }
 }

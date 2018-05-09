@@ -640,16 +640,21 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult EmployeesProfile(string employeeId= "fb49ae2e-e3a3-4276-aefb-a19308b0761e")
+        public ActionResult EmployeeProfile(int? EmployeeId = 100)
         {
-            if(employeeId==null)
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
+
+            if (EmployeeId == null)
             {
                 return HttpNotFound();
             }
             else
             {
-                var user = HRLogic.GetEmployeesProfile(employeeId);
-                if(user!=null)
+                var user = HRLogic.GetEmployeesProfile((int)EmployeeId);
+                if (user != null)
                 {
                     return View(user);
                 }
