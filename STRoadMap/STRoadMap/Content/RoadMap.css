@@ -1,6 +1,7 @@
 ﻿* {
     margin: 0;
     padding: 0;
+    text-decoration: none!important;
 }
 
 body {
@@ -16,11 +17,27 @@ a {
 p{
     margin:1px;
 }
-
+.manage-block {
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    margin-top: 50px;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    padding:10px;
+}
 .bold {
     font-weight: bold;
 }
-
+.checkpoint0 {
+    background-color: #fff;
+}
+.checkpoint1 {
+    background-color: rgba(234, 249, 67, 0.25);
+}
+.checkpoint2 {
+    background-color: rgba(167, 212, 123, 0.25);
+}
 .nameOfRoadMap {
     text-align: center;
     color: #63cdd7;
@@ -97,6 +114,11 @@ p{
     padding: 5px 10px 5px 10px;
     
 }
+
+.button:hover {
+    transform:scale(1.05);
+    color: #63cdd7;
+}
 .manage-checkpoint {
     justify-content: flex-end;
     margin: 5px;
@@ -120,7 +142,7 @@ p{
     border-bottom: 1px solid #e6eceb;
     border-left: 2px solid #e6eceb;
     border-right: 2px solid #e6eceb;
-    background-color: #fff;
+    
     z-index: 4;
     transform: translateX(-2px) !important;
 }

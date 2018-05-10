@@ -516,19 +516,13 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult RoadMap(int? RoadMapId)
+        public ActionResult RoadMap(int? EmployeeId)
         {
-            if (RoadMapId != null)
-            {
-                RoadMap roadMap = HRLogic.GetRoadMap((int)RoadMapId);
-                if (roadMap != null)
-                {
-                    return View(roadMap);
-                }
-                else
-                {
-                    return HttpNotFound();
-                }
+            if (EmployeeId != null)
+            {                
+                RoadMap roadMap = HRLogic.GetRoadMap((int)EmployeeId);
+                ViewBag.EmployeeId = EmployeeId;                
+                return View(roadMap);                
             }
             else
             {
@@ -544,6 +538,47 @@ namespace STRoadMap.Controllers
                 if (HRLogic.DeleteRoadMap((int)RoadMapId))
                 {
                     return RedirectToAction("EmolyeeList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult RefuseCheckpoint (int? RMCheckpointId, int? EmployeeId)
+        {
+            if (RMCheckpointId != null)
+            {
+                if (HRLogic.RefuseCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "HR", new {EmployeeId=  EmployeeId});
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AcceptCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (RMCheckpointId != null)
+            {
+                if (HRLogic.AcceptCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "HR", new { EmployeeId = EmployeeId });
                 }
                 else
                 {

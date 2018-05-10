@@ -24,7 +24,7 @@
                 
                 if (checkPointsId == id)
                 {
-                    checkPoints[i].setAttribute("style", "color: #63cdd7 !important; border-top: 1px solid #63cdd7 !important; border-bottom: 1px solid #63cdd7 !important; border-left: 2px solid #63cdd7 !important; border-right: 2px solid #fff !important; background-color: #fff !important; z-index: 122 !important; transform: scaleX(1.014) !important;");
+                    checkPoints[i].setAttribute("style", "color: #63cdd7 !important; border-top: 1px solid #63cdd7 !important; border-bottom: 1px solid #63cdd7 !important; border-left: 2px solid #63cdd7 !important; border-right: 2px solid #fff !important;  z-index: 122 !important; transform: scaleX(1.014) !important;");
                 }
                 else
                 {
@@ -49,59 +49,91 @@
 
 </head>
 <body>
-    
-    
-    <div class="base" style=" border-bottom-left-radius:5px; border-bottom-right-radius:5px; border: 3px solid #63cdd7; min-width:1100px; margin-top:50px;">
-        <div class="listOfCheckpoints" id="listOfCheckpoints">
-            @{System.Int32 i = 0; }
-            @foreach (Domain.RMCheckpoint item in Model.RMCheckpoints)
+
+    <div class="manage-block">
+        @Html.ActionLink("Create RoadMap", "CreateRoadMap", new { EmployeeId = ViewBag.EmployeeId }, new { @class = "button" })
+        @{ if (Model != null)
             {
-                i++;
-            <div class="checkpoint" id="@("checkpoint" + i)" onclick="@("changeBlock(" + i + ")")">
-                <p>Checpoint @i</p>
-            </div>
-            }
-        </div>
-        @{i = 0;}
-        @foreach (Domain.RMCheckpoint checkpoint in Model.RMCheckpoints)
-        {
-            i++;
-            string futerStyle = checkpoint.Achieved == 1 ? "border-bottom: 2px solid #63cdd7" : "";
-        <div class="about-checkpoint" id="aboutCP@(i)" style="display:none;">
-            <div class="listOfSkills" style="">
-                <div class="futter-of-skill-list" style="@futerStyle">
-
-                @foreach (Domain.CheckpointsSkill skill in checkpoint.CheckpointsSkills)
-    {
-            <div class="skill">
-                <div class="skillInfo">
-                    <p class="bold">@skill.SkillLevel.Skill.Name</p>
-                    <p>@skill.SkillLevel.Name</p>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" name="@skill.RMCheckpointId" id="condition" style="display:none;">
-                </div>
-            </div>
-}
-            </div>
-            </div>
-            @if (checkpoint.Achieved==1) { 
-            <div class="manage-checkpoint" style="height:auto">
-                <form style="margin-right:5px;">
-                    <input name="RMCheckpointId" type="hidden" value="@checkpoint.RMCheckpointId" />
-                    <input value="Refuse" type="submit" class="button" style="background-color: rgba(243, 52, 52, 0.15)" />
+                <form action="@Url.Action("DeleteRoadMap", "HR")" method="post" style="margin-left:5px; margin-right: 5px;">
+                    <input name="RoadMapId" type="hidden" value="@Model.RoadMapId" />
+                    <input value="Delete RoadMap" type="submit" class="button" style="" />
                 </form>
-                <form>
-                    <input name="RMCheckpointId" type="hidden" value="@checkpoint.RMCheckpointId" />
-                    <input value="Accept" type="submit" class="button" style="background-color: rgba(167, 212, 123, 0.30)" />
-                </form>
-            </div>
             }
-        </div>
         }
-    </div>
-    <div class="RoadMapComments" style="height:350px; width: 94%; background-color:#fafafa; margin-left:3%; border-bottom-left-radius:5px; border-bottom-right-radius:5px; border: 3px solid #63cdd7; border-top:none;  min-width:1065px;">
+        @{ if (Model != null) {
+                @Html.ActionLink("Edit RoadMap", "EditRoadMap", new { EmployeeId = ViewBag.EmployeeId }, new { @class = "button" }); } 
+           }
 
     </div>
+    @{ if (Model != null)
+        {
+
+
+            <div class="base" style=" border-bottom-left-radius:5px; border-bottom-right-radius:5px; border: 3px solid #63cdd7; min-width:1100px; margin-top:10px;">
+                <div class="listOfCheckpoints" id="listOfCheckpoints">
+                    @{System.Int32 i = 0; }
+                    @foreach (Domain.RMCheckpoint item in Model.RMCheckpoints)
+                    {
+                        i++;
+                        string collor;
+
+                        if (item.Achieved == 2) { collor = "checkpoint2"; } else
+                        if (item.Achieved == 0) { collor = "checkpoint0"; } else
+                        { collor = "checkpoint1"; }
+
+                        <div style="background-color: #fff;">
+                        <div class="checkpoint @collor" id="@("checkpoint" + i)" onclick="@("changeBlock(" + i + ")")" style="">
+                            <p>Checpoint @i</p>
+                        </div>
+                        </div>
+                    }
+                </div>
+                @{i = 0;}
+                @foreach (Domain.RMCheckpoint checkpoint in Model.RMCheckpoints)
+                {
+                    i++;
+                    string futerStyle = checkpoint.Achieved == 1 ? "border-bottom: 2px solid #63cdd7" : "";
+                    <div class="about-checkpoint" id="aboutCP@(i)" style="display:none;">
+                        <div class="listOfSkills" style="">
+                            <div class="futter-of-skill-list" style="@futerStyle">
+
+                                @foreach (Domain.CheckpointsSkill skill in checkpoint.CheckpointsSkills)
+                                {
+                                    <div class="skill">
+                                        <div class="skillInfo">
+                                            <p class="bold">@skill.SkillLevel.Skill.Name</p>
+                                            <p>@skill.SkillLevel.Name</p>
+                                        </div>
+                                        <div class="checkbox">
+                                            @{string Checked = (skill.Achieved == 1) ? "checked" : "";}
+                                            <input type="checkbox" name="@skill.RMCheckpointId" id="condition" @Checked disabled="disabled">
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @if (checkpoint.Achieved == 1)
+                        {
+                            <div class="manage-checkpoint" style="height:auto">
+                                <form style="margin-right:5px;" action="@Url.Action("RefuseCheckpoint", "HR")" method="post">
+                                    <input name="RMCheckpointId" type="hidden" value="@checkpoint.RMCheckpointId" />
+                                    <input name="EmployeeId" type="hidden" value="@Model.EmpolyeeId" />
+                                    <input value="Refuse" type="submit" class="button" style="background-color: rgba(243, 52, 52, 0.15)" />
+                                </form>
+                                <form action="@Url.Action("AcceptCheckpoint", "HR")" method="post">
+                                    <input name="RMCheckpointId" type="hidden" value="@checkpoint.RMCheckpointId" />
+                                    <input name="EmployeeId" type="hidden" value="@Model.EmpolyeeId" />
+                                    <input value="Accept" type="submit" class="button" style="background-color: rgba(167, 212, 123, 0.30)" />
+                                </form>
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div class="RoadMapComments" style="height:300px; width: 94%; background-color:#fafafa; margin-left:3%; border-bottom-left-radius:5px; border-bottom-right-radius:5px; border: 3px solid #63cdd7; border-top:none;  min-width:1065px;">
+
+            </div>
+        }
+    }   
 </body>
 </html>

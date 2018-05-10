@@ -42,8 +42,11 @@ namespace Extensibility
 		
         bool EditSpecialization(Specialization spec);
 
-        RoadMap GetRoadMap(int RoadMapId);
+        RoadMap GetRoadMap(int EmployeeId);
 
         bool DeleteRoadMap(int RoadMapId);
+
+        bool AcceptCheckpoint(int RMCheckpointId);
+        bool RefuseCheckpoint(int RMCheckpointId);
     }
 }

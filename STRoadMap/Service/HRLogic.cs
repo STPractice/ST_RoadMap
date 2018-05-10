@@ -173,8 +173,10 @@ namespace Service
         }
 
 
-        public RoadMap GetRoadMap(int RoadMapId)
+        public RoadMap GetRoadMap(int EmployeeId)
         {
+            int RoadMapId = 0;
+            if (UoW.Employees.Find(EmployeeId) != null && UoW.Employees.Find(EmployeeId).RoadMaps.FirstOrDefault() != null) RoadMapId = UoW.Employees.Find(EmployeeId).RoadMaps.FirstOrDefault().RoadMapId;
             return UoW.RoadMaps.Find(RoadMapId);
         }
 
@@ -187,6 +189,20 @@ namespace Service
         public IEnumerable<Employee> GetEmployeeList()
         {
            return UoW.Employees.GetAll();
+        }
+        public bool AcceptCheckpoint(int RMCheckpointId)
+        {
+            RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);
+            checkpoint.Achieved = 2;
+            UoW.RMCheckpoints.Update(checkpoint);
+            return UoW.Commit();
+        }
+        public bool RefuseCheckpoint(int RMCheckpointId)
+        {
+            RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);
+            checkpoint.Achieved = 0;
+            UoW.RMCheckpoints.Update(checkpoint);
+            return UoW.Commit();
         }
     }
 }

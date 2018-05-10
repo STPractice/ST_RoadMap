@@ -32,14 +32,9 @@
                         <div class="row" style="align-items:flex-end">
                             <div class="buttonContainer">
                                 
-                                    @if (item.RoadMaps.FirstOrDefault() != null)
-                {
-                    @Html.ActionLink("RoadMap", "RoadMap", routeValues: new { RoadMapId = item.RoadMaps.FirstOrDefault().RoadMapId }, htmlAttributes: new { @class = "edit" });
-                }
-                else
-                {
-                    @Html.ActionLink("RoadMap", "RoadMap", routeValues: null, htmlAttributes: new { @class = "edit", style="margin-right:0px;" });
-                }
+                                    
+                                @Html.ActionLink("RoadMap", "RoadMap", routeValues: new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new { @class = "edit" })
+                
             
                             </div>
                         </div>
