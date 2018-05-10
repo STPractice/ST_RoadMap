@@ -38,7 +38,15 @@ namespace Extensibility
 
         bool CreateSpecialization(Specialization specialization);
 
+		IEnumerable<Employee> GetEmployeeList();
+		
         bool EditSpecialization(Specialization spec);
-        IEnumerable<Employee> GetEmployeeList();
+
+        RoadMap GetRoadMap(int EmployeeId);
+
+        bool DeleteRoadMap(int RoadMapId);
+
+        bool AcceptCheckpoint(int RMCheckpointId);
+        bool RefuseCheckpoint(int RMCheckpointId);
     }
 }

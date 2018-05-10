@@ -14,7 +14,12 @@ a {
     
     text-decoration: none !important;
 }
-    
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
         h1 {
     color: #63cdd7;
     font-weight: bold;
@@ -162,7 +167,8 @@ a.lable {
 }
 .buttonContainer {
     position: relative;
-    margin-right: 20px;
+    margin-right:5px;
+
 }
 .addbuttoncontainer {
     display: flex;
@@ -203,7 +209,7 @@ a.lable {
         margin: 0;
     }
     .buttonContainer {
-        margin-right: 1px;
+        margin-right: 3px;
     }
     a.edit {
         padding-left: 2px;
@@ -217,7 +223,7 @@ a.lable {
         width: 45px;
         padding-right: 1px;
         padding-left: 1px;
-        margin-right: 15px;
+        
     }
     h1 {
         font-size: 16px;

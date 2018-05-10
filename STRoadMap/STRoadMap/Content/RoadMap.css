@@ -1,0 +1,198 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none!important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    justify-content: center;
+    background-color: #e6eceb;
+}
+
+a {
+    text-decoration: none;
+}
+
+p{
+    margin:1px;
+}
+.manage-block {
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    margin-top: 50px;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    padding:10px;
+}
+.bold {
+    font-weight: bold;
+}
+.checkpoint0 {
+    background-color: #fff;
+}
+.checkpoint1 {
+    background-color: rgba(234, 249, 67, 0.25);
+}
+.checkpoint2 {
+    background-color: rgba(167, 212, 123, 0.25);
+}
+.nameOfRoadMap {
+    text-align: center;
+    color: #63cdd7;
+    font-size: 4vmax;
+    background-color: #fff;
+    padding: 6px;
+    border-bottom: 2px solid #63cdd7;
+    cursor: pointer;
+}
+
+.skillInfo{
+    width:95%;
+}
+
+.mobile {
+    display: none;
+}
+
+.base {
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+}
+
+.listOfCheckpoints {
+    padding: 3px 0px 3px 3px;
+    width: 25%;
+    margin-right: -2px;
+    overflow-x: visible;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    height: 400px;
+    z-index:300;
+    position: relative;
+}
+.listOfCheckpoints::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+.checkbox{
+    min-height:0px;
+    
+}
+
+    .listOfCheckpoints p {
+        color: #63cdd7;
+        font-weight: bold;
+    }
+
+.checkpoint {
+    position: relative;
+    padding: 10px;
+    border-top: 1px solid #e6eceb;
+    border-bottom: 1px solid #e6eceb;
+    border-left: 2px solid #e6eceb;
+    border-right: 2px solid #63cdd7;
+    cursor: pointer;
+    transition: .5s all;
+    display: flex;
+    z-index: 3;
+}
+.button {    
+    
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: .5s;
+    padding: 5px 10px 5px 10px;
+    
+}
+
+.button:hover {
+    transform:scale(1.05);
+    color: #63cdd7;
+}
+.manage-checkpoint {
+    justify-content: flex-end;
+    margin: 5px;
+    padding: 5px;
+    padding-bottom: 11px;
+    border: 2px solid #63cdd7;
+    flex-direction: row;
+    display: flex;
+}
+.about-checkpoint {
+    border-left: 2px solid #63cdd7;
+    display: flex;
+    height:400px;
+    justify-content:flex-start;
+    flex-direction: column;
+    width: 75%;
+}
+.checkpoint:hover {
+    color: #63cdd7;
+    border-top: 1px solid #e6eceb;
+    border-bottom: 1px solid #e6eceb;
+    border-left: 2px solid #e6eceb;
+    border-right: 2px solid #e6eceb;
+    
+    z-index: 4;
+    transform: translateX(-2px) !important;
+}
+        /*  css for choosen
+        .checkpoint:hover {
+        color: #63cdd7;
+        border-top: 1px solid #63cdd7;
+        border-bottom: 1px solid #63cdd7;
+        border-left: 2px solid #63cdd7;
+        border-right: 2px solid #fff;
+        background-color: #fff;
+        z-index: 122;
+        transform: scaleX(1.014);
+    }*/
+.listOfSkills {
+    display:flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    
+    flex-direction: column;   
+    
+    z-index: 200;
+}
+.futter-of-skill-list {
+    position: relative;
+    overflow-y: scroll;
+    flex-direction: column;
+    
+    margin-left: 3px;
+    margin-right: 3px;
+    height: 100%;
+}
+    .futter-of-skill-list::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+.skill {
+    display: flex;
+    flex-direction: row;
+    border: 2px solid #63cdd7;
+    padding: 6px;
+    margin: 3px 0px 0px 0px;
+}
+
+@media screen and (max-width: 768px) {
+    .base {
+       
+        margin: 0;
+        width: 100%;
+    }
+}

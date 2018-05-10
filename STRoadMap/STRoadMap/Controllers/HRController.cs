@@ -512,6 +512,82 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
+        public ActionResult RoadMap(int? EmployeeId)
+        {
+            if (EmployeeId != null)
+            {                
+                RoadMap roadMap = HRLogic.GetRoadMap((int)EmployeeId);
+                ViewBag.EmployeeId = EmployeeId;                
+                return View(roadMap);                
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRoadMap(int? RoadMapId)
+        {
+            if (RoadMapId != null)
+            {                
+                if (HRLogic.DeleteRoadMap((int)RoadMapId))
+                {
+                    return RedirectToAction("EmolyeeList", "HR");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult RefuseCheckpoint (int? RMCheckpointId, int? EmployeeId)
+        {
+            if (RMCheckpointId != null)
+            {
+                if (HRLogic.RefuseCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "HR", new {EmployeeId=  EmployeeId});
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AcceptCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (RMCheckpointId != null)
+            {
+                if (HRLogic.AcceptCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "HR", new { EmployeeId = EmployeeId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpGet]
         public ActionResult EditSpecialization(int? SpecializationId)
         {
             if (!IsAuthorized())
