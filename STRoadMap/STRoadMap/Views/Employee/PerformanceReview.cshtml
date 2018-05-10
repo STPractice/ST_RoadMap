@@ -23,7 +23,7 @@
         function changeSpecialization() {
             var dropspec = document.querySelector("#dropSpecializations");
             var specId = dropspec.options[dropspec.selectedIndex].value;
-            var specializations = document.querySelectorAll("form");
+            var specializations = document.querySelectorAll("form.forSpecialization");
             for (var i = 0; i < specializations.length; i++) {
                 var formSpecId = specializations[i].id.substring(14);
                 if (formSpecId==specId) {
