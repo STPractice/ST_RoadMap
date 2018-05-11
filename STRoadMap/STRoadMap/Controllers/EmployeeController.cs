@@ -106,5 +106,45 @@ namespace STRoadMap.Controllers
                 return View("RoadMap",employeeLogic.getRoadMap(HttpContext.User.Identity.GetUserId()));
             }
         }
+        [HttpPost]
+        public ActionResult PassCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                return HttpNotFound();
+            }
+            if (RMCheckpointId != null)
+            {
+                if (employeeLogic.PassCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "Employee");
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+        [HttpPost]
+        public string ChangeSkillCondition (int? RMCheckpointId, int? SkillLevelId)
+        {
+            if (!IsAuthorized())
+            {
+                return "false";
+            }
+            if (RMCheckpointId != null && SkillLevelId != null)
+            {   
+                return employeeLogic.ChangeSkillCondition((int)RMCheckpointId, (int)SkillLevelId).ToString();
+            }
+            else
+            {
+                return false.ToString();
+            }
+            
+        }
     }
 }

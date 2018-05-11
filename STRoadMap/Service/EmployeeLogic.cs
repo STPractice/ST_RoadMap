@@ -64,15 +64,51 @@ namespace Service
             return true;
         }
 
-        public RoadMap getRoadMap(string employeeId)
+        public RoadMap getRoadMap(string userId)
         {
-            var Roadmaps = UoW.RoadMaps.GetAll();
-           return Roadmaps.GetEnumerator().Current;
+            RoadMap rm = UoW.Employees.FindByUserId(userId).RoadMaps.FirstOrDefault();
+            return rm;
         }
 
         public Employee GetProfile(string UserId)
         {
             return UoW.Employees.FindByUserId(UserId);
+        }
+
+        public bool PassCheckpoint(int RMCheckpointId)
+        {
+            RMCheckpoint rmc = UoW.RMCheckpoints.Find(RMCheckpointId);
+            if (rmc != null)
+            {
+                if (rmc.Achieved == 0)
+                {
+                    rmc.Achieved = 1;
+                }
+                else
+                {
+                    rmc.Achieved = 0;
+                }
+                UoW.RMCheckpoints.Update(rmc);
+                UoW.Commit();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public bool ChangeSkillCondition(int RMCheckpointId, int SkillLevelId)
+        {
+            foreach(CheckpointsSkill skill in UoW.CheckpointsSkills.GetAll())
+            {
+                if (skill.RMCheckpointId == RMCheckpointId && skill.SkillLevelId == SkillLevelId)
+                {
+                    skill.Achieved = Math.Abs(1 - skill.Achieved);
+                    UoW.CheckpointsSkills.Update(skill);                    
+                    return UoW.Commit();
+                }
+            }
+            return false;
         }
     }
 }

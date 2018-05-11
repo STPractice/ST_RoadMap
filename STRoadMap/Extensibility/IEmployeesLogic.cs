@@ -16,5 +16,7 @@ namespace Extensibility
         bool IsPerformanceReviewPassed(string employeeId);
         bool IsRoadMapExists(string employeeId);
         RoadMap getRoadMap(string employeeId);
+        bool PassCheckpoint(int RMCheckpointId);
+        bool ChangeSkillCondition(int RMCheckpointId, int SkillLevelId);
     }
 }
