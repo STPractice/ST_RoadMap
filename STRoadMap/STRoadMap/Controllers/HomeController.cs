@@ -10,7 +10,14 @@ namespace STRoadMap.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            if (HttpContext.User.Identity.IsAuthenticated == true)
+            {
+                return RedirectToAction("EmployeeProfile", "Employee");
+            }
+            else
+            {
+                return RedirectToAction("Register", "Account");
+            }
         }
     }
 }

@@ -5,18 +5,24 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    margin-top: 50px;
+    margin: 50px 200px;
     justify-content: center;
+    color: #63cdd7;
     background-color: #e6eceb;
 }
 
 a {
-    color: #63cdd7 !important;
     text-decoration: none !important;
 }
 
 p {
     margin: 0 0 0 0;
+    font-weight: bold;
+}
+
+input {
+    border: 2px solid #63cdd7;
+    color: #307974;
 }
 
 header {
@@ -27,7 +33,7 @@ header {
 
 .skill-container {
     position: relative;
-    margin: auto 150px;
+    border: 2px solid #63cdd7;
     background-color: #fff;
     padding: 20px;
 }
@@ -43,24 +49,11 @@ select {
 
 .createSkill-block {
     position: relative;
-    border: 2px solid #e6eceb;
+    border: 2px solid #53bdc7;
     margin: 50px auto;
 }
 
-.filler {
-    height: 500px;
-    width: 100%;
-}
 
-.delete {
-    position: relative;
-    display: flex;
-    align-items:flex-end;
-    right: 0;
-    text-align: center;
-    color: #63cdd7;
-    cursor: pointer;
-}
 
 div.skillName,
 div.description-block {
@@ -72,15 +65,17 @@ div.description-block {
     resize: none;
     padding: 3px;
     width: 100%;
+    color: #307974;
     max-width: none;
+    border: 2px solid #63cdd7;
 }
 
 .edit {
     position: relative;
     display: flex;
     line-height: 30px;
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-left: 0px;
+    margin-top: 0px;
     background-color: #fff;
     border: 2px solid #63cdd7;
     color: #63cdd7;
@@ -95,8 +90,8 @@ div.description-block {
     position: relative;
     display: flex;
     line-height: 30px;
-    margin-left: 20px;
-    margin-top: 10px;
+    margin-left: 5px;
+    margin-top: 0px;
     background-color: #fff;
     border: 2px solid #63cdd7;
     color: #63cdd7;
@@ -106,24 +101,36 @@ div.description-block {
     padding: 5px 10px 5px 10px;
     transition: .5s;
 }
-    .delete:hover {
-        transform: scale(1.1);
-        color: #63cdd7;
-    }
 
-.add:hover,
-.edit:hover {
-    transform: scale(1.1);
-    color: #63cdd7;
+.add {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+    background-color: #63cdd7;
+    color: #fff;
+    font-size: 24px;
+    transition: .5s;
+    cursor: pointer;
 }
+
+    .add:hover,
+    .submit:hover {
+        transform: scale(1.1);
+    }
 
 @media screen and (max-width: 950px) {
-    .container {
-        margin: auto;
+    body {
+        
+        margin-left: 0;
+        margin-right: 0;
     }
 }
+
 @media screen and (max-width: 768px) {
     .skill-container {
-        margin: 0;
+        margin-left: 0;
+        margin-right: 0;
     }
 }

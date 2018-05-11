@@ -47,11 +47,18 @@ namespace Domain
         }
         public Employee FindByUserId(string id)
         {
+            try
+            { 
             foreach (Employee employee in context.Employees)
             {
                 if(employee.UserId==id) return employee;
             }
             return null;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
     }
 }
