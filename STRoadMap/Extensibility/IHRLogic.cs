@@ -42,9 +42,9 @@ namespace Extensibility
 		
         bool EditSpecialization(Specialization spec);
 
-		IEnumerable<Employee> GetEmployeeList();
+		
 
-        AspNetUser GetEmployeesProfile(string employeeId);
+        Employee GetEmployeesProfile(int employeeId);
 		
 
         RoadMap GetRoadMap(int EmployeeId);
