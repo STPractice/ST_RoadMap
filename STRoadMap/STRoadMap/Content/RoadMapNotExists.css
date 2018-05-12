@@ -1,0 +1,26 @@
+﻿
+* {
+    text-decoration: none !important;
+   
+}
+p {
+    color: #63cdd7;
+    font-weight: bold;
+}
+body {
+    background-color: #e6eceb;
+}
+h2 {
+    margin: 0 0 0 0;
+    color: #63cdd7;
+    font-weight: bold;
+}
+.message-container {
+    position: relative;
+    margin-top: 50px;    
+    border: 2px solid #63cdd7;
+    background-color: #fff;
+    padding:20px;
+    text-align:center;
+}
+

@@ -12,5 +12,9 @@ namespace Extensibility
         IEnumerable<Employee> GetEmployeeList();
 
         Employee GetEmployeesProfile(int employeeId);
+
+        RoadMap GetEmployeesRoadMap(int employeeId);
+        bool AcceptCheckpoint(int RMCheckpointId);
+        bool RefuseCheckpoint(int RMCheckpointId);
     }
 }
