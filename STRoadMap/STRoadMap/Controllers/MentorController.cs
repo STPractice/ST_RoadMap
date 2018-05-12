@@ -92,5 +92,55 @@ namespace STRoadMap.Controllers
                 }
             }
         }
+
+        [HttpPost]
+        public ActionResult RefuseCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (RMCheckpointId != null)
+            {
+                if (MentorLogic.RefuseCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "Mentor", new { EmployeeId = EmployeeId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AcceptCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (RMCheckpointId != null)
+            {
+                if (MentorLogic.AcceptCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "Mentor", new { EmployeeId = EmployeeId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
     }
 }
