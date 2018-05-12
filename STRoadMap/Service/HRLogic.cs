@@ -209,5 +209,56 @@ namespace Service
         {
             return UoW.Employees.Find(employeeId);
         }
+
+        public bool DecreaseEmployee(int employeeId)
+        {
+            var user = GetEmployeesProfile((int)employeeId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            var role = user.AspNetUser.AspNetRoles.FirstOrDefault(r => r.Name == "HR");
+            if (role != null)
+            {
+                user.AspNetUser.AspNetRoles.Remove(role);
+                UoW.Commit();
+                return true;
+            }
+            role = user.AspNetUser.AspNetRoles.FirstOrDefault(r => r.Name == "Mentor");
+            if (role != null)
+            {
+                user.AspNetUser.AspNetRoles.Remove(role);
+                UoW.Commit();
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool IncreaseEmployee(int employeeId)
+        {
+            var user = GetEmployeesProfile((int)employeeId);
+            if (user == null)
+            {
+                return false;
+            }
+
+            var role = user.AspNetUser.AspNetRoles.FirstOrDefault(r => r.Name == "HR");
+            if (role != null)
+            {
+                return false;
+            }
+            role = user.AspNetUser.AspNetRoles.FirstOrDefault(r => r.Name == "Mentor");
+            if (role != null)
+            {
+                user.AspNetUser.AspNetRoles.Add(UoW.AspNetRoles.Find("ed5466fa-bb11-4ce0-a4d0-0d9e35b9607b"));
+                UoW.Commit();
+                return true;
+            }
+            user.AspNetUser.AspNetRoles.Add(UoW.AspNetRoles.Find("4066c225-7328-49ac-b0a0-77ca4d8782ee"));
+            UoW.Commit();
+            return true;
+        }
     }
 }

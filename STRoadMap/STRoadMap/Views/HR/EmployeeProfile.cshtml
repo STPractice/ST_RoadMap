@@ -1,4 +1,5 @@
 ﻿@using Domain
+@using System.Linq;
 @model Domain.Employee
 <!DOCTYPE html>
 
@@ -33,11 +34,42 @@
                     <table>
                         <tr>
                             <td>
+                                @{
+                                    var hr = Model.AspNetUser.AspNetRoles.Any(r => r.Name == "HR");
+                                    var mentor = Model.AspNetUser.AspNetRoles.Any(r => r.Name == "Mentor");
+                                }
+                                @if (!hr && !mentor)
+                                {
+                                    <div class="dis-button">
+                                        <p>Down</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Down", "DecreaseEmployee", "HR", new{employeeId=Model.EmpolyeeId}, new { @class = "prof-button", style = "margin-bottom: 8px" })
+                                }
+                            </td>
+                            <td>
+                                @if (hr)
+                                {
+                                    <div class="dis-button" style="margin-left: 8px">
+                                        <p>Up</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Up", "IncreaseEmployee", "HR", new { employeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin: 0 0 8px 8px;" })
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
                                 @Html.ActionLink("Skill matrix", "SkillMatrix", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button" })
                             </td>
                             <td>
                                 @Html.ActionLink("Road map", "RoadMap", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin-left: 8px;" })
                             </td>
+                        </tr>
                     </table>
                 </div>
             </div>

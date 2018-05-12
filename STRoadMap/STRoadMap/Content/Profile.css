@@ -83,6 +83,20 @@ a:active {
     padding: 10.5px;
     transition: .5s;
 }
+.dis-button {
+    height: 50px;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #e6eceb;
+    color: #e6eceb;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10.5px;
+    transition: .5s;
+    margin-bottom: 8px;
+}
 
 .prof-button:hover {
     transform: scale(1.1);

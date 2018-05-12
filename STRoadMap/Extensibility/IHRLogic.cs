@@ -53,5 +53,7 @@ namespace Extensibility
 
         bool AcceptCheckpoint(int RMCheckpointId);
         bool RefuseCheckpoint(int RMCheckpointId);
+        bool DecreaseEmployee(int employeeId);
+        bool IncreaseEmployee(int employeeId);
     }
 }
