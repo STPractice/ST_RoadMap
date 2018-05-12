@@ -68,7 +68,7 @@ namespace STRoadMap.Controllers
         }
 
         [HttpGet]
-        public ActionResult RoadMap(int? EmployeeId = 100)
+        public ActionResult RoadMap(int? EmployeeId)
         {
             if (!IsAuthorized())
             {

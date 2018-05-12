@@ -320,6 +320,8 @@
     <Content Include="Views\Employee\PerformanceReviewNotPassed.cshtml" />
     <Content Include="Views\Employee\RoadMapNotExists.cshtml" />
     <Content Include="Views\Employee\RoadMap.cshtml" />
+    <Content Include="Views\Mentor\RoadMap.cshtml" />
+    <Content Include="Views\Mentor\RoadMapNotExists.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
