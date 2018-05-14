@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Domain;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 
 namespace Service
@@ -203,6 +204,34 @@ namespace Service
             checkpoint.Achieved = 0;
             UoW.RMCheckpoints.Update(checkpoint);
             return UoW.Commit();
+        }
+
+        public void NotifyUsersSpecializationEdited(Specialization specialization)
+        {
+            foreach (Employee employee in UoW.Employees.GetAll())
+            {
+                if (employee.SkillMatrices.ToArray()[0].Specialization.SpecializationId.Equals(specialization))
+                {
+                    Notification notification = new Notification();
+                    notification.Content = "You specialization was edited, check for updates";
+                    notification.UserId = employee.UserId;
+                    notification.url = "Employee/specialization";
+                    UoW.Notifications.Create(notification);
+                }
+            }
+           
+        }
+        public bool NotifyUsersSpecializationEditedTest(String employee)
+        {
+           
+                    Notification notification = new Notification();
+                    notification.Content = "You specialization was edited, check for updates";
+                    notification.UserId = employee;
+                    notification.url = "Employee/specialization";
+                    UoW.Notifications.Create(notification);
+            return UoW.Commit();
+
+
         }
     }
 }

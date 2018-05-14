@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
@@ -48,5 +49,8 @@ namespace Extensibility
 
         bool AcceptCheckpoint(int RMCheckpointId);
         bool RefuseCheckpoint(int RMCheckpointId);
+
+        void NotifyUsersSpecializationEdited(Specialization specialization);
+        bool NotifyUsersSpecializationEditedTest(String employee); //TODO delete test
     }
 }
