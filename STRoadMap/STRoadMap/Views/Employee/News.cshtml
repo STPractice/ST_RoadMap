@@ -1,0 +1,53 @@
+﻿@using Domain
+@model System.Collections.Generic.IEnumerable<Domain.Notification>
+
+@{
+    ViewBag.Title = "title";
+}
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/Profile.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRLists.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/RoadMapNotExists.css" />
+    <meta name="viewport" content="width=device-width"/>
+    <title>SkillList</title>
+</head>
+<body>
+    <div class="list-block">
+            <div>
+                <table class="table">
+
+                    @if (!Model.Any())
+                    {
+                        <div class="message-container"><h2>You have no new notifications</h2></div>
+                    }
+                    else
+                    { 
+                        foreach (var item in Model)
+                         {
+
+                             <tr class=" rowContainer" style="">
+                                 <td>
+                                     <div>
+                                         <p>@item.Content</p>
+                                     </div>
+                                     <div class="row">
+                                         <div class="buttonContainer">
+                                             @using (Html.BeginForm())
+                                             {
+                                                 <input type="hidden" name="notificationId" value="@item.NotificationId">
+                                                 <input type="submit" value="Delete" class="delete">
+                                             }
+                                         </div>
+                                     </div>
+                                 </td>
+                             </tr>
+
+                         }
+                    }}
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

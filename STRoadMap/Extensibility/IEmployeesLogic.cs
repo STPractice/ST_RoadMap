@@ -18,5 +18,7 @@ namespace Extensibility
         RoadMap getRoadMap(string employeeId);
         bool PassCheckpoint(int RMCheckpointId);
         bool ChangeSkillCondition(int RMCheckpointId, int SkillLevelId);
+        IEnumerable<Notification> GetAllUsersNotifications(string userId);
+        bool DeleteNotification(int? notificationId);
     }
 }

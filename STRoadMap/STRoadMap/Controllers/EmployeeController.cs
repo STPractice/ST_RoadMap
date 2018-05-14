@@ -146,5 +146,33 @@ namespace STRoadMap.Controllers
             }
             
         }
+
+        [HttpGet]
+        public ActionResult News()
+        {
+            if (!IsAuthorized())
+            {
+                return HttpNotFound();
+            }
+            return View("News", employeeLogic.GetAllUsersNotifications(HttpContext.User.Identity.GetUserId()));
+        }
+        [HttpPost]
+        public ActionResult News(int? notificationId)
+        {
+            if (!IsAuthorized())
+            {
+                return HttpNotFound();
+            }
+
+            if (notificationId != null)
+            {
+                if (!employeeLogic.DeleteNotification(notificationId))
+                {
+                    return HttpNotFound();
+                }
+            }
+
+            return View("News", employeeLogic.GetAllUsersNotifications(HttpContext.User.Identity.GetUserId()));
+        }
     }
 }

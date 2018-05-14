@@ -110,5 +110,28 @@ namespace Service
             }
             return false;
         }
+        public IEnumerable<Notification> GetAllUsersNotifications(string userId)
+        {
+            List<Notification> usersNotifications = new List<Notification>();
+            foreach (Notification notification in UoW.Notifications.GetAll())
+            {
+                if (notification.UserId.Equals(userId))
+                    usersNotifications.Add(notification);
+            }
+
+            return usersNotifications;
+        }
+
+        public bool DeleteNotification(int? notificationId)
+        {
+            var notification = UoW.Notifications.Find(notificationId);
+            if (notification != null)
+            {
+                UoW.Notifications.Delete(UoW.Notifications.Find(notificationId));
+                return UoW.Commit();
+            }
+            return false;
+        }
     }
+
 }
