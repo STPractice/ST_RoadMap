@@ -51,6 +51,6 @@ namespace Extensibility
         bool RefuseCheckpoint(int RMCheckpointId);
 
         void NotifyUsersSpecializationEdited(Specialization specialization);
-        bool NotifyUsersSpecializationEditedTest(String employee); //TODO delete test
+        void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId);
     }
 }

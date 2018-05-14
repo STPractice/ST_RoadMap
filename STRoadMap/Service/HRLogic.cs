@@ -210,28 +210,29 @@ namespace Service
         {
             foreach (Employee employee in UoW.Employees.GetAll())
             {
-                if (employee.SkillMatrices.ToArray()[0].Specialization.SpecializationId.Equals(specialization))
+                if (employee.SkillMatrices.ToArray()[0].Specialization.SpecializationId.Equals(specialization.SpecializationId))
                 {
                     Notification notification = new Notification();
                     notification.Content = "You specialization was edited, check for updates";
                     notification.UserId = employee.UserId;
                     notification.url = "Employee/specialization";
                     UoW.Notifications.Create(notification);
+                    UoW.Commit();
                 }
+                
             }
            
         }
-        public bool NotifyUsersSpecializationEditedTest(String employee)
+
+        public void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId)
         {
-           
-                    Notification notification = new Notification();
-                    notification.Content = "You specialization was edited, check for updates";
-                    notification.UserId = employee;
-                    notification.url = "Employee/specialization";
-                    UoW.Notifications.Create(notification);
-            return UoW.Commit();
-
-
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification();
+            notification.Content = "Your checkpoint was accepted";
+            notification.UserId = employee.UserId;
+            notification.url = "Employee/RoadMap";
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
         }
     }
 }
