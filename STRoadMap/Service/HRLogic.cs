@@ -234,5 +234,16 @@ namespace Service
             UoW.Notifications.Create(notification);
             UoW.Commit();
         }
+
+        public void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification();
+            notification.Content = "Your checkpoint was accepted";
+            notification.UserId = employee.UserId;
+            notification.url = "Employee/RoadMap";
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
+        }
     }
 }

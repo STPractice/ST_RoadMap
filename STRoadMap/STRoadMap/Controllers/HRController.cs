@@ -555,6 +555,7 @@ namespace STRoadMap.Controllers
             {
                 if (HRLogic.RefuseCheckpoint((int)RMCheckpointId))
                 {
+                    HRLogic.NotifyCheckPointRefused(EmployeeId, RMCheckpointId);
                     return RedirectToAction("RoadMap", "HR", new {EmployeeId=  EmployeeId});
                 }
                 else
