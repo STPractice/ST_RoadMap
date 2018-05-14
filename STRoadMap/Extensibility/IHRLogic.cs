@@ -52,5 +52,6 @@ namespace Extensibility
         void NotifyUsersSpecializationEdited(Specialization specialization);
         void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId);
         void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId);
+        void NotifyRoadMapCreated(int? employeeId);
     }
 }

@@ -212,10 +212,13 @@ namespace Service
             {
                 if (employee.SkillMatrices.ToArray()[0].Specialization.SpecializationId.Equals(specialization.SpecializationId))
                 {
-                    Notification notification = new Notification();
-                    notification.Content = "You specialization was edited, check for updates";
-                    notification.UserId = employee.UserId;
-                    notification.url = "Employee/specialization";
+                    Notification notification =
+                        new Notification
+                        {
+                            Content = "You specialization was edited, check for updates",
+                            UserId = employee.UserId,
+                            url = "Employee/specialization"
+                        };
                     UoW.Notifications.Create(notification);
                     UoW.Commit();
                 }
@@ -227,10 +230,12 @@ namespace Service
         public void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId)
         {
             var employee = UoW.Employees.Find(employeeId);
-            Notification notification = new Notification();
-            notification.Content = "Your checkpoint was accepted";
-            notification.UserId = employee.UserId;
-            notification.url = "Employee/RoadMap";
+            Notification notification = new Notification
+            {
+                Content = "Your checkpoint was accepted",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
             UoW.Notifications.Create(notification);
             UoW.Commit();
         }
@@ -238,10 +243,24 @@ namespace Service
         public void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId)
         {
             var employee = UoW.Employees.Find(employeeId);
-            Notification notification = new Notification();
-            notification.Content = "Your checkpoint was accepted";
-            notification.UserId = employee.UserId;
-            notification.url = "Employee/RoadMap";
+            Notification notification = new Notification
+            {
+                Content = "Your checkpoint was accepted",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
+        }
+        public void NotifyRoadMapCreated(int? employeeId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification
+            {
+                Content = "Your roadmap was created, check for updates",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
             UoW.Notifications.Create(notification);
             UoW.Commit();
         }
