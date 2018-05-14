@@ -41,24 +41,24 @@
                                 @if (!hr && !mentor)
                                 {
                                     <div class="dis-button">
-                                        <p>Down</p>
+                                        <p>Downgrade</p>
                                     </div>
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Down", "DecreaseEmployee", "HR", new{employeeId=Model.EmpolyeeId}, new { @class = "prof-button", style = "margin-bottom: 8px" })
+                                    @Html.ActionLink("Downgrade", "DecreaseEmployee", "HR", new{employeeId=Model.EmpolyeeId}, new { @class = "prof-button", style = "margin-bottom: 8px" })
                                 }
                             </td>
                             <td>
                                 @if (hr)
                                 {
                                     <div class="dis-button" style="margin-left: 8px">
-                                        <p>Up</p>
+                                        <p>Aggrandize</p>
                                     </div>
                                 }
                                 else
                                 {
-                                    @Html.ActionLink("Up", "IncreaseEmployee", "HR", new { employeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin: 0 0 8px 8px;" })
+                                    @Html.ActionLink("Aggrandize", "IncreaseEmployee", "HR", new { employeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin: 0 0 8px 8px;" })
                                 }
                             </td>
                         </tr>
