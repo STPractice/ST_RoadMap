@@ -676,10 +676,11 @@ namespace STRoadMap.Controllers
             }
             else
             {
-                Employee employee = HRLogic.GetEmployee((int) EmployeeId);
-                if (employee!=null)
+                List<Skill> skills = HRLogic.GetEmployeesAvailableSkills((int) EmployeeId);
+                if (skills!=null)
                 {
-                    return View(employee);
+                    ViewBag.EmployeeId = EmployeeId;
+                    return View(skills);
                 }
                 else
                 {
@@ -700,7 +701,7 @@ namespace STRoadMap.Controllers
             int id = HRLogic.CreateRoadMap(roadMap);
             if (id!=0)
             {
-                return RedirectToAction("RoadMap", "HR", new { RoadMapId = id });
+                return RedirectToAction("RoadMap", "HR", new { EmployeeId = roadMap.EmpolyeeId });
             }
             else
             {
