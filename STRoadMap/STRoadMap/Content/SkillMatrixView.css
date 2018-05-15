@@ -1,13 +1,72 @@
-﻿.flex-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
+﻿* {
+    text-decoration: none !important;
 }
-    .flex-container div {
-        flex-grow: 1;
-        flex-basis: 100px;
+
+body {
+    font-family: Arial, Helvetica, sans-serif !important;
+    margin-top: 50px !important;
+    justify-content: center !important;
+    background-color: #e6eceb !important;
+    color: #63cdd7 !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+}
+
+#root {
+    padding: 5px !important;
+    min-width: 260px !important;
+}
+
+h1 {
+    color: #63cdd7 !important;
+    font-weight: bold !important;
+}
+
+.prof-button {
+    display: inline !important;
+    text-decoration: none !important;
+    position: relative !important;
+    background-color: #fff !important;
+    border: 2px solid #63cdd7 !important;
+    color: #63cdd7 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+    cursor: pointer !important;
+    transition: .5s !important;
+    margin-bottom: 3px !important;
+}
+
+.items-container {
+    width: 100% !important;
+    background-color: white !important;
+    min-height: 550px !important;
+    position: relative !important;
+}
+
+.flex-row {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    margin-bottom: 3px !important;
+}
+
+
+    .flex-row .flex-container {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        flex-direction: row !important;
     }
-    .flex-container div.header{
-        flex-basis:200px;
-        flex-grow:initial;
+
+        .flex-row .flex-container div {
+            flex-grow: 1 !important;
+            flex-basis: 100px !important;
+            border: 2px solid #63cdd7 !important;
+            min-width: 100px !important;
+        }
+
+    .flex-row div.header {
+        flex-basis: 150px !important;
+        flex-grow: initial !important;
+        border: 2px solid #63cdd7 !important;
+        min-width: 150px !important;
     }
