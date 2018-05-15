@@ -1,5 +1,4 @@
 ﻿using Extensibility;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -710,4 +709,59 @@ namespace STRoadMap.Controllers
         }
     }    
 
+
+        [HttpGet]
+        public ActionResult EmployeeProfile(int? EmployeeId)
+        {
+            if (IsAuthorized() != true)
+            {
+                return HttpNotFound();
+            }
+
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var user = HRLogic.GetEmployeesProfile((int)EmployeeId);
+                if (user != null)
+                {
+                    return View(user);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        public ActionResult DecreaseEmployee(int? employeeId)
+        {
+            if (employeeId != null)
+            {
+                if (HRLogic.DecreaseEmployee((int) employeeId))
+                {
+                    return RedirectToAction("EmployeeProfile", "HR", new {EmployeeId = employeeId});
+                }
+
+                return HttpNotFound();
+            }
+
+            return HttpNotFound();
+        }
+        public ActionResult IncreaseEmployee(int? employeeId)
+        {
+            if (employeeId != null)
+            {
+                if (HRLogic.IncreaseEmployee((int)employeeId))
+                {
+                    return RedirectToAction("EmployeeProfile", "HR", new { EmployeeId = employeeId });
+                }
+
+                return HttpNotFound();
+            }
+            return HttpNotFound();
+        }
+    }
 }

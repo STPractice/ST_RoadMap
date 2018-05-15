@@ -315,6 +315,8 @@
     <Content Include="Views\Shared\_ToolBar.cshtml" />
     <Content Include="Views\HR\EmployeeList.cshtml" />
     <Content Include="Views\Mentor\EmployeeProfile.cshtml" />
+    <Content Include="Views\HR\EmployeesProfile.cshtml" />
+    <Content Include="Views\HR\EmployeeProfile.cshtml" />
     <Content Include="Views\Employee\EmployeeProfile.cshtml" />
     <Content Include="Views\HR\RoadMap.cshtml" />
     <Content Include="Views\Employee\PerformanceReviewNotPassed.cshtml" />

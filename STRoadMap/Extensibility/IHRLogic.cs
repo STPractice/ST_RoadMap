@@ -42,12 +42,19 @@ namespace Extensibility
 		
         bool EditSpecialization(Specialization spec);
 
+		
+
+        Employee GetEmployeesProfile(int employeeId);
+		
+
         RoadMap GetRoadMap(int EmployeeId);
 
         bool DeleteRoadMap(int RoadMapId);
 
         bool AcceptCheckpoint(int RMCheckpointId);
         bool RefuseCheckpoint(int RMCheckpointId);
+        bool DecreaseEmployee(int employeeId);
+        bool IncreaseEmployee(int employeeId);
         
         Employee GetEmployee(int EmployeeId);
 

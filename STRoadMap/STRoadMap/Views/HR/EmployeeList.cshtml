@@ -26,7 +26,7 @@
 
                 <tr class=" rowContainer">
                     <td class="lableContainer" style="border-top: none;">
-                        @Html.ActionLink(item.Name + " (" + item.AspNetUser.Email + ")", "Employee", new { RoadMapId = item.EmpolyeeId }, htmlAttributes: new { @class = "lable" })
+                        @Html.ActionLink(item.Name + " (" + item.AspNetUser.Email + ")", "EmployeeProfile", new { EmployeeId = item.EmpolyeeId }, htmlAttributes: new { @class = "lable" })
                     </td>
                     <td style="border-top: none;">
                         <div class="row" style="align-items:flex-end">

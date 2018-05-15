@@ -1,0 +1,79 @@
+﻿@using Domain
+@using System.Linq;
+@model Domain.Employee
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/Profile.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Profile</title>
+</head>
+<body>
+    <div class="items-container">
+        <div class="flex-container">
+            <div id="profilePhoto">
+                <img id="profileImage" src="~/Content/photo.jpg" alt="photo" width="180" style="border: 3px solid; border-radius: 5px;" />
+            </div>
+            <div id="profileInfo">
+                <div class="userJobInfo">
+                    @{
+                        string empName = Model.Name;
+                        <p id="userName">@empName</p>
+                        foreach (var skillMatrix in Model.SkillMatrices)
+                        {
+                            <p class="userSpecialization">@skillMatrix.Specialization.Name</p>
+                        }
+                        foreach (var role in Model.AspNetUser.AspNetRoles)
+                        {
+                            <p class="userRole">@role.Name</p>
+                        }
+                    }
+                </div>
+                <div id="exInfo" class="Info-box">
+                    <table>
+                        <tr>
+                            <td>
+                                @{
+                                    var hr = Model.AspNetUser.AspNetRoles.Any(r => r.Name == "HR");
+                                    var mentor = Model.AspNetUser.AspNetRoles.Any(r => r.Name == "Mentor");
+                                }
+                                @if (!hr && !mentor)
+                                {
+                                    <div class="dis-button">
+                                        <p style="text-align:center;">Downgrade</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Downgrade", "DecreaseEmployee", "HR", new{employeeId=Model.EmpolyeeId}, new { @class = "prof-button", style = "margin-bottom: 8px" })
+                                }
+                            </td>
+                            <td>
+                                @if (hr)
+                                {
+                                    <div class="dis-button" style="margin-left: 8px">
+                                        <p>Aggrandize</p>
+                                    </div>
+                                }
+                                else
+                                {
+                                    @Html.ActionLink("Aggrandize", "IncreaseEmployee", "HR", new { employeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin: 0 0 8px 8px;" })
+                                }
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                @Html.ActionLink("Skill matrix", "SkillMatrix", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "padding-left:14px;" })
+                            </td>
+                            <td>
+                                @Html.ActionLink("Road map", "RoadMap", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin-left:8px;text-align:center; padding-left:14px;" })
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
