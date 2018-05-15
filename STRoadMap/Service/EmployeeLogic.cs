@@ -37,6 +37,19 @@ namespace Service
             }
         }
 
+        public SkillMatrix GetSkillMatrix(string userId)
+        {
+            try
+            {
+                Employee employee = UoW.Employees.FindByUserId(userId);
+                return employee.SkillMatrices.First();
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         public Specialization GetSpecialization(int SpecializationId)
         {
             return UoW.Specializations.Find(SpecializationId);

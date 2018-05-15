@@ -57,12 +57,26 @@ namespace STRoadMap.Controllers
                 this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
                 if (employeeLogic.CreateSkillMatrix(position, UserManager.FindByName(HttpContext.User.Identity.Name).Id))
                 {
-                    return View("Employee", "Employee");
+                    return RedirectToAction("EmployeeProfile", "Employee");
                 }
                 else
                 {
                     return HttpNotFound();
                 }
+            }
+        }
+
+        public ActionResult SkillMatrix()
+        {
+            this.ApplicationDbContext = new ApplicationDbContext();
+            this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
+            try
+            {
+                SkillMatrix matrix = employeeLogic.GetSkillMatrix(UserManager.FindByName(HttpContext.User.Identity.Name).Id);
+                return View(matrix);
+            }
+            catch{
+                return HttpNotFound();
             }
         }
 
