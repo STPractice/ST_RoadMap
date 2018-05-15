@@ -48,5 +48,11 @@ namespace Extensibility
 
         bool AcceptCheckpoint(int RMCheckpointId);
         bool RefuseCheckpoint(int RMCheckpointId);
+        
+        Employee GetEmployee(int EmployeeId);
+
+        int CreateRoadMap(RoadMap roadMap);
+
+        List<Skill> GetEmployeesAvailableSkills(int EmployeeId);
     }
 }

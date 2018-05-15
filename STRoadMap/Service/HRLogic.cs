@@ -190,6 +190,30 @@ namespace Service
         {
            return UoW.Employees.GetAll();
         }
+
+        public Employee GetEmployee(int EmployeeId)
+        {
+            return UoW.Employees.Find(EmployeeId);
+        }
+
+        public int CreateRoadMap(RoadMap roadMap)
+        {
+            roadMap.Deadline = roadMap.RMCheckpoints.Last().Deadline;
+            roadMap.Employee = UoW.Employees.Find(roadMap.EmpolyeeId);
+            if (UoW.Employees.Find(roadMap.EmpolyeeId).RoadMaps.Count != 0)
+            {
+                UoW.RoadMaps.Delete(UoW.RoadMaps.Find(UoW.Employees.Find(roadMap.EmpolyeeId).RoadMaps.First().RoadMapId));
+            }
+            UoW.RoadMaps.Create(roadMap);
+            if (UoW.Commit())
+            { 
+                return UoW.Employees.Find(roadMap.EmpolyeeId).RoadMaps.First().RoadMapId;
+            }
+            else
+            {
+                return 0;
+            }
+        }
         public bool AcceptCheckpoint(int RMCheckpointId)
         {
             RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);
@@ -203,6 +227,19 @@ namespace Service
             checkpoint.Achieved = 0;
             UoW.RMCheckpoints.Update(checkpoint);
             return UoW.Commit();
+        }
+
+        public List<Skill> GetEmployeesAvailableSkills(int EmployeeId)
+        {
+            Employee employee = UoW.Employees.Find(EmployeeId);
+            if (employee != null&& employee.SkillMatrices.FirstOrDefault()!= null)
+            {
+                return employee.SkillMatrices.FirstOrDefault().Specialization.Skills.ToList();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

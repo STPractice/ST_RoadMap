@@ -10,10 +10,12 @@ namespace STRoadMap.Controllers
     public class HRController : Controller
     {
         private readonly IHRLogic HRLogic;
+        private readonly IAccountLogic AccountLogic;
 
-        public HRController(IHRLogic HRLogic)
+        public HRController(IHRLogic HRLogic, IAccountLogic accountLogic)
         {
             this.HRLogic = HRLogic;
+            this.AccountLogic = accountLogic;
            
         }       
         
@@ -514,6 +516,11 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult RoadMap(int? EmployeeId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (EmployeeId != null)
             {                
                 RoadMap roadMap = HRLogic.GetRoadMap((int)EmployeeId);
@@ -529,6 +536,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult DeleteRoadMap(int? RoadMapId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (RoadMapId != null)
             {                
                 if (HRLogic.DeleteRoadMap((int)RoadMapId))
@@ -550,6 +562,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult RefuseCheckpoint (int? RMCheckpointId, int? EmployeeId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (RMCheckpointId != null)
             {
                 if (HRLogic.RefuseCheckpoint((int)RMCheckpointId))
@@ -570,6 +587,11 @@ namespace STRoadMap.Controllers
         [HttpPost]
         public ActionResult AcceptCheckpoint(int? RMCheckpointId, int? EmployeeId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (RMCheckpointId != null)
             {
                 if (HRLogic.AcceptCheckpoint((int)RMCheckpointId))
@@ -617,7 +639,7 @@ namespace STRoadMap.Controllers
 
         [HttpPost]
         public ActionResult EditSpecialization(Specialization specialization)
-        {
+        {            
             if (!IsAuthorized()) { 
                 Response.StatusCode = 404;
                 return HttpNotFound();
@@ -638,5 +660,54 @@ namespace STRoadMap.Controllers
                 }
             }
         }
-    }
+
+        [HttpGet]
+        public ActionResult CreateRoadMap(int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                List<Skill> skills = HRLogic.GetEmployeesAvailableSkills((int) EmployeeId);
+                if (skills!=null)
+                {
+                    ViewBag.EmployeeId = EmployeeId;
+                    return View(skills);
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult CreateRoadMap(RoadMap roadMap)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+
+            int id = HRLogic.CreateRoadMap(roadMap);
+            if (id!=0)
+            {
+                return RedirectToAction("RoadMap", "HR", new { EmployeeId = roadMap.EmpolyeeId });
+            }
+            else
+            {
+                return HttpNotFound();
+            };
+        }
+    }    
+
 }
