@@ -707,9 +707,6 @@ namespace STRoadMap.Controllers
                 return HttpNotFound();
             };
         }
-    }    
-
-
         [HttpGet]
         public ActionResult EmployeeProfile(int? EmployeeId)
         {
