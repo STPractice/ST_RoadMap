@@ -57,7 +57,7 @@ namespace STRoadMap.Controllers
                 this.UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(this.ApplicationDbContext));
                 if (employeeLogic.CreateSkillMatrix(position, UserManager.FindByName(HttpContext.User.Identity.Name).Id))
                 {
-                    return View("Employee", "Employee");
+                    return RedirectToAction("EmployeeProfile", "Employee");
                 }
                 else
                 {
