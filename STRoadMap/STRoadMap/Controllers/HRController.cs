@@ -735,6 +735,11 @@ namespace STRoadMap.Controllers
 
         public ActionResult DecreaseEmployee(int? employeeId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (employeeId != null)
             {
                 if (HRLogic.DecreaseEmployee((int) employeeId))
@@ -749,6 +754,11 @@ namespace STRoadMap.Controllers
         }
         public ActionResult IncreaseEmployee(int? employeeId)
         {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
             if (employeeId != null)
             {
                 if (HRLogic.IncreaseEmployee((int)employeeId))
