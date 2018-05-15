@@ -41,7 +41,7 @@
                                 @if (!hr && !mentor)
                                 {
                                     <div class="dis-button">
-                                        <p>Downgrade</p>
+                                        <p style="text-align:center;">Downgrade</p>
                                     </div>
                                 }
                                 else
@@ -64,10 +64,10 @@
                         </tr>
                         <tr>
                             <td>
-                                @Html.ActionLink("Skill matrix", "SkillMatrix", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button" })
+                                @Html.ActionLink("Skill matrix", "SkillMatrix", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "padding-left:14px;" })
                             </td>
                             <td>
-                                @Html.ActionLink("Road map", "RoadMap", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin-left: 8px;" })
+                                @Html.ActionLink("Road map", "RoadMap", new { EmployeeId = Model.EmpolyeeId }, new { @class = "prof-button", style = "margin-left:8px;text-align:center; padding-left:14px;" })
                             </td>
                         </tr>
                     </table>
