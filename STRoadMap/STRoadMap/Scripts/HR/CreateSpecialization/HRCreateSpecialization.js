@@ -1,8 +1,11 @@
 'use strict'
 
-var i;
+var i= 0;
 $(document).ready(function () {
-    i = document.getElementById("choosenSkillsCount").childNodes[0].textContent;
+    var TempElement = document.getElementById("choosenSkillsCount");
+    if (TempElement != null) {
+        i = TempElement.childNodes[0].textContent;
+    }
     $(document).on('click', '.add', function () {
         var addedSkill = document.getElementById(this.id.substring(3, this.id.length));
         var name = addedSkill.childNodes[1].textContent;

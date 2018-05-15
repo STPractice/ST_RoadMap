@@ -222,6 +222,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\404.css" />
     <Content Include="Content\analytics.ico" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -231,6 +232,8 @@
     <Content Include="Content\HRLists.css" />
     <Content Include="Content\HRVIewSkill.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\RoadMapNotExists.css" />
+    <Content Include="Content\RoadMap.css" />
     <Content Include="Content\SignIn.css" />
     <Content Include="Content\SignUp.css" />
     <Content Include="Content\SkillMatrixView.css" />
@@ -249,6 +252,7 @@
     <Content Include="Scripts\HR\CreateSpecialization\HRCreateSpecialization.js" />
     <Content Include="Scripts\HR\EditSkill\HREditSkill.js" />
     <Content Include="Scripts\HR\jquery.js" />
+    <Content Include="Scripts\HR\RoadMap\RoadMap.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -313,6 +317,13 @@
     <Content Include="Views\HR\EmployeeList.cshtml" />
     <Content Include="Views\Mentor\EmployeeProfile.cshtml" />
     <Content Include="Views\Employee\SkillMatrix.cshtml" />
+    <Content Include="Views\Employee\EmployeeProfile.cshtml" />
+    <Content Include="Views\HR\RoadMap.cshtml" />
+    <Content Include="Views\Employee\PerformanceReviewNotPassed.cshtml" />
+    <Content Include="Views\Employee\RoadMapNotExists.cshtml" />
+    <Content Include="Views\Employee\RoadMap.cshtml" />
+    <Content Include="Views\Mentor\RoadMap.cshtml" />
+    <Content Include="Views\Mentor\RoadMapNotExists.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

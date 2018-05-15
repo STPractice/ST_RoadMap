@@ -1,11 +1,13 @@
 ﻿* {
     margin: 0;
     padding: 0;
+    text-decoration:none !important;
 }
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    margin-top:50px;
+
     justify-content: center;
     background-color: #e6eceb;
     color: #63cdd7;
@@ -49,6 +51,7 @@ h1 {
     align-items: stretch;
 }
 #profilePhoto {
+    width: 355.55555555555px;
     margin: 20px;
 }
 #userName {

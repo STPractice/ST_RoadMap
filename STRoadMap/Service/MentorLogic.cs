@@ -26,5 +26,30 @@ namespace Service
         {
             return UoW.Employees.Find(employeeId);
         }
+
+        public RoadMap GetEmployeesRoadMap(int employeeId)
+        {
+                int RoadMapId = 0;
+                if (UoW.Employees.Find(employeeId) != null && UoW.Employees.Find(employeeId).RoadMaps.FirstOrDefault() != null)
+            {
+                RoadMapId = UoW.Employees.Find(employeeId).RoadMaps.FirstOrDefault().RoadMapId;
+            }
+
+            return UoW.RoadMaps.Find(RoadMapId);
+        }
+        public bool AcceptCheckpoint(int RMCheckpointId)
+        {
+            RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);
+            checkpoint.Achieved = 2;
+            UoW.RMCheckpoints.Update(checkpoint);
+            return UoW.Commit();
+        }
+        public bool RefuseCheckpoint(int RMCheckpointId)
+        {
+            RMCheckpoint checkpoint = UoW.RMCheckpoints.Find(RMCheckpointId);
+            checkpoint.Achieved = 0;
+            UoW.RMCheckpoints.Update(checkpoint);
+            return UoW.Commit();
+        }
     }
 }

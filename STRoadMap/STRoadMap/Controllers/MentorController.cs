@@ -22,10 +22,6 @@ namespace STRoadMap.Controllers
         {
             return HttpContext.User.IsInRole("HR")|| HttpContext.User.IsInRole("Mentor");
         }
-        public string Index()
-        {
-            return "It works)";
-        }
         [HttpGet]
         public ActionResult EmployeeList()
         {
@@ -48,7 +44,12 @@ namespace STRoadMap.Controllers
         [HttpGet]
         public ActionResult EmployeeProfile(int? EmployeeId=100)
         {
-            if(EmployeeId==null)
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (EmployeeId==null)
             {
                 return HttpNotFound();
             }
@@ -63,6 +64,82 @@ namespace STRoadMap.Controllers
                 {
                     return HttpNotFound();
                 }
+            }
+        }
+
+        [HttpGet]
+        public ActionResult RoadMap(int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (EmployeeId == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                var roadMap = MentorLogic.GetEmployeesRoadMap((int)EmployeeId);
+                if (roadMap != null)
+                {
+                    return View(roadMap);
+                }
+                else
+                {
+                    return View("RoadMapNotExists",MentorLogic.GetEmployeesProfile((int)EmployeeId) );
+                }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult RefuseCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (RMCheckpointId != null)
+            {
+                if (MentorLogic.RefuseCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "Mentor", new { EmployeeId = EmployeeId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AcceptCheckpoint(int? RMCheckpointId, int? EmployeeId)
+        {
+            if (!IsAuthorized())
+            {
+                Response.StatusCode = 404;
+                return HttpNotFound();
+            }
+            if (RMCheckpointId != null)
+            {
+                if (MentorLogic.AcceptCheckpoint((int)RMCheckpointId))
+                {
+                    return RedirectToAction("RoadMap", "Mentor", new { EmployeeId = EmployeeId });
+                }
+                else
+                {
+                    return HttpNotFound();
+                }
+            }
+            else
+            {
+                return HttpNotFound();
             }
         }
     }

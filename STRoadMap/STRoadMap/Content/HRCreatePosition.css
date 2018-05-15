@@ -26,7 +26,7 @@ div p {
     padding: 20px;
     min-width:320px;
 }
-form input {
+form.position-container input {
     padding: 3px;
 }
 .createPosition-block {
