@@ -9,44 +9,48 @@
     <link rel="stylesheet" type="text/css" media="screen" href="~/Content/Profile.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRLists.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="~/Content/RoadMapNotExists.css" />
-    <meta name="viewport" content="width=device-width"/>
+    <meta name="viewport" content="width=device-width" />
     <title>SkillList</title>
 </head>
-<body>
-    <div class="list-block">
-            <div>
-                <table class="table">
+<body style="">
+    <div class="list-block" style="">
+        <div style="">
+            <table class="table" style="">
 
-                    @if (!Model.Any())
+                @if (!Model.Any())
+                {
+                    <div class="message-container"><h2>You haven't got any new notifications</h2></div>
+                }
+                else
+                {
+                    foreach (var item in Model)
                     {
-                        <div class="message-container"><h2>You haven't got any new notifications</h2></div>
-                    }
-                    else
-                    { 
-                        foreach (var item in Model)
-                         {
 
-                             <tr class=" rowContainer" style="">
-                                 <td>
-                                     <div>
-                                         <p>@item.Content</p>
-                                     </div>
-                                     <div class="row">
-                                         <div class="buttonContainer">
-                                             @using (Html.BeginForm())
-                                             {
-                                                 <input type="hidden" name="notificationId" value="@item.NotificationId">
-                                                 <input type="submit" value="Delete" class="delete">
-                                             }
-                                         </div>
-                                     </div>
-                                 </td>
-                             </tr>
+                        <tr class="rowContainer" style="width:95%;">
+                            <td style="width:100%;">
+                                <div class="row" style="justify-content: space-between;  width:100%;">
+                                    <div class="row" style="justify-content: flex-start;  width:100%;">
+                                        <div>
+                                            <p>@item.Content</p>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="justify-content: flex-end;  width:100%;">
+                                        <div class="buttonContainer">
+                                            @using (Html.BeginForm())
+                                            {
+                                                <input type="hidden" name="notificationId" value="@item.NotificationId">
+                                                <input type="submit" value="Delete" class="delete" style=" ">
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
 
-                         }
                     }
-                </table>
-            </div>
+                }
+            </table>
         </div>
+    </div>
 </body>
 </html>
