@@ -327,6 +327,7 @@
     <Content Include="Views\Mentor\RoadMap.cshtml" />
     <Content Include="Views\Mentor\RoadMapNotExists.cshtml" />
     <Content Include="Views\HR\CreateRoadMap.cshtml" />
+    <Content Include="Views\Employee\News.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

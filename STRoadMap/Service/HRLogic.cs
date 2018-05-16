@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Domain;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 
 namespace Service
@@ -296,6 +297,65 @@ namespace Service
             user.AspNetUser.AspNetRoles.Add(UoW.AspNetRoles.Find("4066c225-7328-49ac-b0a0-77ca4d8782ee"));
             UoW.Commit();
             return true;
+        }
+
+        public void NotifyUsersSpecializationEdited(Specialization specialization)
+        {
+            foreach (Employee employee in UoW.Employees.GetAll())
+            {
+                if (employee.SkillMatrices.ToArray()[0].Specialization.SpecializationId.Equals(specialization.SpecializationId))
+                {
+                    Notification notification =
+                        new Notification
+                        {
+                            Content = "You specialization was edited, check for updates",
+                            UserId = employee.UserId,
+                            url = "Employee/specialization"
+                        };
+                    UoW.Notifications.Create(notification);
+                    UoW.Commit();
+                }
+                
+            }
+           
+        }
+
+        public void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification
+            {
+                Content = "Your checkpoint was accepted",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
+        }
+
+        public void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification
+            {
+                Content = "Your checkpoint was accepted",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
+        }
+        public void NotifyRoadMapCreated(int? employeeId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification
+            {
+                Content = "Your roadmap was created, check for updates",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
         }
     }
 }

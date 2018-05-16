@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using Domain;
@@ -61,5 +62,9 @@ namespace Extensibility
         int CreateRoadMap(RoadMap roadMap);
 
         List<Skill> GetEmployeesAvailableSkills(int EmployeeId);
+        void NotifyUsersSpecializationEdited(Specialization specialization);
+        void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId);
+        void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId);
+        void NotifyRoadMapCreated(int? employeeId);
     }
 }

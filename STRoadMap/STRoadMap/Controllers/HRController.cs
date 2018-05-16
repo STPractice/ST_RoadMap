@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using Domain;
+using Microsoft.AspNet.Identity;
 
 namespace STRoadMap.Controllers
 {
@@ -570,6 +571,7 @@ namespace STRoadMap.Controllers
             {
                 if (HRLogic.RefuseCheckpoint((int)RMCheckpointId))
                 {
+                    HRLogic.NotifyCheckPointRefused(EmployeeId, RMCheckpointId);
                     return RedirectToAction("RoadMap", "HR", new {EmployeeId=  EmployeeId});
                 }
                 else
@@ -595,6 +597,7 @@ namespace STRoadMap.Controllers
             {
                 if (HRLogic.AcceptCheckpoint((int)RMCheckpointId))
                 {
+                    HRLogic.NotifyCheckPointAccepted(EmployeeId,RMCheckpointId);
                     return RedirectToAction("RoadMap", "HR", new { EmployeeId = EmployeeId });
                 }
                 else
@@ -650,7 +653,8 @@ namespace STRoadMap.Controllers
             else
             {
                 if (HRLogic.EditSpecialization(specialization))
-                {                    
+                {
+                    HRLogic.NotifyUsersSpecializationEdited(specialization);
                     return RedirectToAction("SpecializationList", "HR");
                 }
                 else
