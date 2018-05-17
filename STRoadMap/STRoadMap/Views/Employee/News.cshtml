@@ -31,7 +31,7 @@
                                 <div class="row" style="justify-content: space-between;  width:100%;">
                                     <div class="row" style="justify-content: flex-start;  width:100%;">
                                         <div>
-                                            <p>@item.Content</p>
+                                            @Html.ActionLink(item.Content, "../"+item.url, routeValues: new {}, htmlAttributes: new { @class = "lable" })
                                         </div>
                                     </div>
                                     <div class="row" style="justify-content: flex-end;  width:100%;">

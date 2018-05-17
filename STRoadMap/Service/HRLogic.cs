@@ -357,5 +357,23 @@ namespace Service
             UoW.Notifications.Create(notification);
             UoW.Commit();
         }
+
+        public void NotifyRoadMapDeleted(int? employeeId)
+        {
+            var employee = UoW.Employees.Find(employeeId);
+            Notification notification = new Notification
+            {
+                Content = "Your roadmap was deleted. Ask you HR for info",
+                UserId = employee.UserId,
+                url = "Employee/RoadMap"
+            };
+            UoW.Notifications.Create(notification);
+            UoW.Commit();
+        }
+
+        public int FindEmployeeIdByRoadMapId(int roadMapId)
+        {
+            return UoW.RoadMaps.Find(roadMapId).EmpolyeeId;
+        }
     }
 }

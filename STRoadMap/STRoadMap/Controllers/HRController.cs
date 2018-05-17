@@ -545,6 +545,7 @@ namespace STRoadMap.Controllers
             {                
                 if (HRLogic.DeleteRoadMap((int)RoadMapId))
                 {
+                    HRLogic.NotifyRoadMapDeleted(RoadMapId);
                     return RedirectToAction("EmolyeeList", "HR");
                 }
                 else
@@ -704,6 +705,7 @@ namespace STRoadMap.Controllers
             int id = HRLogic.CreateRoadMap(roadMap);
             if (id!=0)
             {
+                HRLogic.NotifyRoadMapCreated(roadMap.EmpolyeeId);
                 return RedirectToAction("RoadMap", "HR", new { EmployeeId = roadMap.EmpolyeeId });
             }
             else

@@ -66,5 +66,7 @@ namespace Extensibility
         void NotifyCheckPointAccepted(int? employeeId, int? rmCheckpointId);
         void NotifyCheckPointRefused(int? employeeId, int? rmCheckpointId);
         void NotifyRoadMapCreated(int? employeeId);
+        void NotifyRoadMapDeleted(int? employeeId);
+        int FindEmployeeIdByRoadMapId(int roadMapId);
     }
 }
