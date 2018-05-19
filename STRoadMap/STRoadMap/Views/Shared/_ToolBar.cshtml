@@ -12,7 +12,7 @@
 @if (HttpContext.Current.User.IsInRole("Mentor") || HttpContext.Current.User.IsInRole("HR"))
 {
     <li style="background-color:#63cdd7">
-        <p style="color: #ffffff !important; font-weight: bold !important;">Mentoring ▼</p>
+        <p class="sub-menu-name" style="color: #ffffff !important; font-weight: bold !important;">Mentoring ▼</p>
         <ul class="sub-menu" style="border-bottom-left-radius: 5px; border-bottom-right-radius:5px; ">
             <li  class="only-toolbox-menu-item">@Html.ActionLink("Employees", "../Mentor/EmployeeList", null, htmlAttributes: new { @class = "item-toolbox-menu-link" })</li>
         </ul>
@@ -22,7 +22,7 @@
 {
 
     <li style="background-color:#63cdd7">
-        <p style="color: #ffffff !important; font-weight: bold !important;">HR ▼</p>
+        <p class="sub-menu-name" style="color: #ffffff !important; font-weight: bold !important;">HR ▼</p>
 
         <ul class="sub-menu" style="border-bottom-left-radius: 5px; border-bottom-right-radius:5px; ">
             <li class ="first-toolbox-menu-item">@Html.ActionLink("Employees", "../HR/EmployeeList", null, htmlAttributes: new { @class = "item-toolbox-menu-link" })</li>

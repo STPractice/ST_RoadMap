@@ -122,7 +122,20 @@
     color: #ffffff !important;
     font-weight: bold !important;
 }
+.navbar-inverse .navbar-toggle {
+    border: 2px solid #fff ;
+}
+
 @media only screen and (max-width: 767px) {
+    .navbar-collapse {
+        border-top: 2px solid #fff !important;
+        -ms-overflow-style: none;
+    }
+
+        .navbar-collapse::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
     .main-menu .sub-menu {
         z-index: 200;
         position: relative;
@@ -138,10 +151,19 @@
           min-height: 50px;
           position: relative;
         display: block;
-          margin-right: -3px;   
+        
+          margin-right: 1px;   
       }
+    .sub-menu > li {
+        border-color: #fff !important;
+    }
+    
     .my-profile-toolbox-item-link {
+        margin-left:1px;
         text-align: center;
+        border: 2px solid #fff;
+        border-bottom:none;
+        margin-right:-1px;
     }
     .my-login-partial-link {
         text-align: center
