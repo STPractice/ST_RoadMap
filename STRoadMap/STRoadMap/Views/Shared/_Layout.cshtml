@@ -15,7 +15,13 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#63cdd7; border-bottom: none; margin-bottom: 0;">
-        <div class="container">            
+        <div class="container">        div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" style="background: #63cdd7"/>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+                
+        </div>    
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>
@@ -30,7 +36,6 @@
             </div>
            
         </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
