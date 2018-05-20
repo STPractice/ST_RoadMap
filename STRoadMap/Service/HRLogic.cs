@@ -338,7 +338,7 @@ namespace Service
             var employee = UoW.Employees.Find(employeeId);
             Notification notification = new Notification
             {
-                Content = "Your checkpoint was accepted",
+                Content = "Your checkpoint was refused",
                 UserId = employee.UserId,
                 url = "Employee/RoadMap"
             };
