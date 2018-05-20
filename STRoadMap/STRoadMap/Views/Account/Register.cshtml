@@ -1,0 +1,47 @@
+﻿
+
+@model STRoadMap.Models.RegisterViewModel
+@{
+    Layout = null;
+    ViewBag.Title = "Register";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/Content/analytics.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/SignUp.css" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="logIn-block" >
+            <div>
+                <p>Have an account?</p>                
+                    @Html.ActionLink("Sign in", "Login", "Account", new { @class = "btn_signIn", id = "signIn", style= "padding-left:15px; padding-right:17px" })                    
+            </div>
+        </div>
+        <div class="signUp-block">
+            <div class="regForm">
+                @using (Html.BeginForm("Register", "Account", FormMethod.Post, htmlAttributes:new {  }))
+                {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @style = " position:absolute; width:100%; top:10px; font-size:12; font-weight:bold;" })
+                <div style="margin-top: 80px;">
+                    <input type="text" name="Email" id="email" placeholder="E-mail" style="font-weight: bold;">
+                    <input type="text" name="UserName" id="fullName" placeholder="User name" style="font-weight: bold;">
+                    <input type="password" name="Password" id="password" placeholder="Password" style="font-weight: bold;">
+                    <input type="password" name="ConfirmPassword" id="password" placeholder="Password" style="font-weight: bold;">
+                    <input type="submit" class="btn-signUp" value="Sign up">
+                </div>
+            
+}
+            </div>
+        </div>
+    </div>
+</body>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

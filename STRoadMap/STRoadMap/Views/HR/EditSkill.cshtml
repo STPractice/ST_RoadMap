@@ -1,0 +1,68 @@
+﻿@model Domain.Skill
+
+@{
+    ViewBag.Title = "Edit skill";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreateSkill.css" />
+    <script defer src="~/Scripts/HR/EditSkill/HREditSkill.js"></script>
+    <script defer src="~/Scripts/HR/CreateSkill/jquery.js"></script>
+</head>
+<body>
+    <div class="@Model.SkillLevels.Count.ToString()" id="counter"></div>
+    <div class="skill-container">
+
+        <form method="post" class="createSkill" id="container">
+            <div id="createSkill">
+                <p>Skill name</p>
+                <input type="text" name="Name" id="skillname" value="@Model.Name" required>
+                <input type="hidden" name="SkillId" value="@Model.SkillId" />
+
+
+                @{
+                    List<Domain.SkillLevel> skillLevels = Model.SkillLevels.ToList<Domain.SkillLevel>();
+                    skillLevels.Sort(new Comparison<Domain.SkillLevel>((Domain.SkillLevel a, Domain.SkillLevel b) =>
+                    {
+                        if (a.Level > b.Level)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return (a.Level == b.Level) ? 0 : -1;
+                        }
+                    }));
+                }
+
+
+                @foreach (Domain.SkillLevel item in Model.SkillLevels)
+                {
+                    <div class="createSkill-block" id="@item.Level">
+                        <div class="delete" id=@("delete"+item.Level.ToString())>X</div>
+                        <div class="skillName">
+                            <p>Name</p>
+                            <input type="text" name="SkillLevels[@item.Level].Name" id="name" value="@item.Name" required>
+                        </div>
+                        <div class="description-block">
+                            <p>Description</p>
+                            <textarea name="SkillLevels[@item.Level].Description" id="description" cols="30" rows="10" class="description" required>@item.Description</textarea>
+                        </div>
+                        <input type="hidden" name="SkillLevels[@item.Level].SkillLevelId" value="@item.SkillLevelId" />
+                        <input type="hidden" name="SkillLevels[@item.Level].SkillId" value="@item.SkillId" />
+                        <input type="hidden" name="SkillLevels[@item.Level].Level" value="@item.Level" />
+                    </div>
+                }
+            </div>
+            <div>
+                <input type="submit" class="submit" value="Submit">
+                <div class="add" id="add">+</div>
+            </div>
+        </form>
+
+    </div>
+</body>
+</html>

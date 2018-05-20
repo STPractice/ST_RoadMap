@@ -1,0 +1,269 @@
+﻿@model List<Domain.Skill>
+@{
+    ViewBag.Title = "Road map";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/RoadMap.css" />
+    <script defer src="~/Scripts/HR/jquery.js"></script>
+    <script defer src="~/Scripts/HR/RoadMap/RoadMap.js"></script>
+
+    <script>
+        var skills = [];
+        skills[0] = 1;
+       
+        function start() {
+            changeBlock(0);
+        }
+        function changeBlock(id) {
+            var checkPoints = document.querySelectorAll(".checkpoint");
+            for (var i = 0; i < checkPoints.length; i++) {
+
+                var checkPointsId = checkPoints[i].id.substring(10);
+
+                if (checkPointsId == id) {
+                    checkPoints[i].setAttribute("style", "color: #63cdd7 !important; border-top: 1px solid #63cdd7 !important; border-bottom: 1px solid #63cdd7 !important; border-left: 2px solid #63cdd7 !important; border-right: 2px solid #fff !important;  z-index: 122 !important; transform: scaleX(1.014) !important;");
+                }
+                else {
+                    checkPoints[i].style = "";
+                }
+            }
+            var abouts = document.querySelectorAll(".about-checkpoint");
+            for (var i = 0; i < checkPoints.length; i++) {
+
+                var aboutId = abouts[i].id.substring(7);
+
+                if (aboutId == id) {
+                    abouts[i].setAttribute("style", "display: flex;");
+                }
+                else {
+                    abouts[i].style = "display:none";
+                }
+            }
+        }
+
+        function ChangeSkillLevels(checkpointId, skillId, element) {
+            var skillLevelId = element.options[element.selectedIndex].value;
+            var checkpoint = document.querySelectorAll("#AboutCP" + checkpointId);
+            var skill = checkpoint[0].querySelectorAll("#skill" + skillId);
+            var skillLevels = skill[0].querySelectorAll(".skillLevels");
+            var TargetSkillLevels = skill[0].querySelectorAll("#skillLevels" + skillLevelId);
+            for (var i = 0; i < skillLevels.length; i++) {
+
+                var skillLevelsId = skillLevels[i].id.substring(10);
+
+                if (skillLevelsId == skillLevelId) {
+                    skillLevels[i].setAttribute("style", "");
+                }
+                else {
+                    skillLevels[i].style = "display:none;";
+                }
+
+            }
+            var inputs = skill[0].querySelectorAll(".hiddenInput");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            TargetSkillLevels[0].querySelectorAll(".hiddenInput")[0].disabled = false;
+
+        }
+
+        function ChangeSkillLevelInput(checkpointId, skillId, skillLevelsId, element) {
+            var skillLevelId = element.options[element.selectedIndex].value;
+            var checkpoint = document.querySelectorAll("#AboutCP" + checkpointId);
+            var skill = checkpoint[0].querySelectorAll("#skill" + skillId);
+            var skillLevels = skill[0].querySelectorAll(".skillLevels");
+            var TargetSkillLevels = skill[0].querySelectorAll("#skillLevels" + skillLevelsId);
+
+            var inputs = TargetSkillLevels[0].querySelectorAll(".hiddenInput");
+            for (var i = 0; i < inputs.length; i++) {
+                inputs[i].disabled = true;
+            }
+            TargetSkillLevels[0].querySelectorAll("#skillLevelInput" + skillLevelId)[0].disabled = false;
+            
+        }
+
+        function addSkill(checkpointId) {
+            var checkpoint = document.querySelectorAll("#AboutCP" + checkpointId);
+            var defaultSkill = checkpoint[0].querySelectorAll("#skill" + 0)[0];
+            var newSkill = $(defaultSkill).clone(true);
+            console.log(newSkill);
+            newSkill.attr("id", "skill" + skills[checkpointId]);
+            newSkill.appendTo(defaultSkill.parentElement)
+
+            newSkill = checkpoint[0].querySelectorAll("#skill" + skills[checkpointId]);
+
+            var changeEvent = newSkill[0].querySelectorAll("#MovieType-1")[0].attributes.onchange.value;
+            var parts = changeEvent.split(' ');
+            changeEvent = parts[0] + ' ' + skills[checkpointId] + ", " + parts[2];            
+            newSkill[0].querySelectorAll("#MovieType-1")[0].attributes.onchange.value = changeEvent;
+            
+            
+            
+            for (var i = 0; i < newSkill[0].querySelectorAll(".skillList").length; i++)
+            { 
+                changeEvent = newSkill[0].querySelectorAll(".skillList")[i].attributes.onchange.value;
+                parts = changeEvent.split(' ');
+                changeEvent = parts[0] + ' ' + skills[checkpointId] + ", " + parts[2] + ' ' + parts[3];
+                newSkill[0].querySelectorAll(".skillList")[i].attributes.onchange.value = changeEvent;
+            }
+
+            changeEvent = newSkill[0].querySelectorAll(".hiddenInput")[0].attributes.name.value;
+            parts = changeEvent.split(".CheckpointsSkills[");            
+            changeEvent = parts[0] + ".CheckpointsSkills[" + skills[checkpointId] + "]" + parts[1].split(']')[1];
+            var inputs = newSkill[0].querySelectorAll(".hiddenInput");
+            for (var j = 0; j < inputs.length; j++)
+            {
+                newSkill[0].querySelectorAll(".hiddenInput")[j].attributes.name.value = changeEvent;
+            }            
+
+            $("#AboutCP" + checkpointId).find('#addSkill').appendTo(defaultSkill.parentElement);            
+            skills[checkpointId]++;            
+        }
+
+        var checkpoints = 1;        
+
+        function addCheckpoint()
+        {
+            var defaultCheckpoinMenu = document.querySelectorAll("#checkpoint0")[0];
+            var newCheckpointMenu = $(defaultCheckpoinMenu).clone(true);
+            newCheckpointMenu.appendTo(defaultCheckpoinMenu.parentElement);
+            newCheckpointMenu.attr("id", "checkpoint" + checkpoints);
+            newCheckpointMenu.attr("onclick", "changeBlock(" + checkpoints + ")");
+            newCheckpointMenu.find("p").text("Checkpoint " + (checkpoints + 1));
+
+            var defaultAboutCP = document.querySelectorAll("#AboutCP" + (checkpoints-1))[0];
+            var newAboutCP = $(defaultAboutCP).clone(true);            
+            newAboutCP.attr("style", "display:none;");            
+            newAboutCP.attr("id", "AboutCP" + checkpoints);
+            newAboutCP.appendTo(defaultAboutCP.parentElement);
+            
+
+            newAboutCP = document.querySelectorAll("#AboutCP" + checkpoints)[0];
+
+            newAboutCP.querySelectorAll(".manage-checkpoint")[0].querySelectorAll(".button")[0].attributes.name.value = "RMCheckpoints[" + checkpoints + "].Deadline";            
+            
+            newAboutCP.querySelectorAll("#addSkill")[0].attributes.onclick.value = "addSkill(" + checkpoints + ")";            
+
+            var selectors = newAboutCP.querySelectorAll("#MovieType-1");
+            for (var i = 0; i < selectors.length; i++)
+            {                
+                var parts = selectors[i].attributes.onchange.value.split(',');
+                selectors[i].attributes.onchange.value = "ChangeSkillLevels(" + checkpoints + ',' + parts[1] + ',' + parts[2];  
+            }
+            
+            selectors = newAboutCP.querySelectorAll(".skillList");
+            for (var i = 0; i < selectors.length; i++) {
+                var parts = selectors[i].attributes.onchange.value.split(',');                
+                selectors[i].attributes.onchange.value = "ChangeSkillLevelInput(" + checkpoints + ',' + parts[1] + ',' + parts[2] + ',' + parts[3];
+                
+            }
+            
+            selectors = newAboutCP.querySelectorAll(".hiddenInput");
+            for (var i = 0; i < selectors.length; i++) {
+                var parts = selectors[i].attributes.name.value.split("].CheckpointsSkills[");
+                selectors[i].attributes.name.value = "RMCheckpoints[" + checkpoints + "].CheckpointsSkills[" + parts[1].split(']')[0] + "].SkillLevelId";
+                
+            }            
+                        
+            skills[checkpoints] = skills[checkpoints - 1];
+            changeBlock(checkpoints);
+            checkpoints++;            
+        }
+        document.addEventListener("DOMContentLoaded", start)
+    </script>
+
+</head>
+<body>
+
+    <form method="post">
+        <div style="border:4px solid #63cdd7; background-color: #fff; padding:10px; margin-top:50px;">
+            <input type="hidden" name="EmpolyeeId" value="@ViewBag.EmployeeId" />
+            <div class="base" style=" border-bottom-left-radius:5px; border-bottom-right-radius:5px; border: 3px solid #63cdd7; min-width:1100px; margin-top:0px;">
+                <div class="listOfCheckpoints" id="listOfCheckpoints">
+                    <div style="background-color: #fff;">
+                        <div class="checkpoint" id="checkpoint0" onclick="changeBlock(0)" style="">
+                            <p>Checkpoint 1</p>
+                        </div>
+                    </div>
+                    <div class="add" id="addCheckpoint" onclick="addCheckpoint()" style="width: 50px; height: 50px; line-height: 50px; border-radius: 50%; text-align: center; background-color: #63cdd7; color: #fff; font-size: 24px; transition: .5s; cursor: pointer; margin: 10px 40% 10px 40%;">+</div>
+                </div>
+
+                <div class="about-checkpoint" id="AboutCP0" style="display:none;">
+                    <div class="listOfSkills" style="">
+                        <div class="futter-of-skill-list" style="border-bottom: 2px solid #63cdd7">
+                            <div class="skill" id="skill0">
+                                <div class="skillInfo">
+                                    <fieldset>
+                                        <font style="color:#63cdd7; font-weight:bold;">Skill: </font>
+                                        <select id="MovieType-1" name="MovieType" onchange="ChangeSkillLevels(0, 0, this)">
+                                            @{int i = 0;}
+                                            @foreach (Domain.Skill skill in Model)
+                                            {
+                                                <option value="@i">@skill.Name</option>
+                                                i++;
+                                            }
+                                        </select>
+                                    </fieldset>
+
+                                </div>
+
+                                @{ i = 0;}
+                                @foreach (Domain.Skill skill in Model)
+                                {
+                                    <div id="skillLevels@(i)" style="display:flex; flex-direction:row; justify-content:center">
+                                        @{string first = i == 0 ? "" : "display:none";}
+
+
+                                        <fieldset class="skillLevels" style="@first" id="skillLevel@(i)">
+                                            <font style="color:#63cdd7; font-weight:bold;">Skill level: </font>
+                                            <select id="MovieType@(i)" class="skillList" name="MovieType" onchange="ChangeSkillLevelInput(0, 0, @i, this)">
+                                                @{int j = 0;}
+                                                @foreach (Domain.SkillLevel skillLevel in skill.SkillLevels)
+                                                {
+                                                    <option value="@j">@skillLevel.Name</option>
+
+                                                    j++;
+                                                }
+
+                                            </select>
+                                        </fieldset>
+                                        @{ j = 0; }
+
+
+                                        @foreach (Domain.SkillLevel skillLevel in skill.SkillLevels)
+                                        {
+                                            first = i == 0 && j == 0 ? "" : "disabled";
+                                            <input class="hiddenInput" type="hidden" value="@skillLevel.SkillLevelId" id="skillLevelInput@(j)" name="RMCheckpoints[0].CheckpointsSkills[0].SkillLevelId" @first />
+                                            j++;
+                                        }
+
+                                    </div>
+                                    i++;
+                                }
+
+                            </div>
+                            <div class="add" id="addSkill" onclick="addSkill(0)" style="width: 50px; height: 50px; line-height: 50px; border-radius: 50%; text-align: center; background-color: #63cdd7; color: #fff; font-size: 24px; transition: .5s; cursor: pointer; margin: 10px 50% 10px 50%;" >+</div>
+
+                        </div>
+                    </div>
+                    <div class="manage-checkpoint" style="height:auto; align-content:center; padding-bottom:5px;">
+                        <p style="padding:5px; color:#63cdd7; font-weight:bold;">Checkpoint's deadline:</p>
+                        <input value="@DateTime.Now.Date.ToString().Split(' ')[0]" name="RMCheckpoints[0].Deadline" type="text" class="button" style="color:#000; background-color: #fff; margin-left:3px; transform:none !important;" />
+                    </div>
+                </div>
+
+            </div>
+            <div class="manage-block" style="margin-top:10px; justify-content:flex-end">
+                <input type="submit" class="button" value="Create RoadMap" />
+            </div>
+        </div>
+    </form>
+
+
+</body>
+</html>

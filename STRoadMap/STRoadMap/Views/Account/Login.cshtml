@@ -1,0 +1,35 @@
+﻿@using STRoadMap.Models
+@model LoginViewModel
+@{
+    Layout = null;
+
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sign in</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="~/Content/analytics.ico" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/SignIn.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1>STRoadMap</h1>
+        @using (Html.BeginForm("Login", "Account"))
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="text" name="Email" id="userName" placeholder="User name" style="margin-top:20px; font-weight:bold;">
+        <br>
+        @Html.ValidationMessageFor(m => m.Email, "")
+        <br>
+        <input type="password" name="Password" id="password" placeholder="Password" style="margin-top:20px; font-weight:bold;">
+        <br>
+        @Html.ValidationMessageFor(m => m.Password, "")
+        <br>
+
+        <input type="submit" value="Sign in" class="btn-signIn" />
+}
+    </div>
+</body>

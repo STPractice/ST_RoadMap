@@ -1,0 +1,133 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 50px;
+    font-weight: bold;
+    justify-content: center;
+    background-color: #e6eceb;
+    color: #63cdd7;
+}
+a {
+    text-decoration: none !important;
+}
+div p {
+    margin: 0 0 0 0;
+    color: #63cdd7;
+    font-weight: bold;
+}
+.position-container {
+    position: relative;
+    
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    min-width:320px;
+}
+form.position-container input {
+    padding: 3px;
+}
+.createPosition-block {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    align-content: space-between;
+    margin-bottom:20px;
+    margin-top:20px;
+}
+.block, #positionName {
+    border: 2px solid #63cdd7;
+    height: 100%;
+}
+#positionName {
+    width:380px;
+    padding: 5px;
+}
+
+
+.positionSkills, .skillLevels {
+    display: inline-block;
+    margin: 20px 0;
+}
+.positionSkills {
+    padding: 0;
+    flex-basis:49%;
+    /*flex-grow: 1;*/
+    align-self: stretch;
+}
+.skillLevels {
+    display: none;
+    /*flex-grow: 1;*/
+    align-self: stretch;
+    flex-basis:49%;
+}
+
+ul.block li {
+    width:100%;
+    padding: 5px;
+}
+.positionSkills > ul li:hover {
+    background-color: #e6eceb;
+}
+#skillsList, #skillLevelsList {
+    list-style-type: none;
+    list-style-position: outside;
+    padding: 0 !important;
+    overflow-y:auto;
+}
+#skillLevels0 {
+    display:inline-block;
+}
+.submit {
+    margin: 10px 0;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: .5s;
+}
+    .submit:hover {
+        transform: scale(1.1);
+        color: #63cdd7;
+    }
+label {
+    font-weight: normal;
+    margin-bottom: 0;
+}
+form.forSpecialization {
+    display:none;
+    width:100%;
+}
+#specialization0 {
+    display: block;
+}
+#performanceReview {
+    background-color:white;
+}
+#chooseSpec {
+    padding:20px;
+}
+.container {
+    padding-top:0;
+}
+@media screen and (max-width: 768px) {
+    .positionSkills {
+        flex-basis: 100%;
+    }
+    .skillLevels {
+        flex-basis: 100%;
+    }
+}
+#dropSpecializations {
+    border:2px solid #63cdd7;
+    padding:10px;
+    color:#63cdd7;
+    font-weight: 600;
+}

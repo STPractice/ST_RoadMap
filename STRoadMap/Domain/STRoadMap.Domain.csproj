@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{96AB20CD-95D4-4BCD-9676-A47C9D73A418}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AspNetRole.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUser.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserClaim.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AspNetUserLogin.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CheckpointsSkill.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Data_Access\Implementation\EntityAspNetRoleRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserClaimRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserLoginRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityAspNetUserRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityCheckpointsSkillRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityEmployeeRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityMentorCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityMentorRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityMentorRMCommentRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityNotificationRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityPositionRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityRegistrationKeyRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityRMCheckpointRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityRoadMapRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntitySkillLevelRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntitySkillMatrixRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntitySkillRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntitySpecializationRepository.cs" />
+    <Compile Include="Data_Access\Implementation\EntityUnitOfWork.cs" />
+    <Compile Include="Data_Access\Implementation\EntityUserCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\IEntity.cs" />
+    <Compile Include="Data_Access\Interfaces\IRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetRoleRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserClaimRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IAspNetUserLoginRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ICheckpointsSkillRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IEmployeeRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IMentorRMCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\INotificationRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IPositionRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRegistrationKeyRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRoadMapRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillLevelRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISkillMatrixRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\ISpecializationRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IUserCheckpointCommentRepository.cs" />
+    <Compile Include="Data_Access\Interfaces\Repositories\IRMCheckpointRepository.cs" />
+    <Compile Include="Employee.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity.cs" />
+    <Compile Include="Mentor.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MentorCheckpointComment.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MentorRMComment.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Notification.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Position.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationKey.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RMCheckpoint.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RMDbModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMDbModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RMDbModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RMDbModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RMDbModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="RoadMap.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Skill.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillLevel.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SkillMatrix.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Specialization.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserCheckpointComment.cs">
+      <DependentUpon>RMDbModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\aspnet-STRoadMap-20180405094215.mdf" />
+    <Content Include="App_Data\aspnet-STRoadMap-20180405094215_log.ldf">
+      <DependentUpon>aspnet-STRoadMap-20180405094215.mdf</DependentUpon>
+    </Content>
+    <Content Include="RMDbModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RMDbModel.edmx</DependentUpon>
+      <LastGenOutput>RMDbModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="RMDbModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>RMDbModel.edmx</DependentUpon>
+      <LastGenOutput>RMDbModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="RMDbModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>RMDbModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="RMDbModel.edmx.diagram">
+      <DependentUpon>RMDbModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

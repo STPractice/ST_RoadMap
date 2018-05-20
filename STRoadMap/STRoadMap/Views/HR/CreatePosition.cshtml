@@ -1,0 +1,76 @@
+﻿@model Domain.Specialization
+@using Domain
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRCreatePosition.css" />
+    <title>CreatePosition</title>
+    <script>
+        function changeBlock(id) {
+            var skillLevels = document.querySelectorAll(".skillLevels");
+            for (var i = 0; i < skillLevels.length; i++) {
+                var skillLevelsId = skillLevels[i].id.substring(11);
+                if (skillLevelsId == id) {
+                    skillLevels[i].style = "display:inline-block";
+                }
+                else {
+                    skillLevels[i].style = "display:none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <form method="post" class="position-container">
+        <div>
+            <p>Position name</p>
+            <input type="text" name="Name" id="positionName" placeholder="Name of position" required />
+            <br />
+        </div>
+        <div class="createPosition-block">
+            <div class="positionSkills">
+                <p>Skills</p>
+                <ul class="block " id="skillsList" style="height:200px">
+                    @for (int i = 0; i < Model.Skills.Count; i++)
+                    {
+                        <li id="skill@(i)" onclick="changeBlock(@i)">
+                            @Model.Skills.ElementAt(i).Name
+                        </li>
+                    }
+                </ul>
+            </div>
+            @for (int j = 0; j < Model.Skills.Count; j++)
+            {
+                <div class="skillLevels" id="skillLevels@(j)">
+                    <p>Skill levels (@Model.Skills.ElementAt(j).Name)</p>
+                    <ul class="block" id="skillLevelsList" style="height:200px">
+                        @for (int i = 0; i < Model.Skills.ElementAt(j).SkillLevels.Count; i++)
+                        {
+                            <li>
+                                @{
+                                    var ch = i == 0 ? true : false;
+                                }
+                                <input type="radio" name="SkillLevels[@j].SkillLevelId" value=@Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).SkillLevelId checked="@ch" />
+                                <label for="SkillLevels[@j].SkillLevelId">@Model.Skills.ElementAt(j).SkillLevels.ElementAt(i).Name</label>
+                                <br />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+        <br />
+        @{
+            var count = (Model.Positions == null || Model.Positions.Count == 0) ? 0 : (Model.Positions.Last().PositionLevel + 1);
+        }
+        <input type="hidden" name="SpecializationId" value=@Model.SpecializationId />
+        <input type="hidden" name="PositionLevel" value=@count />
+        <input type="submit" class="submit" name="CreatePosition" value="Create Position" />
+    </form>
+</body>
+</html>

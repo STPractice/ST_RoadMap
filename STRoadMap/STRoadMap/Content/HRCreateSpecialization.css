@@ -1,0 +1,213 @@
+::-webkit-scrollbar {
+    width: 1em;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #63cdd7;
+    outline: 1px solid #98e2e8;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 50px;
+    justify-content: center;
+    background-color: #e6eceb;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+p {
+    color: #3e4d4e;
+    margin:0;
+}
+
+form input {
+    padding: 3px;
+}
+
+.base {
+    position: relative;
+    margin: auto 150px;
+    padding: 30px;
+    background-color: #fff;
+    
+}
+
+.name {
+    margin: 0 0 0 0;
+    color: #63cdd7;
+    font-weight: bold;
+}
+
+form input {
+    padding: 3px;
+}
+
+.specializationName{
+    border: 2px solid #63cdd7;
+    height: 100%;
+}
+
+.specializationName {
+    width: 380px;
+    padding: 5px;
+}
+
+::-webkit-input-placeholder {
+    color: #98e2e8;
+}
+
+::-moz-placeholder {
+    color: #98e2e8;
+}
+/* Firefox 19+ */
+:-moz-placeholder {
+    color: #98e2e8;
+}
+/* Firefox 18- */
+:-ms-input-placeholder {
+    color: #98e2e8;
+}
+
+.skills {
+    margin-top: 10px;
+    
+    display: flex;
+    flex-direction: row;
+}
+
+.list {
+    border: 2px solid #63cdd7;
+    width: 50%;
+    height: 400px;
+    margin: 5px auto;
+    overflow: auto;
+}
+
+.available {
+    margin-right: 4px;
+}
+
+.chosen {
+    margin-left: 4px;
+}
+
+.title {
+    width: 100%;
+    border-bottom: 2px solid #63cdd7;
+    padding: 4px;
+}
+
+.skill {
+    margin-top: 10px;
+    display: flex;
+    margin: 0;
+    margin-left: 5px;
+    margin-top: 10px;
+    height: auto;
+    line-height: 25px;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 3px;
+}
+
+.small {
+    font-size: small;
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.add {
+    border: 2px solid #63cdd7;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;  
+    margin: 0 10px;   
+    padding: 0 2px;
+    transition: .5s all;    
+}
+
+.add:hover {
+    background-color: #63cdd7;
+    color: #fff;
+}
+
+.delete {
+    border: 2px solid #d83737;
+    height: 25px;
+    line-height: 25px;
+    text-align: center;
+    cursor: pointer;
+    margin: 0 10px;
+    padding: 0 2px;
+    transition: .5s all;
+}
+
+.delete:hover {
+    background-color: #d83737;
+    color: #fff;
+}
+
+.submit {
+    margin-top:10px;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 8px;
+    transition: .5s;
+}
+
+    .submit:hover {
+        transform: scale(1.1);
+        color: #63cdd7;
+    }
+
+.submitbtn{
+    
+}
+
+
+@media screen and (max-width: 1125px) {
+    .base {
+        margin: auto 100px;
+        
+    }
+    .list {
+        
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .skills {
+        flex-direction: column;
+    }
+    .base {
+        margin: 0;
+        width: 100%;
+    }
+    .list {
+        width: 100%;
+    }
+    .submit {
+        margin: 0;
+        width: 100%;
+    }
+}

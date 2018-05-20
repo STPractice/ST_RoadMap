@@ -1,0 +1,205 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    text-decoration:none !important;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top:50px;
+
+    justify-content: center;
+    background-color: #e6eceb;
+    color: #63cdd7;
+}
+
+h1 {
+    color: #63cdd7;
+    font-weight: bold;
+}
+.items-container {
+    width: 100%;
+    background-color: white;
+    min-height: 550px;
+    position: relative;
+}
+.flex-container {
+    width: 100%;
+    height: 360px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+#profileImage {
+    width: 320px;
+    margin: auto;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+#profileInfo {
+    width: 320px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+}
+#profilePhoto {
+    width: 355.55555555555px;
+    margin: 20px;
+}
+#userName {
+    font-size: 150%;
+    font-weight: bold;
+}
+.userSpecialization {
+    font-size: 125%;
+}
+.userJobInfo {
+    padding: 10px;
+}
+
+a:active {
+    color: #63cdd7;
+}
+.prof-button
+{
+    height: 50px;
+    display: flex;
+    text-decoration: none !important;
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #63cdd7;
+    color: #63cdd7;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10.5px;
+    transition: .5s;
+    text-align: center;
+}
+.dis-button {
+    height: 50px;
+    display: flex;
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #e6eceb;
+    color: #e6eceb;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    padding: 10.5px;
+    transition: .5s;
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+.prof-button:hover {
+    transform: scale(1.1);
+}
+a.prof-button:hover {
+    color: #63cdd7;
+}
+#exInfo button a:link {
+    text-decoration: none;
+}
+#exInfo button a:visited {
+    text-decoration: none;
+}
+#exInfo button a:hover {
+    text-decoration: none;
+}
+#exInfo button a:active {
+    text-decoration: none;
+}
+#exInfo button a {
+    color: #63cdd7;
+}
+@media screen and (max-width: 950px) {
+    .container {
+        margin: auto;
+    }
+}
+.Info-box {
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .list-block {
+        width: 100%;
+    }
+
+    .items-container {
+        margin: 0;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    a.edit, input.delete {
+        font-size: 12px;
+    }
+
+    a.lable {
+        font-size: 13px;
+    }
+
+    .rowContainer {
+        border: 2px solid #63cdd7;
+    }
+
+    .menu {
+        width: 500px;
+        height: 100px;
+    }
+
+    .photo {
+        width: 250px;
+        height: 300px;
+    }
+
+    .info {
+        width: 250px;
+        height: 300px;
+        position: absolute;
+        top: 100px;
+        left: 250px;
+        justify-content: flex-end;
+    }
+
+    .buttons {
+        width: 500px;
+        height: 100px;
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+
+
+
+
+    .Info-box {
+        margin-bottom: 50px;
+    }
+
+    #profileInfo {
+        margin-top: 0;
+    }
+
+    .userJobInfo {
+        margin-top: 0;
+        padding-top: 0;
+    }
+    #profileImage {
+        width: 80% !important;
+        margin-left: 10% !important;
+        margin-top: 50px;
+    }
+    
+}

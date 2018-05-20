@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Domain.Position>
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" media="screen" href="~/Content/HRLists.css" />
+    <meta name="viewport" content="width=device-width"/>
+    <title>PositionList</title>
+</head>
+<body>
+    <div class="list-block">
+        <div class="items-container">
+            <table class="table" style="border-top: 0px solid ">
+                <tr class=" rowContainer" style="background-color:#ffffff; border: none;">
+                    <td style="border-top: none;">
+                        <h1>Position</h1>
+                    </td>
+
+                    <td class="addbuttoncontainer" style="border-top: none;">
+                        @Html.ActionLink("Create new position", "CreatePosition", new { SpecializationId = ViewBag.SpecializationId },  new { @class = "add", style = "margin-top:5px" })
+                    </td>
+
+                </tr>
+            </table>
+            
+       
+                <table class="table">
+       
+                    @foreach (var item in Model)
+                    {
+
+                        <tr class=" rowContainer">
+                            <td class="lableContainer" style="border-top: none;">
+                                @Html.ActionLink(item.Name, "Position", new { PositionId = item.PositionId }, htmlAttributes: new
+                                {
+                                    @class = "lable"
+                                })
+                            </td>
+                            <td style="border-top: none;">
+                                <div class="row">
+                                    <div class="buttonContainer">
+                                        @Html.ActionLink("Edit", "EditPosition", routeValues: new
+                                   {
+                                       PositionId = item.PositionId,
+                                   }
+                          , htmlAttributes: new
+                          {
+                              @class = "edit"
+                          })
+                                    </div>
+
+                                    <div class="buttonContainer">
+                                        @using (Html.BeginForm())
+                                        {
+                                            <input type="hidden" name="PositionId" value="@item.PositionId">
+                                            <input type="submit" value="Delete" class="delete">
+                                        }
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
